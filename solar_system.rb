@@ -23,4 +23,15 @@ class SolarSystem
     return "Planets orbiting #{@star_name}:\n"\
            "#{planets}"
   end
+
+  def find_planet_by_name(planet_name)
+    planet_name = planet_name.downcase
+
+    @planets.each do |planet|
+      if planet.name.downcase == planet_name
+        return planet
+      end
+    end
+  end
+
 end
