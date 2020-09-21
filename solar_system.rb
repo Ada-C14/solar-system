@@ -1,5 +1,3 @@
-
-
 class SolarSystem
   # readable, but not writable
   attr_reader :star_name, :planets

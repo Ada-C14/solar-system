@@ -13,3 +13,4 @@ class Planet
     return "#{@name} has the color of #{@color} and a mass of #{@mass_kg}. Its #{@distance_from_sun_km} from the sun and a fun fact about it is #{@fun_fact}"
   end
 end
+
