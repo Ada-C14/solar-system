@@ -10,7 +10,7 @@ class Planet
     @name = hash[:name]
     @color = hash[:color]
     @mass_kg = natural_num?(hash[:mass_kg])
-    @distance_from_sun_km = natural_num?([:distance_from_sun_km])
+    @distance_from_sun_km = natural_num?(hash[:distance_from_sun_km])
     @fun_fact = hash[:fun_fact]
   end
 
@@ -19,7 +19,7 @@ class Planet
   end
 
   def natural_num?(num)
-    raise ArgumentError, "Cannot have a negative value." if num <= 0
+    raise ArgumentError, "Cannot have a negative mass or negative distance." if num <= 0
     return num
   end
 
