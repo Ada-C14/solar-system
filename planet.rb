@@ -9,4 +9,8 @@ class Planet
     @distance_from_sun_km = distance_from_sun_km
     @fun_fact = fun_fact
   end
+
+  def summary
+    return "#{@name} is a #{@color} planet!"\
+  end
 end
