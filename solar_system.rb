@@ -11,4 +11,16 @@ class SolarSystem
     @planets << new_planet
   end
 
+  def list_planets
+    i = 0
+    planets = ""
+
+    @planets.map do |planet|
+      planets += "#{i + 1}. #{planet.name}\n"
+      i += 1
+    end
+
+    return "Planets orbiting #{@star_name}:\n"\
+           "#{planets}"
+  end
 end
