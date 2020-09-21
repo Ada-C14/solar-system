@@ -1,4 +1,4 @@
-require_relative '../net'
+require_relative 'planet'
 require_relative 'solar_system'
 
 # def main

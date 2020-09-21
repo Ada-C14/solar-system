@@ -1,4 +1,4 @@
-require_relative 'lib/et'
+
 
 class SolarSystem
   # readable, but not writable
