@@ -20,7 +20,7 @@ class Planet
 
   def natural_num?(num)
     raise ArgumentError, "Cannot have a negative mass or negative distance." if num <= 0
-    return num
+    return num.to_f
   end
 
 end
