@@ -10,6 +10,6 @@ class Planet
   end
 
   def summary
-    return "#{ @name } is #{ @color }, and it weights #{ @mass_kg } kg and #{ @distance_from_sun_km } km away from sun. The fun fact about it: #{ @fun_fact }"
+    return "#{ @name } is #{ @color }, and it weights #{ @mass_kg } kg and #{ @distance_from_sun_km } km away from sun. \nThe fun fact about it: #{ @fun_fact.downcase }\n\n"
   end
 end
