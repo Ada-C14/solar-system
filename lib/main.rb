@@ -1,8 +1,9 @@
 require_relative 'planet'
 require_relative 'solar_system'
+require "colorize"
 
 def planet_details(solar_system)
-  puts "What planet do you wish to learn about?"
+  puts "Choose a planet do you wish to learn about:"
   user_unput = gets.chomp.downcase
 
   planet_to_learn = solar_system.find_planet_by_name(user_unput)
@@ -11,10 +12,10 @@ def planet_details(solar_system)
 end
 
 def add_planet(solar_system)
-  puts "What is the name of the planet you wish to add to the solar system?"
-  name = gets.chomp.downcase
+  puts "\nWhat is the name of the planet you wish to add to the solar system?".colorize(:blue)
+  name = gets.chomp.capitalize
 
-  puts "Let's gather some more information on the planet!"
+  puts "Let's gather some more information on the planet!".colorize(:blue)
   print "Color: "
   color = gets.chomp
   print "Mass(kg): "
@@ -44,17 +45,17 @@ def main
   solar_system.add_planet(mars)
   solar_system.add_planet(venus)
 
-  puts "Welcome to the Sol Solar System!"
-  puts "To continue, please enter 'list planets'"
-  puts "If at anytime you would like to exit, please enter 'exit'."
+  puts "Welcome to the Sol Solar System!".colorize(:blue)
+  puts "To continue, please enter 'list planets'".colorize(:light_blue)
+  puts "If you would like to exit, please enter 'exit'.".colorize(:light_blue)
   user_input = gets.chomp.downcase
 
   while user_input != "exit"
     if user_input == "list planets"
       list = solar_system.list_planets
-      puts "\n~~~~~~~~~~~~~~~~~~~~~~"
-      puts list
-      puts "~~~~~~~~~~~~~~~~~~~~~~"
+      puts "\n~~~~~~~~~~~~~~~~~~~~~~".colorize(:yellow)
+      puts list.colorize(:yellow)
+      puts "~~~~~~~~~~~~~~~~~~~~~~".colorize(:yellow)
     elsif user_input == "planet details"
       # invoke a separate method that will ask them for the name of the planet
       # display details for that planet
@@ -65,29 +66,19 @@ def main
       # create a new instance of planet
       # add it to the solarsystem
       add_planet(solar_system)
+    else
+      raise ArgumentError, 'Not an option'
     end
 
-    puts "\nWhat would you like to do next?"
+    puts "\nWhat would you like to do next?\n".colorize(:blue)
     puts "1. list planets"
     puts "2. planet details"
     puts "3. add planet"
-    puts "4. exit"
+    puts "4. exit\n\n"
+    puts "Please choose an option: ".colorize(:blue)
     user_input = gets.chomp.downcase
-
-
-
-
   end
-  # list = solar_system.list_planets
-  # puts list
-  #
-  # found_planet = solar_system.find_planet_by_name('Earth')
-  #
-  # puts found_planet
-  # puts found_planet.summary
 
-  # puts earth.summary
-  # puts mars.summary
 end
 
 main
