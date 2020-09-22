@@ -17,13 +17,13 @@ class Planet
   end
 
   def summary
-    return "The planet #{@name} is a lovely #{@color.to_s} color and weighs #{@mass_kg} kilograms. #{@name} is #{@distance_from_sun_km} kilometers from the sun and fun fact: #{@fun_fact}"
+    return "The planet #{@name} is a lovely #{@color.to_s} color and weighs #{@mass_kg} kilograms. #{@name} is #{@distance_from_sun_km} kilometers from the sun and fun fact: #{@fun_fact}."
   end
 
   def positive_real_num?(num)
     raise  ArgumentError, "Each planet must have a mass (kg) and distance from sun (km)." if !num
     raise ArgumentError, "Cannot have a negative mass or negative distance." if num.to_f < 0
-    raise ArgumentError, "Please enter a number." if (num.to_f == 0 && !num.match(/[0]+[.]?[0]*/))
+    raise ArgumentError, "Numerical values must be entered for both planet mass and distance from sun." if (num.to_f == 0 && !num.match(/[0]+[.]?[0]*/))
     return num.to_f
   end
 

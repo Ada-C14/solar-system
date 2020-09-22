@@ -177,7 +177,7 @@ describe "Planets class" do
             mass_kg: "fat",
             distance_from_sun_km: 1e10,
             fun_fact: "String as mass test."
-        ) }.must_raise ArgumentError, "Please enter a number."
+        ) }.must_raise ArgumentError, "Numerical values must be entered for both planet mass and distance from sun."
          expect{
         test_planet = Planet.new(
             name: "Test Planet",
@@ -185,7 +185,7 @@ describe "Planets class" do
             mass_kg: 1e10,
             distance_from_sun_km: "hecka far",
             fun_fact: "String as distance test."
-        ) }.must_raise ArgumentError, "Please enter a number."
+        ) }.must_raise ArgumentError, "Numerical values must be entered for both planet mass and distance from sun."
     end
 
 
