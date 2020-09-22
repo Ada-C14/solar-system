@@ -2,21 +2,29 @@ class Planet
 
   attr_reader :name, :color, :mass_kg, :distance_from_sun_km, :fun_fact
 
+  def mass_kg=(mass_kg)
+    if mass_kg < 0
+      raise ArgumentError.new('Mass must be greater than 0.')
+    end
+  end
+
+  def distance_from_sun_km=(distance_from_sun_km)
+    if distance_from_sun_km < 0
+      raise ArgumentError.new('Distance from sun must be greater than 0.')
+    end
+  end
+
   def initialize(name, color, mass_kg, distance_from_sun_km, fun_fact)
     @name = name
     @color = color
-    @mass_kg = mass_kg
-    @distance_from_sun_km = distance_from_sun_km
+    self.mass_kg = mass_kg
+    self.distance_from_sun_km = distance_from_sun_km
     @fun_fact = fun_fact
   end
 
   def summary
-    return "Name: #{@name}\n Color: #{@colorcolor}\n Mass: #{@mass_kgmass_kg}\n Distance from the Sun: #{@distance_from_sun_km}\n Fun Fact: #{@fun_fact}"
+    " Name: #{@name}\n Color: #{@color}\n Mass: #{mass_kg}\n Distance from the Sun: #{distance_from_sun_km}\n Fun Fact: #{@fun_fact}"
   end
-
-  earth = Planet.new('Earth', "blue-green", 5.972e24, 1.496e8, "Only planet known to support life")
-
-  pp earth
 
 
 
@@ -25,12 +33,3 @@ class Planet
 
 end
 
-
-
-
-
-
-
-puts earth.name
-puts earth.fun_fact
-# earth.color = "pink"
