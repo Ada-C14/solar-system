@@ -15,12 +15,12 @@ class SolarSystem
     i = 0
     planets = ""
 
-    @planets.map do |planet|
+    @planets.each do |planet|
       planets += "#{i + 1}. #{planet.name}\n"
       i += 1
     end
 
-    return "Planets orbiting #{@star_name}:\n"\
+    return "\nPlanets orbiting #{@star_name.capitalize}:\n"\
            "#{planets}"
   end
 
