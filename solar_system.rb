@@ -13,7 +13,11 @@ class SolarSystem
   end
 
   def list_planets
-    return "Planets orbiting #{@star_name}: \n 1. #{@planets[0].name} \n 2. #{@planets[1].name} \n 3. #{@planets[2].name}"
+    output = "Planets orbiting #{@star_name}:"
+    @planets.each_with_index do |planet, i|
+      output += " \n #{i + 1}. #{planet.name}"
+    end
+    return output
   end
 
   def find_planet_by_name(planet_name)
