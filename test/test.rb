@@ -41,5 +41,12 @@ end
 #     it "will .... if there is no planet with the given name"
 #     it "will return a positive number for distance"
 #   end
-
+# end
+#
+# describe "Control loop in main" do
+#    it "will... if the user enters a bad command"
+#
+#   it "will ... if user asks for details on a planet that doesn't exist"
+#
+#    it "will ....if user enters an bad value for a new planet's mass?"
 # end

@@ -24,8 +24,12 @@ class SolarSystem
       return planet if planet_name.downcase == planet.name.downcase
     end
 
-    return "#{planet_name} does not match any planets in #{@star_name}'s solar system." if found_planet.nil?
+    # raise ArgumentError, "#{planet_name} does not match any planets in our database of #{@star_name}'s solar system."
+
+    puts "#{planet_name} does not match any planets in our database of #{@star_name}'s solar system."
+    return
   end
+
 
   def distance_between(planet1_name, planet2_name) # takes the names of planets as strings
     planet1 = find_planet_by_name(planet1_name)

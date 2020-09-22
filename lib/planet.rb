@@ -15,6 +15,4 @@ class Planet
   def summary
     return "#{self.name} is a #{self.color} planet with a mass of #{self.mass_kg}kg. It is #{self.distance_from_sun_km}km from the sun. Fun fact: #{self.fun_fact}"
   end
-
-
 end
