@@ -19,4 +19,8 @@ class SolarSystem
 
     return list
   end
+
+  def find_planet_by_name(planet)
+    return planet.downcase
+  end
 end
