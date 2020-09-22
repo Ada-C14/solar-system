@@ -8,7 +8,7 @@ require_relative '../lib/planet'
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 describe "Planets class" do
-  describe "constructor"
+  describe "constructor" do
     it "check if correct data type is returned" do
       #Arrange
       #nothing to arrange, except planet.rb
@@ -70,6 +70,24 @@ describe "Planets class" do
           distance_from_sun_km: -1e10,
           fun_fact: "Negative distance test."
       ) }.must_raise ArgumentError
+    end
+
+    it "check if planets.name is correctly titleized " do
+      #Arrange
+      #nothing to arrange, except planet.rb
+
+      # Act
+      test_planet = Planet.new(
+        name: "teSt PlaNet",
+        color: :pink,
+        mass_kg: 1e10,
+        distance_from_sun_km: 1e10,
+        fun_fact: "Planets[] data type test."
+      )
+
+      # Assert
+      expect(test_planet.name).must_equal "Test Planet"
+    end
   end
 
   describe "summary" do
