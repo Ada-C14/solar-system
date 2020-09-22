@@ -3,9 +3,7 @@ class Planet
   attr_reader :name, :color, :mass_kg, :distance_from_sun_km, :fun_fact
 
   def mass_kg=(mass_kg)
-    if mass_kg < 0
-      raise ArgumentError.new('Mass must be greater than 0.')
-    end
+      raise ArgumentError, 'Mass must be greater than 0.' if mass_kg < 0
   end
 
   def distance_from_sun_km=(distance_from_sun_km)
