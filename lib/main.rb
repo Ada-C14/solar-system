@@ -10,6 +10,27 @@ def planet_details(solar_system)
   puts planet_to_learn.summary
 end
 
+def add_planet(solar_system)
+  puts "What is the name of the planet you wish to add to the solar system?"
+  name = gets.chomp.downcase
+
+  puts "Let's gather some more information on the planet!"
+  print "Color: "
+  color = gets.chomp
+  print "Mass(kg): "
+  mass_kg = gets.chomp.to_f
+  print "Distance from the Sun(km): "
+  distance_from_sun = gets.chomp.to_f
+  print "Fun Fact: "
+  fun_fact = gets.chomp
+
+  # create instance of the new planet
+  new_planet = Planet.new(name, color, mass_kg, distance_from_sun, fun_fact)
+
+  # add new planet to the solar_system
+  solar_system.add_planet(new_planet)
+end
+
 
 def main
 
@@ -38,11 +59,12 @@ def main
       # invoke a separate method that will ask them for the name of the planet
       # display details for that planet
       planet_details(solar_system)
-    # elsif user_input == "add planet"
-    #   #   # invoke a separate method that will
-    #   #   # ask the user for details about the planet
-    #   #   # create a new instance of planet
-    #   #   # add it to the solarsystem
+    elsif user_input == "add planet"
+      # invoke a separate method that will
+      # ask the user for details about the planet
+      # create a new instance of planet
+      # add it to the solarsystem
+      add_planet(solar_system)
     end
 
     puts "\nWhat would you like to do next?"
