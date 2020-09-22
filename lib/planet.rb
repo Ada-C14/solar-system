@@ -10,6 +10,6 @@ class Planet
   end
 
   def summary
-    return "Planet Name: #{@name}\n Color: #{@color}\n Mass: #{@mass_kg}kg\n Distance from the Sun:#{@distance_from_sun_km}kg \nFun fact: #{@fun_fact}."
+    return "Planet Name: #{@name}\nColor: #{@color}\nMass: #{@mass_kg} kg\nDistance from the Sun: #{@distance_from_sun_km} km\nFun fact: #{@fun_fact}\n\n"
   end
 end
