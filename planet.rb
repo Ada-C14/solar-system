@@ -10,17 +10,8 @@ class Planet
     @inhabited = inhabited
   end
 
+  def summary
+    return "#{name} is a #{color} planet #{distance_from_sun_km} away from the sun. Rumor has it its inhabitants are called #{inhabited}, and #{fun_fact}! It is a healthy #{mass_kg} kilograms."
+  end
 end
 
-# Load Planet into pry:
-# $ pry -r ./planet.rb
-earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life', 'yes')
-
-puts earth.name
-# => Earth
-puts earth.fun_fact
-# => Only planet known to support life
-
-earth.color = 'pink'
-# => NoMethodError: undefined method `color=' for #<Planet:0x00007fcfba04c130>
-# => Did you mean?  color
