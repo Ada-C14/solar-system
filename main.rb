@@ -2,24 +2,25 @@ require_relative 'planet'
 require_relative 'solar_system'
 
 def main
-  solar_system = SolarSystem.new('Sol')
+  puts "☀️️🌎🪐 Welcome to the Build-A-Solar-System Program! 💫☄️🌕"
 
-  earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
-  solar_system.add_planet(earth)
+  solar_system = SolarSystem.new('Sun')
 
-  list = solar_system.list_planets
-  puts list
-  # => Planets orbiting Sol
-  # => 1.  Earth
+  mercury = Planet.new('Mercury', 'burnt orange', 330, 35.98, 'Aliens live here!')
+  venus = Planet.new('Venus', 'pink', 48700, 67.24, 'Both a planet and a goddess!')
+  earth = Planet.new('Earth', 'blue-green', 59700, 92.96, 'We have water, air and humans!')
+  mars = Planet.new('Mars', 'red', 6420, 141.6, 'Home of the Mar\'s chocolate!')
+  jupiter = Planet.new('Jupiter', 'orange, white and brown', 1898000, 483.8, 'I have a weird birthmark.')
+  saturn = Planet.new('Saturn', 'green', 56800, 890.8, 'I have more rings than Lebron himself.')
+  uranus = Planet.new('Uranus', 'purple', 868000, 17640, 'I get made fun of because of my name :(')
+  neptune = Planet.new('Neptune', 'white', 10200, 27930, 'I rule the sea!')
+  pluto = Planet.new('Pluto', 'neon green', 14, 5900000, 'I used to be a planet. Take me back pls...')
 
-  found_planet = solar_system.find_planet_by_name('Earth')
+  nine_planets = [mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, pluto]
 
-  # found_planet is an instance of class Planet
-  puts found_planet
-  # => #<Planet:0x00007fe7c2868ee8>
+  nine_planets.each { |planet| solar_system.add_planet(planet) }
 
-  puts found_planet.summary
-  # => Earth is a blue-green planet ...
+  puts solar_system.list_planets
 end
 
 main
