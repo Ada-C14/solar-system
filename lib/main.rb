@@ -44,10 +44,6 @@ def main
       puts "Sweet, here's the new planet list: \n#{solar_system.list_planets}"
     end
   end
-  # puts solar_system.list_planets
-
-  # found_planet = solar_system.find_planet_by_name("Earth")
-  # puts found_planet.summary
 
 end
 
