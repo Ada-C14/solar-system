@@ -14,22 +14,13 @@ def main
   solar_system.add_planet(venus)
   solar_system.add_planet(mars)
 
-  # def add_planet(planet)
-  #   solar_system.add_planet(planet)
-  # end
 
-  # puts solar_system.list_planets
-
-  # found_planet = solar_system.find_planet_by_name('Mars')
-  # puts found_planet
-  # puts found_planet.summary
-
-  ###################################
+  puts "Welcome to the Solar System!"
 
   while true
-    puts "Welcome to the Solar System!"
-    puts "Press 'exit' to quit at any time"
+    puts "\n"
     puts "Please enter 'list planets', 'planet details', or 'add planet'"
+    puts "Press 'exit' to quit at any time"
     input = gets.chomp
 
     case input
@@ -40,11 +31,12 @@ def main
         planet_name = gets.chomp.capitalize!
         found_planet = solar_system.find_planet_by_name(planet_name)
         puts found_planet.summary
+
       when "add planet"
         puts "What is the name of the planet?"
           name = gets.chomp.capitalize!
         puts "What color is it?"
-          color = gets.chomp.downcase!
+          color = gets.chomp.downcase
         puts "What is the planet's mass in kg?"
           mass_kg = gets.chomp.to_i
         puts "How far is the planet from the sun in km?"
@@ -57,8 +49,6 @@ def main
       else
         puts "Invalid input"
     end
-
-
   end
 end
 
