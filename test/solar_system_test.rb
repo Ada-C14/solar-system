@@ -54,21 +54,41 @@ describe "SolarSystem class" do
       expect(test_solar_system.planets.length).must_equal 3
     end
 
-    it "check if each planets[] element is a Planet" do
+    it "check if first planet name and last planet names are correct" do
       #Arrange
       test_solar_system = SolarSystem.new("Meep Morp")
       test_planet = Planet.new(
-        name: "Test Planet",
+        name: "teSt PlaNet",
+        color: :pink,
+        mass_kg: 1e10,
+        distance_from_sun_km: 1e10,
+        fun_fact: "Planets[] data type test."
+      )
+      first_planet = Planet.new(
+        name: "FiRST PlaNet",
+        color: :pink,
+        mass_kg: 1e10,
+        distance_from_sun_km: 1e10,
+        fun_fact: "Planets[] data type test."
+      )
+      last_planet = Planet.new(
+        name: "laST PlaNet",
         color: :pink,
         mass_kg: 1e10,
         distance_from_sun_km: 1e10,
         fun_fact: "Planets[] data type test."
       )
       # Act
+      test_solar_system.add_planet(first_planet)
       test_solar_system.add_planet(test_planet)
+      test_solar_system.add_planet(test_planet)
+      test_solar_system.add_planet(test_planet)
+      test_solar_system.add_planet(test_planet)
+      test_solar_system.add_planet(last_planet)
 
       # Assert
-      expect(test_solar_system.planets[0]).must_be_instance_of Planet
+      expect(test_solar_system.planets[0].name).must_equal "First Planet"
+      expect(test_solar_system.planets[0].name).must_equal "Last Planet"
     end
 
     it "check for ArgumentError if planet data type is not a hash" do
@@ -91,11 +111,11 @@ describe "SolarSystem class" do
   end
 
   describe "list_planets" do
-    it "check that summary returns a string" do
+    it "check that summary returns a concatenated string, with each planet separated by a comma" do
       #Arrange
       test_solar_system = SolarSystem.new("Meep Morp")
       test_planet1 = Planet.new(
-        name: "Test Planet 2",
+        name: "Test Planet 1",
         color: :pink,
         mass_kg: 1e10,
         distance_from_sun_km: 1e10,
@@ -115,7 +135,7 @@ describe "SolarSystem class" do
       test_planet_list = test_solar_system.list_planets
 
       # Assert
-      expect(test_planet_list).must_be_kind_of String
+      expect(test_planet_list).must_equal "Test Planet 1, Test Planet 2"
     end
 
     it "Check for ArgumentError if self.planets.empty?" do
