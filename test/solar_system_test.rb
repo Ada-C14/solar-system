@@ -130,6 +130,135 @@ describe "SolarSystem class" do
   end
 
   describe "find_planet_by_name" do
+    it "returns Planet data type, for planet found (case-insensitive)" do
+      #Arrange
+      test_solar_system = SolarSystem.new("Meep Morp")
+      test_planet = Planet.new(
+        name: "Test Planet",
+        color: :pink,
+        mass_kg: 1e10,
+        distance_from_sun_km: 1e10,
+        fun_fact: "Find planet test."
+      )
+      test_solar_system.add_planet(test_planet)
+      planet_search_term = "teSt PlaNet"
+      # Act
+      planet_search = test_solar_system.find_planet_by_name(planet_search_term)
 
+      # Assert
+      expect(planet_search).must_be_instance_of Planet
+    end
+
+    it "returns correct planet information, for search term mid-planets[]" do
+      #Arrange
+      test_solar_system = SolarSystem.new("Meep Morp")
+      test_planet = Planet.new(
+        name: "Test Planet",
+        color: :pink,
+        mass_kg: 1e10,
+        distance_from_sun_km: 1e10,
+        fun_fact: "Find planet test."
+      )
+      test_planet_peri = Planet.new(
+        name: "Test Planet Peridot",
+        color: :pink,
+        mass_kg: 1e10,
+        distance_from_sun_km: 1e10,
+        fun_fact: "Find planet test."
+      )
+      test_solar_system.add_planet(test_planet)
+      test_solar_system.add_planet(test_planet)
+      test_solar_system.add_planet(test_planet)
+      test_solar_system.add_planet(test_planet_peri)
+      test_solar_system.add_planet(test_planet)
+      test_solar_system.add_planet(test_planet)
+      planet_search_term = "teSt PlaNet perIDOt"
+      # Act
+      planet_search = test_solar_system.find_planet_by_name(planet_search_term)
+
+      # Assert
+      expect(planet_search.name).must_equal "Test Planet Peridot"
+    end
+
+     it "returns correct planet information, for search term == planets[0]" do
+      #Arrange
+      test_solar_system = SolarSystem.new("Meep Morp")
+      test_planet = Planet.new(
+        name: "Test Planet",
+        color: :pink,
+        mass_kg: 1e10,
+        distance_from_sun_km: 1e10,
+        fun_fact: "Find planet test."
+      )
+      test_planet_peri = Planet.new(
+        name: "Test Planet Peridot",
+        color: :pink,
+        mass_kg: 1e10,
+        distance_from_sun_km: 1e10,
+        fun_fact: "Find planet test."
+      )
+      test_solar_system.add_planet(test_planet_peri)
+      test_solar_system.add_planet(test_planet)
+      test_solar_system.add_planet(test_planet)
+      test_solar_system.add_planet(test_planet)
+      test_solar_system.add_planet(test_planet)
+      test_solar_system.add_planet(test_planet)
+      planet_search_term = "teSt PlaNet perIDOt"
+      # Act
+      planet_search = test_solar_system.find_planet_by_name(planet_search_term)
+
+      # Assert
+      expect(planet_search.name).must_equal "Test Planet Peridot"
+    end
+
+    it "returns correct planet information, when search term == planets[-1]" do
+      #Arrange
+      test_solar_system = SolarSystem.new("Meep Morp")
+      test_planet = Planet.new(
+        name: "Test Planet",
+        color: :pink,
+        mass_kg: 1e10,
+        distance_from_sun_km: 1e10,
+        fun_fact: "Find planet test."
+      )
+      test_planet_peri = Planet.new(
+        name: "Test Planet Peridot",
+        color: :pink,
+        mass_kg: 1e10,
+        distance_from_sun_km: 1e10,
+        fun_fact: "Find planet test."
+      )
+      test_solar_system.add_planet(test_planet)
+      test_solar_system.add_planet(test_planet)
+      test_solar_system.add_planet(test_planet)
+      test_solar_system.add_planet(test_planet)
+      test_solar_system.add_planet(test_planet)
+      test_solar_system.add_planet(test_planet_peri)
+      planet_search_term = "teSt PlaNet perIDOt"
+      # Act
+      planet_search = test_solar_system.find_planet_by_name(planet_search_term)
+
+      # Assert
+      expect(planet_search.name).must_equal "Test Planet Peridot"
+    end
+
+    it "returns `nil` when no planet is found by said name" do
+    #Arrange
+    test_solar_system = SolarSystem.new("Meep Morp")
+      test_planet = Planet.new(
+        name: "Test Planet",
+        color: :pink,
+        mass_kg: 1e10,
+        distance_from_sun_km: 1e10,
+        fun_fact: "Find planet test."
+      )
+      test_solar_system.add_planet(test_planet)
+      planet_search_term = "teSt PlaNet perIDOt"
+      # Act
+      planet_search = test_solar_system.find_planet_by_name(planet_search_term)
+
+      # Assert
+      expect(planet_search).must_be_nil
+    end
   end
 end
