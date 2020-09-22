@@ -22,7 +22,14 @@ class SolarSystem
     end
     return planet_list
   end
-  
+
+  # returns instance of Planet object in @planet that has matching (not case sensitive) planet.name to input string
+  # if multiple planets have same name in @name field, returns first instance
+  # if no planets match, returns nil
+  def find_planet_by_name(planet_name)
+    return @planets.detect{|planet| planet.name == planet_name}
+  end
+
   # mutators
   # add planet to @planets array
   def add_planet(planet)
