@@ -23,15 +23,17 @@ class SolarSystem
   def list_planets
     raise ArgumentError, "There are no known planets in this solar system." if planets.empty?
 
-    return @planets.map{ |planet| planet.name }.flatten.join(', ')
+    planets_list = []
+    @planets.each_with_index{ |planet, index| planets_list << "#{index + 1}. #{planet.name}" }
+
+    return "Planets orbiting #{@star_name}:\n#{planets_list.flatten.join("\n")}"
   end
 
   def find_planet_by_name(planet_name)
     #titleize the search term
     planet_name = planet_name.split(' ').map(&:capitalize).join(' ')
 
-    planet_search = @planets.find { |planet| planet.name == planet_name }
-    return planet_search
+    return @planets.find { |planet| planet.name == planet_name }
   end
 
   #This method assumes all planets are in a straight line lined up with the sun

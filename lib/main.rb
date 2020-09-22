@@ -57,7 +57,7 @@ def main
     case selection
     when "1"
       puts
-      puts "#{the_solar_system.list_planets} are in the #{the_solar_system.star_name} solar system."
+      puts the_solar_system.list_planets
       puts
     when '2'
       puts
