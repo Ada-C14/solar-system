@@ -17,9 +17,13 @@ describe 'Planet' do
 
       planet = Planet.new(name: planet_facts[:name], mass_kg: planet_facts[:mass_kg], fun_fact: planet_facts[:fun_fact], distance_from_sun_km: planet_facts[:distance_from_sun_km], color: planet_facts[:color])
 
-      test_planet = {name: planet.name, mass_kg: planet.mass_kg, fun_fact: planet.fun_fact, distance_from_sun_km: planet.distance_from_sun_km, color: planet.color}
+      #test_planet = {name: planet.name, mass_kg: planet.mass_kg, fun_fact: planet.fun_fact, distance_from_sun_km: planet.distance_from_sun_km, color: planet.color}
 
-      expect(planet_facts).must_equal test_planet
+      expect(planet.name).must_equal "Iris"
+      expect(planet.mass_kg).must_equal 50000
+      expect(planet.fun_fact).must_equal "Iris is made-up planet"
+      expect(planet.distance_from_sun_km).must_equal 2
+      expect(planet.color).must_equal 'Red'
     end
 
 
