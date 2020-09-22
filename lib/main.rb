@@ -94,9 +94,9 @@ def main
     when '4'
       puts
       print "To find the distance between two planets, please enter the name of the first planet: "
-      planet1 = gets.chomp
+      planet1 = gets.chomp.split(' ').map(&:capitalize).join(' ')
       print "Please enter the name of the second planet: "
-      planet2 = gets.chomp
+      planet2 = gets.chomp.split(' ').map(&:capitalize).join(' ')
       puts "The distance between #{planet1} and #{planet2} is #{the_solar_system.distance_between(planet1, planet2)} (assuming a linear solar system)."
       puts
     end
