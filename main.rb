@@ -2,6 +2,18 @@ require_relative 'planet'
 require_relative 'solar_system'
 require 'colorize'
 
+def get_valid_planet(message, solar_system)
+  print message
+  user_input = solar_system.find_planet_by_name(gets.chomp) rescue nil    # Try to get user's input; otherwise return nil
+
+  if !user_input.nil?
+    return user_input
+  else
+    puts "   Please enter a valid planet name.".colorize(:red)
+    get_valid_planet(message, solar_system)
+  end
+end
+
 def main
   puts "☀️️🌎🪐 Welcome to the Build-A-Solar-System Program! 💫☄️🌕"
 
@@ -60,8 +72,7 @@ def main
 
     elsif user_input == "3"  # VIEW PLANET DETAILS
 
-      print "\n   Enter a planet you would like to know more about: "
-      planet = solar_system.find_planet_by_name(gets.chomp)
+      planet = get_valid_planet("   Enter a planet you would like to know more about: ", solar_system)
 
       if planet
         puts planet.summary.colorize(:light_magenta)
@@ -71,11 +82,22 @@ def main
 
     elsif user_input == "4"  # FIND DISTANCE BETWEEN 2 PLANETS
 
+      puts "\n   Let's calculate the distance between 2 planets!\n".colorize(:light_cyan)
+      planet_1 = get_valid_planet("   Enter Planet 1: ", solar_system)
+      planet_2 = get_valid_planet("   Enter Planet 2: ", solar_system)
+
+      distance_between = solar_system.distance_between(planet_1, planet_2)
+
+      if planet_1 == planet_2
+        puts "\n   Distance between #{planet_1.capitalize} and... #{planet_2.capitalize}? It's the same planet! 0 km.".colorize(:light_cyan)
+      else
+        puts "\n   The distance between #{planet_1.name.capitalize} and #{planet_2.name.capitalize} is #{distance_between} km.".colorize(:light_cyan)
+      end
+
     elsif user_input == "5"  # EXIT
       puts "\n   Thank you for using the Build-A-Solar-System Program! Goodbye!".colorize(:light_red)
     end
   end
-
 end
 
 main

@@ -1,4 +1,5 @@
 class SolarSystem
+  include Math
 
   attr_reader :star_name, :planets
 
@@ -16,7 +17,7 @@ class SolarSystem
     planets = ""
 
     @planets.each do |planet|
-      planets += "    #{i + 1}. #{planet.name}\n"
+      planets += "    #{i + 1}. #{planet.name.capitalize}\n"
       i += 1
     end
 
@@ -33,7 +34,11 @@ class SolarSystem
       end
     end
 
-    return nil
+    raise ArgumentError, "Planet \"#{planet_name}\" does not exist."
+  end
+
+  def distance_between(planet1_name, planet2_name)
+    return (planet1_name.distance_from_sun_km - planet2_name.distance_from_sun_km).abs
   end
 
 end

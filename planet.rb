@@ -11,9 +11,9 @@ class Planet
   end
 
   def summary
-    return "\n   #{@name} is a #{@color} planet!"\
-           "\n   #{@name}'s mass is #{@mass_kg} kg."\
-           "\n   #{@name} is #{@distance_from_sun_km} km away from the Sun."\
-           "\n   Fun fact about #{@name}: #{@fun_fact}"\
+    return "\n   #{@name.capitalize} is a #{@color} planet!"\
+           "\n   #{@name.capitalize}'s mass is #{@mass_kg} kg."\
+           "\n   #{@name.capitalize} is #{@distance_from_sun_km} km away from the Sun."\
+           "\n   Fun fact about #{@name.capitalize}: #{@fun_fact}"\
   end
 end
