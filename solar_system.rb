@@ -1,3 +1,5 @@
+require 'terminal-table'
+
 class SolarSystem
   attr_reader :star_name, :planets
 
@@ -11,7 +13,15 @@ class SolarSystem
   end
 
   def list_planets
-    return "Planets orbiting #{star_name}"
+    planets = []
+    list = 1
+    @planets.each do |planet|
+      planets << ["#{list}, #{planet.name}"]
+      list += 1
+    end
+    list_planets = Terminal::Table.new :heading => "Planets orbiting #{star_name}", :rows => planets
+
+    return list_planets
   end
 
 end

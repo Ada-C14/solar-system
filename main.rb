@@ -1,13 +1,15 @@
 require_relative 'planet'
+require_relative 'solar_system'
+
 
 def main
-  # Load Planet into pry:
-  # $ pry -r ./planet.rb
-  earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life', 'Humans')
+  solar_system = SolarSystem.new('Sol')
+  earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet *we* know to support humans', "humans")
 
-  puts earth.summary
+  solar_system.add_planet(earth)
 
-
+  list = solar_system.list_planets
+  puts list
 end
 
 main
