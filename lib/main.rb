@@ -15,10 +15,7 @@ def main
   # => Earth
   puts earth.fun_fact
   # => Only planet known to support life
-
-  earth.color = 'pink'
-  # => NoMethodError: undefined method `color=' for #<Planet:0x00007fcfba04c130>
-  # => Did you mean?  color
+  puts earth.summary
 end
 
 main
