@@ -11,11 +11,11 @@ class SolarSystem
   end
 
   def list_planets
-    planets_lists = []
+    planets_lists = ""
     @planets.each_with_index do |planet, index|
-      planets_lists << "#{(index + 1)}. #{planet.name}\n"
+      planets_lists = planets_lists + "#{(index + 1)}. #{planet.name}\n"
     end
-      return "Planets orbiting #{@star_name}: \n#{planets_lists.join}"
+      return "Planets orbiting #{@star_name}: \n#{planets_lists}"
   end
 
   def find_planet_by_name(planet_name)
