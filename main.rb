@@ -45,25 +45,25 @@ def main
   end
   # control loop, keep going until you break
   while true
-  puts "What do you want to do? \n 1. Type 'list' for list planets \n 2. Type 'exit' for quitting program \n 3. Type 'details' to see more about a chosen planet \n 4. Type 'add' to add planet to solar system "
-  user_input = gets.chomp
-  until %w(list exit details add).include?(user_input)
-    puts "please enter a valid input of 'list' or 'exit' or 'details' or 'add'"
+    puts "What do you want to do? \n 1. Type 'list' for list planets \n 2. Type 'exit' for quitting program \n 3. Type 'details' to see more about a chosen planet \n 4. Type 'add' to add planet to solar system "
     user_input = gets.chomp
-  end
+    until %w(list exit details add).include?(user_input)
+      puts "please enter a valid input of 'list' or 'exit' or 'details' or 'add'"
+      user_input = gets.chomp
+    end
 
-  case user_input
-  when "list"
-    puts our_solar_system.list_planets
-  when "details"
-    planet_details(our_solar_system)
-  when "add"
-    add_planet(our_solar_system)
-  when "exit"
-    break
-  else
-    "wrong input"
-  end
+    case user_input
+    when "list"
+      puts our_solar_system.list_planets
+    when "details"
+      planet_details(our_solar_system)
+    when "add"
+      add_planet(our_solar_system)
+    when "exit"
+      break
+    else
+      "wrong input"
+    end
   end
 
 
