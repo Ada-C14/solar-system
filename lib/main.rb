@@ -72,15 +72,15 @@ def main
       puts
     when '3'
       puts
-      print "What is the planet name?"
+      print "What is the planet name? "
       name = gets.chomp
-      print "What is the planet's color?"
+      print "What is the planet's color? "
       color = gets.chomp
-      print "What is the planet's mass, in kilograms?"
+      print "What is the planet's mass, in kilograms? "
       mass = gets.chomp
-      print "What is the planet's distance from the sun, in kilometers?"
+      print "What is the planet's distance from the sun, in kilometers? "
       distance = gets.chomp
-      print "What is a fun fact about #{name}?"
+      print "What is a fun fact about #{name}? "
       fact = gets.chomp
       puts
       temp_planet = Planet.new({

@@ -13,11 +13,11 @@ class Planet
     @color = symbol?(hash[:color])
     @mass_kg = positive_real_num?(hash[:mass_kg])
     @distance_from_sun_km = positive_real_num?(hash[:distance_from_sun_km])
-    @fun_fact = hash[:fun_fact] ? hash[:fun_fact] : "TBD"
+    @fun_fact = (hash[:fun_fact] && !hash[:fun_fact].empty?) ? hash[:fun_fact] : "TBD"
   end
 
   def summary
-    return "The planet #{@name} is a lovely #{@color.to_s} color and weighs #{@mass_kg} kilograms. #{@name} is #{@distance_from_sun_km} kilometers from the sun and fun fact: #{@fun_fact}."
+    return "The planet #{@name} is a lovely #{@color.to_s.split('_').join('-')} color and weighs #{@mass_kg} kilograms. #{@name} is #{@distance_from_sun_km} kilometers from the sun and fun fact: #{@fun_fact}"
   end
 
   def positive_real_num?(num)
