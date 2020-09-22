@@ -1,5 +1,6 @@
 require_relative "planet"
 require_relative "solar_system"
+require "bigdecimal/util"
 
 # Method creates two different instances of Planet and prints out some of their attributes.
 def validate_option(user_input)
@@ -15,11 +16,11 @@ end
 def validate_twice(user_input)
   input_reentered = nil
   until user_input == input_reentered
-    puts "Please re-enter to confirm."
+    print "Please re-enter to confirm: "
     input_reentered = gets.chomp.downcase
 
     if user_input != input_reentered
-      "Entries do not match. Please try again."
+      puts "Entries do not match. Please try again."
       input_reentered = nil
       user_input = gets.chomp.downcase
     end
@@ -30,7 +31,7 @@ end
 
 
 def validate_measurement(user_input)
-  until ( user_input == "#{user_input.to_i}" || user_input == "#{user_input.to_f}" ) && user_input.to_i > 0
+  until user_input.to_i > 0 || user_input.to_f > 0
     puts "Please enter a number greater than 0."
     user_input = gets.chomp
   end
@@ -54,7 +55,7 @@ def main
   solar_system = SolarSystem.new('Sol')
 
   earth = Planet.new("Earth", "blue-green", 5.972e24, 1.496e8, "Only planet known to support life")
-  venus = Planet.new("Venus", "white", 4.867e24, 1.502e8, "Nearly the same size as Earth.")
+  venus = Planet.new("Venus", "white", 4.867e24, 1.078e8, "Nearly the same size as Earth.")
 
   solar_system.add_planet(earth)
   solar_system.add_planet(venus)
@@ -62,7 +63,7 @@ def main
   want_to_exit = false
   user_input = ""
   until want_to_exit
-    puts "What would you like to do?"
+    puts "\nWhat would you like to do?"
     puts "To list planets, enter 'list'."
     puts "To see planet details, enter 'details'."
     puts "To add a planet, enter 'add'."
@@ -76,7 +77,7 @@ def main
 
     when "details"
       puts "Please enter the name of the planet you wish you learn about."
-      planet_of_interest = solar_system.validate_planet_in_solar_system(solar_system, gets.chomp)
+      planet_of_interest = validate_planet_in_solar_system(solar_system, gets.chomp)
       puts planet_of_interest.summary
 
     when "add"
@@ -85,9 +86,11 @@ def main
       print "\nEnter the color of #{planet_name}: "
       planet_color = validate_twice(gets.chomp.downcase)
       print "\nEnter the mass of #{planet_name} in kilograms: "
-      planet_mass = validate_twice(validate_measurement(gets.chomp.downcase))
+      planet_mass = validate_measurement(gets.chomp.downcase)
+      planet_mass = validate_twice(planet_mass).to_f
       print "\nEnter the distance from #{planet_name} to the sun in kilometers: "
-      planet_distance_to_sun = validate_twice(validate_measurement(gets.chomp.downcase))
+      planet_distance_to_sun = validate_measurement(gets.chomp.downcase)
+      planet_distance_to_sun = validate_twice(planet_distance_to_sun).to_f
       puts "\nEnter a fun fact: "
       planet_fun_fact = gets.chomp.capitalize
 
@@ -117,7 +120,5 @@ def main
 end
 
 
-
-
-
 main
+
