@@ -27,6 +27,6 @@ class SolarSystem
       end
     end
 
-    return "No such planet in this solar system!"
+    raise ArgumentError, 'Not on the list of planets to learn about!'
   end
 end
