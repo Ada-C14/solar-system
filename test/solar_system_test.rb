@@ -238,8 +238,8 @@ describe "SolarSystem class" do
      test_planet3 = Planet.new(
         name: "Test Planet 3",
         color: :pink,
-        mass_kg: 2e10,
-        distance_from_sun_km: 2e10,
+        mass_kg: 3e10,
+        distance_from_sun_km: 3e10,
         fun_fact: "List planets positive nominal."
       )
       test_solar_system.add_planet(test_planet1)
@@ -281,8 +281,8 @@ describe "SolarSystem class" do
      test_planet3 = Planet.new(
         name: "Test Planet 3",
         color: :pink,
-        mass_kg: 2e10,
-        distance_from_sun_km: 2e10,
+        mass_kg: 3e10,
+        distance_from_sun_km: 3e10,
         fun_fact: "List planets positive nominal."
       )
       test_solar_system.add_planet(test_planet_peri)
@@ -315,17 +315,17 @@ describe "SolarSystem class" do
         fun_fact: "List planets positive nominal."
       )
       test_planet2 = Planet.new(
-        name: "Test Planet 3",
+        name: "Test Planet 2",
         color: :pink,
         mass_kg: 2e10,
         distance_from_sun_km: 2e10,
         fun_fact: "List planets positive nominal."
       )
      test_planet3 = Planet.new(
-        name: "Test Planet 2",
+        name: "Test Planet 3",
         color: :pink,
-        mass_kg: 2e10,
-        distance_from_sun_km: 2e10,
+        mass_kg: 3e10,
+        distance_from_sun_km: 3e10,
         fun_fact: "List planets positive nominal."
       )
       test_solar_system.add_planet(test_planet1)
@@ -359,4 +359,35 @@ describe "SolarSystem class" do
       expect(planet_search).must_be_nil
     end
   end
+
+  describe "distance_between method" do
+    it "correctly calculates distance between two planets" do
+      #Arrange
+      test_solar_system = SolarSystem.new("Meep Morp")
+      test_planet1 = Planet.new(
+        name: "Test Planet 1",
+        color: :pink,
+        mass_kg: 1e10,
+        distance_from_sun_km: 1e10,
+        fun_fact: "List planets positive nominal."
+      )
+      test_planet2 = Planet.new(
+        name: "Test Planet 2",
+        color: :pink,
+        mass_kg: 2e10,
+        distance_from_sun_km: 2e10,
+        fun_fact: "List planets positive nominal."
+      )
+      test_solar_system.add_planet(test_planet1)
+      test_solar_system.add_planet(test_planet2)
+
+      # Act
+      distance = test_solar_system.distance_between("Test Planet 1", "Test Planet 2")
+
+      #Assert
+      expect(distance).must_equal 1e10
+    end
+
+  end
+
 end
