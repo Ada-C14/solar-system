@@ -16,11 +16,11 @@ class SolarSystem
     planets = ""
 
     @planets.each do |planet|
-      planets += "#{i + 1}. #{planet.name}\n"
+      planets += "    #{i + 1}. #{planet.name}\n"
       i += 1
     end
 
-    return "\nPlanets orbiting #{@star_name.capitalize}:\n"\
+    return "\n    Planets orbiting #{@star_name.capitalize}:\n"\
            "#{planets}"
   end
 

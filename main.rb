@@ -1,5 +1,6 @@
 require_relative 'planet'
 require_relative 'solar_system'
+require 'colorize'
 
 def main
   puts "☀️️🌎🪐 Welcome to the Build-A-Solar-System Program! 💫☄️🌕"
@@ -20,7 +21,35 @@ def main
 
   nine_planets.each { |planet| solar_system.add_planet(planet) }
 
-  puts solar_system.list_planets
+  # MAIN MENU
+  user_input = ""
+
+  while user_input != "5"
+    puts "\n   Please select from the following options. Enter a numerical selection:"
+    puts "   1. List Planets"\
+         "\n   2. Add a Planet to the Solar System"\
+         "\n   3. View Planet Details"\
+         "\n   4. Find the Distance Between 2 Planets"\
+         "\n   5. Exit\n\n"
+    print "Selection: "
+
+    user_input = gets.chomp
+
+    if user_input == "1"
+
+      print solar_system.list_planets.colorize(:light_blue)
+
+    elsif user_input == "2"
+
+    elsif user_input == "3"
+
+    elsif user_input == "4"
+
+    elsif user_input == "5"
+      puts "\nThank you for using the Build-A-Solar-System Program! Goodbye!"
+    end
+  end
+
 end
 
 main
