@@ -14,14 +14,13 @@ class SolarSystem
 
   def add_planet(planet)
     raise ArgumentError, "Cannot add planet information; incorrect data-type." if planet.class != Planet
-    raise ArgumentError, "There is already a planet in this solar system by that name." if @planets.each { |known_planet| known_planet.name == planet.name }
-    # raise ArgumentError, "There is already a planet in this solar system by that name." if @planets.include? planet
+    raise ArgumentError, "There is already a planet in this solar system by that name." if find_planet_by_name(planet.name)
     @planets << planet
   end
 
   def list_planets
     raise ArgumentError, "There are no known planets in this solar system." if planets.empty?
-    return @planets.join(', ')
+    return @planets.map{ |planet| planet.name }.flatten.join(', ')
   end
 
   def find_planet_by_name(planet_name)
