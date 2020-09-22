@@ -97,8 +97,8 @@ describe "Planets class" do
           name: "Test Planet",
           color: :pink,
           mass_kg: 1e10,
-          distance_from_sun_km: -1e10,
-          fun_fact: "Negative distance test."
+          distance_from_sun_km: 1e10,
+          fun_fact: "Summary test."
       )
 
       # Act
