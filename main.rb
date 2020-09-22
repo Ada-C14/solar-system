@@ -20,6 +20,9 @@ def main
   p "Here's a fun fact about the #{earth.name}: #{earth.fun_fact}"
   p "Here's a fun fact about the #{moon.name}: #{moon.fun_fact}"
 
+  puts earth.summary
+  puts moon.summary
+
 end
 
 main
