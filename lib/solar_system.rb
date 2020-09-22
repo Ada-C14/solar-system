@@ -26,6 +26,7 @@ class SolarSystem
         return planet
       end
     end
+
     return "No such planet in this solar system!"
   end
 end
