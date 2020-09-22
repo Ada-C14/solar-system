@@ -9,7 +9,13 @@ class Planet
     @mass_kg = mass_kg
     @distance_from_sun_km = distance_from_sun_km
     @fun_fact = fun_fact
+
+    raise ArgumentError.new("distance_from_sun_km must be greater than zero") if @distance_from_sun_km  <= 0
+    raise ArgumentError.new("mass_kg") if @mass_kg  <= 0
   end
 
+  def summary
+    return "#{name} is #{color}, weighs #{mass_kg} kgs, and is #{distance_from_sun_km} from the sun.\nFun fact about #{name}: #{fun_fact}"
+  end
 
 end
