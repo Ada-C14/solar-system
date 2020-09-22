@@ -26,7 +26,7 @@ class SolarSystem
     planets_list = []
     @planets.each_with_index{ |planet, index| planets_list << "#{index + 1}. #{planet.name}" }
 
-    return "Planets orbiting #{@star_name}:\n#{planets_list.flatten.join("\n")}"
+    return "Planets orbiting #{@star_name}:\n#{planets_list.join("\n")}"
   end
 
   def find_planet_by_name(planet_name)
