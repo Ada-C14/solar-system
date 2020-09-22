@@ -13,7 +13,7 @@ class SolarSystem
   def list_planets
     planets_lists = ""
     @planets.each_with_index do |planet, index|
-      planets_lists = planets_lists + "#{(index + 1)}. #{planet.name}\n"
+      planets_lists += "#{(index + 1)}. #{planet.name}\n"
     end
       return "Planets orbiting #{@star_name}: \n#{planets_lists}"
   end
@@ -37,7 +37,7 @@ class SolarSystem
     begin
       return "The distance between #{planet_a} and #{planet_b} is #{(distance_arry[0] - distance_arry[1]).abs} km."
     rescue TypeError, NoMethodError
-      puts "One of the planets is not found in our system. Returning to main menu..."
+      print "One of the planets is not found in our system. Returning to main menu..."
     end
   end
 
