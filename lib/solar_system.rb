@@ -2,6 +2,7 @@
 # Last updated, Sept 20. 2020
 # Ada C14
 # Solar System
+# sources: https://stackoverflow.com/questions/3724913/how-to-capitalize-the-first-letter-in-a-string-in-ruby
 
 class SolarSystem
   attr_reader :star_name, :planets
@@ -13,6 +14,7 @@ class SolarSystem
 
   def add_planet(planet)
     raise ArgumentError, "Cannot add planet information; incorrect data-type." if planet.class != Planet
+    planet.name = planet.name.split(' ').map(&:capitalize).join(' ')
     @planets << planet
   end
 
@@ -22,10 +24,9 @@ class SolarSystem
   end
 
   def find_planet_by_name(planet_name)
-    return @planets.find do |planet|
-      planet_name.capitalize
-    end
-
+    planet_name = planet_name.split(' ').map(&:capitalize).join(' ')
+    planet_search = @planets.find { |planet| planet.name == planet_name }
+    return planet_search
   end
 
 end
