@@ -17,13 +17,26 @@
 # How will you make sure this behavior works?
 # OPTIONAL: Add minitest tests for Planet.
 require_relative 'planet'
+require_relative 'solar_system'
 
 def main
-  earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life...yet')
-  mercury = Planet.new('Mercury', 'blue', 3.285e23, 69.73e7, 'Sailor Mercury has water powers')
+  # create planets & solar system
+  solar_system = SolarSystem.new('Sol')
 
-  return earth.summary, mercury.summary
+  earth = Planet.new("Earth", 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life...yet')
+  solar_system.add_planet(earth)
+
+  mercury = Planet.new('Mercury', 'blue', 3.285e23, 69.73e7, 'Sailor Mercury has water powers')
+  solar_system.add_planet(mercury)
+
+  list = solar_system.list_planets
+
+  found_planet = ("Found Planet is: " + solar_system.find_planet_by_name('eaRth'))
+
+  # return the planets
+  return list, earth.summary, mercury.summary, found_planet
 
 end
 
 puts main
+
