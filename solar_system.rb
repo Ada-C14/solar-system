@@ -19,10 +19,10 @@ class SolarSystem
   end
 
   def find_planet_by_name(name)
-    found_planet = Planet.new(1, 1, 1, 1, 1)
-    @planets.each {|p| found_planet = p if p.name == name.capitalize}
-    return found_planet
 
+    @planets.each {|p| return p if p.name == name.capitalize}
+    puts "Sorry, #{name} is not in the list."
+    return false
 
   end
 
@@ -47,6 +47,10 @@ class SolarSystem
     return new_planet
   end
 
-
+  def planet_details(system)
+    puts "Which planet would you like to learn about?"
+    planet_pick = gets.chomp
+    puts system.find_planet_by_name(planet_pick).summary if find_planet_by_name(planet_pick)
+  end
 end
 
