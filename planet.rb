@@ -10,7 +10,7 @@ class Planet
   end
 
   def summary
-    return "#{@name} is #{@color}. It is #{@mass_kg} kg and #{@distance_from_sun_km} km from the sun."
+    return "#{@name} is #{@color}. It is #{@mass_kg} kg and #{@distance_from_sun_km} km from the sun.\n Do you know that #{@fun_fact}."
   end
 
 end
