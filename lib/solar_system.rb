@@ -20,7 +20,12 @@ class SolarSystem
     return list
   end
 
-  def find_planet_by_name(planet)
-    return planet.downcase
+  def find_planet_by_name(planet_to_find)
+    @planets.each do |planet|
+      if planet_to_find.downcase == planet.name.downcase
+        return planet
+      end
+    end
+    return "No such planet in this solar system!"
   end
 end

@@ -16,6 +16,11 @@ def main
   list = solar_system.list_planets
   puts list
 
+  found_planet = solar_system.find_planet_by_name('Earth')
+
+  puts found_planet
+  puts found_planet.summary
+  
   # puts earth.summary
   # puts mars.summary
 end
