@@ -5,20 +5,18 @@
 
 # main.rb
 require_relative 'planet'
+require_relative 'solar_system'
 
 def main
-  # Load Planet into pry:
-  # $ pry -r ./planet.rb
+  solar_system = SolarSystem.new('Sol')
+
   earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
+  solar_system.add_planet(earth)
 
-  puts earth.name
-  # => Earth
-  puts earth.fun_fact
-  # => Only planet known to support life
-  puts earth.summary
-
-  fakeplanet1 = Planet.new('Earth', 'blue-green', 5.972e24, -1, 'Only planet known to support life')
-
+  list = solar_system.list_planets
+  puts list
+  # => Planets orbiting Sol
+  # => 1.  Earth
 end
 
 main
