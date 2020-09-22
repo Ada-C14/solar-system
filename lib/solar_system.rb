@@ -1,5 +1,5 @@
 # Christabel Sebastian
-# Last updated, Sept 20. 2020
+# Last updated, Sept 21. 2020
 # Ada C14
 # Solar System
 # sources: https://stackoverflow.com/questions/3724913/how-to-capitalize-the-first-letter-in-a-string-in-ruby

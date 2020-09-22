@@ -1,5 +1,5 @@
 # Christabel Sebastian
-# Last updated, Sept 20. 2020
+# Last updated, Sept 21. 2020
 # Ada C14
 # Solar System program: Planet class
 
