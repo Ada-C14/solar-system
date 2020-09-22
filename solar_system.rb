@@ -19,12 +19,12 @@ class SolarSystem
   end
 
   def find_planet_by_name(planet_name)
-      @planets.each do |planet|
-        if planet.name.downcase == planet_name.downcase
-          return planet
-        end
+    @planets.each do |planet|
+      if planet.name.downcase == planet_name.downcase
+        return planet
       end
-      # raise ArgumentError.new("Planet not found.")
+    end
+    # raise ArgumentError.new("Planet not found.")
   end
 
   def distance_between(planet_a, planet_b)
@@ -40,6 +40,5 @@ class SolarSystem
       print "One of the planets is not found in our system. Returning to main menu..."
     end
   end
-
 
 end
