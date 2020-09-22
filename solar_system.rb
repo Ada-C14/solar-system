@@ -33,8 +33,6 @@ class SolarSystem
         return planet
       end
     end
-
-    raise ArgumentError, "Planet \"#{planet_name}\" does not exist."
   end
 
   def distance_between(planet1_name, planet2_name)
