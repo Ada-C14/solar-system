@@ -19,7 +19,8 @@ class Planet
   end
 
   def natural_num?(num)
-    raise ArgumentError, "Cannot have a negative mass or negative distance." if num <= 0
+    raise ArgumentError, "Cannot have a negative mass or negative distance." if num.to_f < 0
+    raise ArgumentError, "Please enter a number." if (num.to_f == 0 && !num.match(/[0]+[.]?[0]*/))
     return num.to_f
   end
 
