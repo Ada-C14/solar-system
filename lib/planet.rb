@@ -6,7 +6,7 @@
 # Planet class object
 class Planet
   # readable access
-  attr_accessor :name, :color, :mass_kg, :distance_from_sun_km, :fun_fact
+  attr_reader :name, :color, :mass_kg, :distance_from_sun_km, :fun_fact
 
   # constructor
   def initialize(name, color, mass_kg, distance_from_sun_km, fun_fact)
