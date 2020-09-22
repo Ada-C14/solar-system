@@ -8,10 +8,6 @@ require_relative '../lib/solar_system'
 # Get that nice colorized output
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
-
-#TODO: check if parameter passed to add_planet is a Planet instance
-# TODO: check for nil SolarSystem initializations
-# TODO: check for ArgumentError if Planet is wrong data type
 describe "SolarSystem class" do
   describe "constructor" do
     it "check initialization" do
@@ -38,17 +34,32 @@ describe "SolarSystem class" do
     it "check if planets[] grows with each add_planet" do
       #Arrange
       test_solar_system = SolarSystem.new("Meep Morp")
-      test_planet = Planet.new(
-        name: "Test Planet",
+      test_planet1 = Planet.new(
+        name: "Test Planet 1",
         color: :pink,
         mass_kg: 1e10,
         distance_from_sun_km: 1e10,
         fun_fact: "Planets[] positive nominal test."
       )
+      test_planet2 = Planet.new(
+          name: "Test Planet 2",
+          color: :pink,
+          mass_kg: 1e10,
+          distance_from_sun_km: 1e10,
+          fun_fact: "Planets[] positive nominal test."
+      )
+      test_planet3 = Planet.new(
+          name: "Test Planet 3",
+          color: :pink,
+          mass_kg: 1e10,
+          distance_from_sun_km: 1e10,
+          fun_fact: "Planets[] positive nominal test."
+      )
+
       # Act
-      test_solar_system.add_planet(test_planet)
-      test_solar_system.add_planet(test_planet)
-      test_solar_system.add_planet(test_planet)
+      test_solar_system.add_planet(test_planet1)
+      test_solar_system.add_planet(test_planet2)
+      test_solar_system.add_planet(test_planet3)
 
       # Assert
       expect(test_solar_system.planets.length).must_equal 3
@@ -203,13 +214,6 @@ describe "SolarSystem class" do
     it "returns correct planet information, for search term mid-planets[]" do
       #Arrange
       test_solar_system = SolarSystem.new("Meep Morp")
-      test_planet = Planet.new(
-        name: "Test Planet",
-        color: :pink,
-        mass_kg: 1e10,
-        distance_from_sun_km: 1e10,
-        fun_fact: "Find planet test."
-      )
       test_planet_peri = Planet.new(
         name: "Test Planet Peridot",
         color: :pink,
@@ -232,7 +236,7 @@ describe "SolarSystem class" do
         fun_fact: "List planets positive nominal."
       )
      test_planet3 = Planet.new(
-        name: "Test Planet 2",
+        name: "Test Planet 3",
         color: :pink,
         mass_kg: 2e10,
         distance_from_sun_km: 2e10,
@@ -275,7 +279,7 @@ describe "SolarSystem class" do
         fun_fact: "List planets positive nominal."
       )
      test_planet3 = Planet.new(
-        name: "Test Planet 2",
+        name: "Test Planet 3",
         color: :pink,
         mass_kg: 2e10,
         distance_from_sun_km: 2e10,
@@ -311,7 +315,7 @@ describe "SolarSystem class" do
         fun_fact: "List planets positive nominal."
       )
       test_planet2 = Planet.new(
-        name: "Test Planet 2",
+        name: "Test Planet 3",
         color: :pink,
         mass_kg: 2e10,
         distance_from_sun_km: 2e10,
