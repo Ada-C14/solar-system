@@ -41,6 +41,23 @@ def main
 
     elsif user_input == "2"
 
+      puts "\nLet's add a planet to your solar system!".colorize(:light_green)
+
+      print "\n   Enter your new planet's name: ".colorize(:light_green)
+      planet_name = gets.chomp
+      print "   Enter #{planet_name.capitalize}'s color: ".colorize(:light_green)
+      planet_color = gets.chomp
+      print "   Enter #{planet_name.capitalize}'s mass in kg: ".colorize(:light_green)
+      planet_mass = Float(gets.chomp)
+      print "   Enter #{planet_name.capitalize}'s distance from the sun in km: ".colorize(:light_green)
+      planet_distance_from_sun = Float(gets.chomp)
+      print "   Enter a fun fact about #{planet_name.capitalize}: ".colorize(:light_green)
+      planet_fun_fact = gets.chomp
+      new_planet = Planet.new(planet_name, planet_color, planet_mass, planet_distance_from_sun, planet_fun_fact)
+
+      solar_system.add_planet(new_planet)
+      puts "\n🪐 #{planet_name.capitalize} was added to your solar system! 🪐".colorize(:light_green)
+
     elsif user_input == "3"
 
     elsif user_input == "4"
