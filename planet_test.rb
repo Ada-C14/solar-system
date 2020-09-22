@@ -20,13 +20,18 @@ describe "planet" do
 
   it "will raise an error if mass_kg is less than 0" do
 
-    #Arrange
-    Planet.new("earth", "blue-green",-5,2,"I live on it")
-
     #Assert
     expect {
       Planet.new("earth", "blue-green",-5,2,"I live on it")
     }.must_raise ArgumentError
+  end
+
+  it "will raise an error if distance_from_sun_km is less than 0" do
+    #Assert
+    expect {
+      Planet.new("earth", "blue-green",5,-2,"I live on it")
+    }.must_raise ArgumentError
+
   end
 
 end
