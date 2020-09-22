@@ -3,12 +3,12 @@ require_relative 'solar_system'
 require "colorize"
 
 def planet_details(solar_system)
-  puts "Choose a planet do you wish to learn about:"
-  user_unput = gets.chomp.downcase
+  puts "\nChoose a planet do you wish to learn about:".colorize(:blue)
+  user_unput = gets.chomp
 
   planet_to_learn = solar_system.find_planet_by_name(user_unput)
 
-  puts planet_to_learn.summary
+  puts planet_to_learn.summary.colorize(:yellow)
 end
 
 def add_planet(solar_system)
@@ -45,17 +45,17 @@ def main
   solar_system.add_planet(mars)
   solar_system.add_planet(venus)
 
-  puts "Welcome to the Sol Solar System!".colorize(:blue)
-  puts "To continue, please enter 'list planets'".colorize(:light_blue)
-  puts "If you would like to exit, please enter 'exit'.".colorize(:light_blue)
+  puts "*** WELCOME TO THE OUR SOLAR SYSTEM! ***".colorize(:blue)
+  puts "To continue, please enter 'list planets'".colorize(:blue)
+  puts "If you would like to exit, please enter 'exit'.".colorize(:blue)
   user_input = gets.chomp.downcase
 
   while user_input != "exit"
     if user_input == "list planets"
       list = solar_system.list_planets
-      puts "\n~~~~~~~~~~~~~~~~~~~~~~".colorize(:yellow)
+      puts "\n****************************".colorize(:blue)
       puts list.colorize(:yellow)
-      puts "~~~~~~~~~~~~~~~~~~~~~~".colorize(:yellow)
+      puts "****************************".colorize(:blue)
     elsif user_input == "planet details"
       # invoke a separate method that will ask them for the name of the planet
       # display details for that planet
@@ -70,12 +70,12 @@ def main
       raise ArgumentError, 'Not an option'
     end
 
-    puts "\nWhat would you like to do next?\n".colorize(:blue)
+    puts "\nWhat would you like to do next?".colorize(:blue)
     puts "1. list planets"
     puts "2. planet details"
     puts "3. add planet"
-    puts "4. exit\n\n"
-    puts "Please choose an option: ".colorize(:blue)
+    puts "4. exit\n"
+    puts "\nPlease choose an option: ".colorize(:blue)
     user_input = gets.chomp.downcase
   end
 

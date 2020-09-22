@@ -8,11 +8,11 @@ class Planet
     @distance_from_sun_km = distance_from_sun_km
     @fun_fact = fun_fact
 
-    if mass_kg < 0
+    if mass_kg <= 0
       raise ArgumentError, 'Invalid mass'
     end
 
-    if distance_from_sun_km < 0
+    if distance_from_sun_km <= 0
       raise ArgumentError, 'Invalid distance'
     end
   end
