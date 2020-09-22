@@ -32,6 +32,8 @@ class SolarSystem
         return planet
       end
     end
+
+    return nil
   end
 
 end

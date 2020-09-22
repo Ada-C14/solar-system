@@ -35,11 +35,11 @@ def main
 
     user_input = gets.chomp
 
-    if user_input == "1"
+    if user_input == "1"  # LIST PLANETS
 
       print solar_system.list_planets.colorize(:light_blue)
 
-    elsif user_input == "2"
+    elsif user_input == "2"  # ADD PLANET
 
       puts "\nLet's add a planet to your solar system!".colorize(:light_green)
 
@@ -58,12 +58,21 @@ def main
       solar_system.add_planet(new_planet)
       puts "\n🪐 #{planet_name.capitalize} was added to your solar system! 🪐".colorize(:light_green)
 
-    elsif user_input == "3"
+    elsif user_input == "3"  # VIEW PLANET DETAILS
 
-    elsif user_input == "4"
+      print "\n   Enter a planet you would like to know more about: "
+      planet = solar_system.find_planet_by_name(gets.chomp)
 
-    elsif user_input == "5"
-      puts "\nThank you for using the Build-A-Solar-System Program! Goodbye!"
+      if planet
+        puts planet.summary.colorize(:light_magenta)
+      else
+        puts "   That planet does not exist in this solar system.".colorize(:red)
+      end
+
+    elsif user_input == "4"  # FIND DISTANCE BETWEEN 2 PLANETS
+
+    elsif user_input == "5"  # EXIT
+      puts "\n   Thank you for using the Build-A-Solar-System Program! Goodbye!".colorize(:light_red)
     end
   end
 
