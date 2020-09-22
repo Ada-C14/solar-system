@@ -10,6 +10,8 @@ class SolarSystem
     @planets << planet
   end
 
-
+  def list_planets
+    return "Planets orbiting #{star_name}"
+  end
 
 end
