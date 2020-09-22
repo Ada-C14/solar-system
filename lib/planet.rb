@@ -10,10 +10,16 @@ class Planet
 
   # constructor
   def initialize(name, color, mass_kg, distance_from_sun_km, fun_fact)
+    # so since i can't raise an error while assigning a field,
+    # going to do that here for @mass_kg and @distance_from_sun_km
+    raise ArgumentError, "Invalid @mass_kg input - must be greater than zero" unless mass_kg > 0
+    raise ArgumentError, "Invalid @distance_from_sun_km input - must be greater than zero" unless distance_from_sun_km > 0
+
+    # assign fields if no errors raised
     @name = name
     @color = color
-    @mass_kg = mass_kg # < 0 ? mass_kg : raise ArgumentError.new "Mass entered must be ."
-    @distance_from_sun_km = distance_from_sun_km # > 0 ? distance_from_sun_km : raise ArgumentError.new "Distance entered must be more than 0."
+    @mass_kg = mass_kg
+    @distance_from_sun_km = distance_from_sun_km
     @fun_fact = fun_fact
   end
 

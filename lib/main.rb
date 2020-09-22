@@ -16,6 +16,9 @@ def main
   puts earth.fun_fact
   # => Only planet known to support life
   puts earth.summary
+
+  fakeplanet1 = Planet.new('Earth', 'blue-green', 5.972e24, -1, 'Only planet known to support life')
+
 end
 
 main
