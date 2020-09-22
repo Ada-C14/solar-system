@@ -18,7 +18,7 @@ class SolarSystem
   def list_planets
     planet_list = "Planets orbiting #{@star_name}"
     (0...@planets.length).each do |i|
-      planet_list += "\n#{i+1}. #{@planets[i].name}"
+      planet_list += "\n#{i + 1}. #{@planets[i].name}"
     end
     return planet_list
   end
@@ -27,14 +27,23 @@ class SolarSystem
   # if multiple planets have same name in @name field, returns first instance
   # if no planets match, returns nil
   def find_planet_by_name(planet_name)
-    return @planets.detect{|planet| planet.name == planet_name}
+    return @planets.detect{|planet| planet.name.downcase == planet_name.downcase}
+  end
+
+  # returns, assuming all planets are in lined up a straight line, distance between two planets (absolute value)
+  # as noted by two input parameters (two planet names)
+  # if neither planet is found in SolarSystem object, returns nil
+  def distance_between(planet_name1, planet_name2)
+    planet1 = self.find_planet_by_name(planet_name1)
+    planet2 = self.find_planet_by_name(planet_name2)
+
+    return planet1.nil? || planet2.nil? ? nil : (planet2.distance_from_sun_km - planet1.distance_from_sun_km).abs
   end
 
   # mutators
   # add planet to @planets array
   def add_planet(planet)
-    planets.append(planet)
+    @planets << planet
   end
-
 
 end
