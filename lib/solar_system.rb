@@ -14,7 +14,6 @@ class SolarSystem
 
   def add_planet(planet)
     raise ArgumentError, "Cannot add planet information; incorrect data-type." if planet.class != Planet
-    planet.name = planet.name.split(' ').map(&:capitalize).join(' ')
     @planets << planet
   end
 
