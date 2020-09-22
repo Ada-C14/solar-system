@@ -177,7 +177,7 @@ describe "SolarSystem class" do
       test_planet_list = test_solar_system.list_planets
 
       # Assert
-      expect(test_planet_list).must_equal "Test Planet 1, Test Planet 2"
+      expect(test_planet_list).must_equal "Planets orbiting Meep Morp:\n1. Test Planet 1\n2. Test Planet 2"
     end
 
     it "Check for ArgumentError if self.planets.empty?" do
