@@ -14,6 +14,8 @@ class SolarSystem
 
   def add_planet(planet)
     raise ArgumentError, "Cannot add planet information; incorrect data-type." if planet.class != Planet
+    raise ArgumentError, "There is already a planet in this solar system by that name." if @planets.each { |known_planet| known_planet.name == planet.name }
+    # raise ArgumentError, "There is already a planet in this solar system by that name." if @planets.include? planet
     @planets << planet
   end
 

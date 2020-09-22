@@ -57,8 +57,15 @@ describe "SolarSystem class" do
     it "check if first planet name and last planet names are correct" do
       #Arrange
       test_solar_system = SolarSystem.new("Meep Morp")
-      test_planet = Planet.new(
-        name: "teSt PlaNet",
+      test_planet1 = Planet.new(
+        name: "teSt PlaNet 1",
+        color: :pink,
+        mass_kg: 1e10,
+        distance_from_sun_km: 1e10,
+        fun_fact: "Planets[] data type test."
+      )
+      test_planet2 = Planet.new(
+        name: "teSt PlaNet 2",
         color: :pink,
         mass_kg: 1e10,
         distance_from_sun_km: 1e10,
@@ -80,30 +87,54 @@ describe "SolarSystem class" do
       )
       # Act
       test_solar_system.add_planet(first_planet)
-      test_solar_system.add_planet(test_planet)
-      test_solar_system.add_planet(test_planet)
-      test_solar_system.add_planet(test_planet)
-      test_solar_system.add_planet(test_planet)
+      test_solar_system.add_planet(test_planet1)
+      test_solar_system.add_planet(test_planet2)
       test_solar_system.add_planet(last_planet)
 
       # Assert
       expect(test_solar_system.planets[0].name).must_equal "First Planet"
-      expect(test_solar_system.planets[0].name).must_equal "Last Planet"
+      expect(test_solar_system.planets[-1].name).must_equal "Last Planet"
+    end
+
+    it "check for ArgumentError if user attempts to add a planet that already exists within planets[]" do
+      #Arrange
+      test_solar_system = SolarSystem.new("Meep Morp")
+      test_planet = Planet.new(
+        name: "teSt PlaNet",
+        color: :pink,
+        mass_kg: 1e10,
+        distance_from_sun_km: 1e10,
+        fun_fact: "Planets[] data type test."
+      )
+
+      # Act && Assert
+      expect{
+        test_solar_system.add_planet(test_planet)
+        test_solar_system.add_planet(test_planet)
+      }.must_raise ArgumentError, "There is already a planet in this solar system by that name."
     end
 
     it "check for ArgumentError if planet data type is not a hash" do
       #Arrange
       test_solar_system = SolarSystem.new("Meep Morp")
-      test_planet = Planet.new(
-        name: "Test Planet",
-        color: :pink,
-        mass_kg: 1e10,
-        distance_from_sun_km: 1e10,
-        fun_fact: "Add Planet, type test."
+      test_planet1 = Planet.new(
+          name: "Test Planet 1",
+          color: :pink,
+          mass_kg: 1e10,
+          distance_from_sun_km: 1e10,
+          fun_fact: "List planets positive nominal."
       )
+      test_planet2 = Planet.new(
+          name: "Test Planet 2",
+          color: :pink,
+          mass_kg: 2e10,
+          distance_from_sun_km: 2e10,
+          fun_fact: "List planets positive nominal."
+      )
+
       # Act
-      test_solar_system.add_planet(test_planet)
-      test_solar_system.add_planet(test_planet)
+      test_solar_system.add_planet(test_planet1)
+      test_solar_system.add_planet(test_planet2)
 
       # Assert
       expect(test_solar_system.planets.length).must_equal 2
@@ -186,12 +217,31 @@ describe "SolarSystem class" do
         distance_from_sun_km: 1e10,
         fun_fact: "Find planet test."
       )
-      test_solar_system.add_planet(test_planet)
-      test_solar_system.add_planet(test_planet)
-      test_solar_system.add_planet(test_planet)
+      test_planet1 = Planet.new(
+        name: "Test Planet 1",
+        color: :pink,
+        mass_kg: 1e10,
+        distance_from_sun_km: 1e10,
+        fun_fact: "List planets positive nominal."
+      )
+      test_planet2 = Planet.new(
+        name: "Test Planet 2",
+        color: :pink,
+        mass_kg: 2e10,
+        distance_from_sun_km: 2e10,
+        fun_fact: "List planets positive nominal."
+      )
+     test_planet3 = Planet.new(
+        name: "Test Planet 2",
+        color: :pink,
+        mass_kg: 2e10,
+        distance_from_sun_km: 2e10,
+        fun_fact: "List planets positive nominal."
+      )
+      test_solar_system.add_planet(test_planet1)
+      test_solar_system.add_planet(test_planet2)
       test_solar_system.add_planet(test_planet_peri)
-      test_solar_system.add_planet(test_planet)
-      test_solar_system.add_planet(test_planet)
+      test_solar_system.add_planet(test_planet3)
       planet_search_term = "teSt PlaNet perIDOt"
       # Act
       planet_search = test_solar_system.find_planet_by_name(planet_search_term)
@@ -203,13 +253,6 @@ describe "SolarSystem class" do
      it "returns correct planet information, for search term == planets[0]" do
       #Arrange
       test_solar_system = SolarSystem.new("Meep Morp")
-      test_planet = Planet.new(
-        name: "Test Planet",
-        color: :pink,
-        mass_kg: 1e10,
-        distance_from_sun_km: 1e10,
-        fun_fact: "Find planet test."
-      )
       test_planet_peri = Planet.new(
         name: "Test Planet Peridot",
         color: :pink,
@@ -217,12 +260,31 @@ describe "SolarSystem class" do
         distance_from_sun_km: 1e10,
         fun_fact: "Find planet test."
       )
+      test_planet1 = Planet.new(
+        name: "Test Planet 1",
+        color: :pink,
+        mass_kg: 1e10,
+        distance_from_sun_km: 1e10,
+        fun_fact: "List planets positive nominal."
+      )
+      test_planet2 = Planet.new(
+        name: "Test Planet 2",
+        color: :pink,
+        mass_kg: 2e10,
+        distance_from_sun_km: 2e10,
+        fun_fact: "List planets positive nominal."
+      )
+     test_planet3 = Planet.new(
+        name: "Test Planet 2",
+        color: :pink,
+        mass_kg: 2e10,
+        distance_from_sun_km: 2e10,
+        fun_fact: "List planets positive nominal."
+      )
       test_solar_system.add_planet(test_planet_peri)
-      test_solar_system.add_planet(test_planet)
-      test_solar_system.add_planet(test_planet)
-      test_solar_system.add_planet(test_planet)
-      test_solar_system.add_planet(test_planet)
-      test_solar_system.add_planet(test_planet)
+      test_solar_system.add_planet(test_planet1)
+      test_solar_system.add_planet(test_planet2)
+      test_solar_system.add_planet(test_planet3)
       planet_search_term = "teSt PlaNet perIDOt"
       # Act
       planet_search = test_solar_system.find_planet_by_name(planet_search_term)
@@ -234,13 +296,6 @@ describe "SolarSystem class" do
     it "returns correct planet information, when search term == planets[-1]" do
       #Arrange
       test_solar_system = SolarSystem.new("Meep Morp")
-      test_planet = Planet.new(
-        name: "Test Planet",
-        color: :pink,
-        mass_kg: 1e10,
-        distance_from_sun_km: 1e10,
-        fun_fact: "Find planet test."
-      )
       test_planet_peri = Planet.new(
         name: "Test Planet Peridot",
         color: :pink,
@@ -248,11 +303,30 @@ describe "SolarSystem class" do
         distance_from_sun_km: 1e10,
         fun_fact: "Find planet test."
       )
-      test_solar_system.add_planet(test_planet)
-      test_solar_system.add_planet(test_planet)
-      test_solar_system.add_planet(test_planet)
-      test_solar_system.add_planet(test_planet)
-      test_solar_system.add_planet(test_planet)
+      test_planet1 = Planet.new(
+        name: "Test Planet 1",
+        color: :pink,
+        mass_kg: 1e10,
+        distance_from_sun_km: 1e10,
+        fun_fact: "List planets positive nominal."
+      )
+      test_planet2 = Planet.new(
+        name: "Test Planet 2",
+        color: :pink,
+        mass_kg: 2e10,
+        distance_from_sun_km: 2e10,
+        fun_fact: "List planets positive nominal."
+      )
+     test_planet3 = Planet.new(
+        name: "Test Planet 2",
+        color: :pink,
+        mass_kg: 2e10,
+        distance_from_sun_km: 2e10,
+        fun_fact: "List planets positive nominal."
+      )
+      test_solar_system.add_planet(test_planet1)
+      test_solar_system.add_planet(test_planet2)
+      test_solar_system.add_planet(test_planet3)
       test_solar_system.add_planet(test_planet_peri)
       planet_search_term = "teSt PlaNet perIDOt"
       # Act
