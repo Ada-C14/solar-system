@@ -27,3 +27,19 @@ end
 
 
 
+# describe "Solar System" do
+#   describe "list_planets" do
+#     it "will .... if there is no planet"
+#   end
+#
+#   describe "find_planet_by_name" do
+#     it "will .... if there is no planet with the given name"
+#     it "will .... if there are multiple planets with the given name"
+#   end
+#
+#   describe distance_between do
+#     it "will .... if there is no planet with the given name"
+#     it "will return a positive number for distance"
+#   end
+
+# end
