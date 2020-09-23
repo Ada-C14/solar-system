@@ -1,5 +1,7 @@
 require_relative 'planet'
 require_relative 'solar_system'
+require 'colorize'
+require 'colorized_string'
 
 def main
 
@@ -32,8 +34,9 @@ def main
   #Control loop that repeatedly asks user what to do next
   repeat = true
   until repeat == false
+    puts
     puts "*" * 50
-    puts "Marioooo time! What would you like to do next?\nYou can:\n"
+    puts "Marioooo time! What would you like to do next?\nYou can:\n".colorize(:light_green)
     puts "1. See a list of planets by typing 'list'\n"
     puts "2. View planet details of your favorite planet by typing 'details'\n"
     puts "3. Add a planet to the Mario Universe collection by typing 'add'\n"
@@ -55,6 +58,8 @@ def main
       puts "Let's see your new planet!"
     when input == "exit"
       exit
+    else
+      puts "\nInvalid Entry. Please read the instructions carefully and retype your answer.".upcase.colorize(:red)
     end
   end
 end
