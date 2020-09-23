@@ -1,4 +1,6 @@
 require_relative 'planet'
+require 'colorize'
+require 'colorized_string'
 
 class SolarSystem
 
@@ -14,7 +16,7 @@ class SolarSystem
   end
 
   def list_planets
-    list = "\nPlanets orbiting #{star_name}:\n"
+    list = "\nPlanets orbiting #{star_name}:\n".colorize(:green)
     @planets.each_with_index do |planet, index|
       index += 1
       list += "#{index}. #{planet.name}\n"
@@ -24,11 +26,9 @@ class SolarSystem
 
   def find_planet_by_name(input_name)
    @planets.each do |single_planet|
-     if single_planet.name.downcase == input_name.downcase
-       return single_planet.summary
+     return single_planet.summary if single_planet.name.downcase == input_name.downcase
      end
-     end
-      return "Sorry,this planet is in the process of being created many light years away and cannot be located just yet."
+      return "\nSorry,this planet is in the process of being created many light years away and cannot be located just yet.".upcase.colorize(:red)
   end
 
   def add_new_planet
@@ -37,10 +37,16 @@ class SolarSystem
     new_name = gets.chomp
     puts "color:"
     new_color = gets.chomp
-    puts "mass_kg (integer only):"
+    puts "mass_kg (integer only - do not spell out number):"
     new_mass = gets.chomp.to_i
-    puts "distance from sun (must be integer in km):"
+    if new_mass < 1
+      raise ArgumentError, 'Mass must be an integer and it must be greater than 0.'.colorize(:yellow)
+    end
+    puts "distance from sun (integer only - do not spell out number):"
     new_distance = gets.chomp.to_i
+    if new_distance < 1
+      raise ArgumentError, "Distance from sun must be greater than 0.".colorize(:yellow)
+    end
     puts "What is your fun-a fact?"
     new_fun_fact = gets.chomp
 
