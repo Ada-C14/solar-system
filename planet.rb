@@ -10,6 +10,9 @@ class Planet
     @distance_from_sun_km = distance_from_sun_km
     @fun_fact = fun_fact
 
+    # if @mass_kg < 0 ||  @distance_from_sun_km < 0
+    #   raise ArgumentError, "Invalid Entry"
+    # end
 
     #puts "
   end
@@ -17,8 +20,9 @@ class Planet
   def summary
     #This method should return (not puts) a string containing a nicely-formatted description of the planet.
     # Exercise your summary method in the main method.
-    string = "#{@name}"
-    return string
+    description = "This #{@name} with the color #{@color} has a mass of #{@mass_kg} and is #{@distance_from_sun_km}from
+    the sun. A fun fact about it is #{@fun_fact}"
+    return description
   end
 
 end
