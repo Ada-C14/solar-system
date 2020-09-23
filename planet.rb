@@ -25,9 +25,9 @@ class Planet
   end
 
   def summary
-    return "The planet #{@name} is #{@color} and weighs in at #{@mass_kg} kilograms. Fun fact: #{@fun_fact}! #{@name} is #{@distance_form_sun_km} kilometers from our sun."
+    return "The planet #{@name} is #{@color} and weighs in at #{@mass_kg} kilograms. Fun fact: #{@fun_fact}! #{@name} is #{@distance_from_sun_km} kilometers from our sun."
   end
 
-end
+endexi
 
 
