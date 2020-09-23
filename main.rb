@@ -32,6 +32,7 @@ def main
 
 
   #Control loop that repeatedly asks user what to do next
+  # Only way to exit program is to type 'exit'
   repeat = true
   until repeat == false
     puts
