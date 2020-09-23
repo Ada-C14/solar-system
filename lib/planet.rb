@@ -23,7 +23,7 @@ class Planet
 
   def positive_real_num?(num)
     raise  ArgumentError, "Each planet must have a mass (kg) and distance from sun (km)." if !num
-    raise ArgumentError, "Mass and distance must be a number greater than zero." if num.to_f <= 0
+    raise ArgumentError, "Mass and distance must be numbers greater than zero." if num.to_f <= 0
     raise ArgumentError, "Numerical values must be entered for both planet mass and distance from sun." if (num.to_f == 0 && !num.match(/[0]+[.]?[0]*/))
     return num.to_f
   end
