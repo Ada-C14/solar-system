@@ -1,3 +1,4 @@
+require 'byebug'
 require_relative 'planet'
 require_relative 'solar_system'
 
