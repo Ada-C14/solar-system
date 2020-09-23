@@ -74,7 +74,7 @@ def main
         rescue_status = true
       end 
       
-      solar_system.add_planet(user_planet)
+      solar_system.add_planet(user_planet) if rescue_status == false
       puts "\nNow, want to see your new planet on the main menu? Please go check \"list planets\"" if rescue_status == false
     elsif user_response == "distance between planets"
       puts "\n Which two planets do you want to see their distance?"
