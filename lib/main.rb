@@ -7,6 +7,21 @@
 require_relative 'planet'
 require_relative 'solar_system'
 
+# defs for control loop actions that take a little more time
+def get_planet_detail(solar_system_obj)
+  print "Enter name of Planet you wish to learn more about: "
+  input = gets.chomp
+
+  # don't exit until name of findable planet is entered
+  while solar_system_obj.find_planet_by_name(input).nil? do
+    print "Planet not found in Solar System. Please try again: "
+    input = gets.chomp
+  end
+
+  # for CLI purposes, here is a puts statement, usually better to return a string and print it though
+  puts solar_system_obj.find_planet_by_name(input).summary
+end
+
 def main
   # create base solar_system with some planets
   solar_system = SolarSystem.new('Sol')
@@ -24,17 +39,25 @@ def main
   puts '|                              MENU SELECT                              |'
   puts '|_____Please enter the number corresponding to your desired action:_____|'
   puts '|1. LIST PLANETS CURRENTLY IN SOLAR SYSTEM                              |'
+  puts '|2. OBTAIN DETAILS ON A PLANET CURRENTLY IN SOLAR SYSTEM                |'
   puts '|9. EXIT                                                                |'
   print "Enter your selection: "
   user_input = gets.chomp.to_i
 
   while user_input != 9 do
-    if user_input == 1
-      puts "LISTING PLANETS.... "
+    case user_input
+    when 1
+      puts "LISTING PLANETS ..."
       puts solar_system.list_planets
-      print "Action complete. Enter 1 to LIST PLANETS again or 9 to EXIT: "
-    elsif user_input != 9
-      print "Invalid input. Enter 1 to LIST PLANETS or 9 to EXIT: "
+      print "Action complete. Enter 1 to LIST PLANETS again, 2 to GET PLANET DETAILS, or 9 to EXIT: "
+    when 2
+      puts "GETTING PLANET DETAILS ..."
+      get_planet_detail(solar_system)
+      puts "Action complete. Enter 1 to LIST PLANETS, 2 to GET PLANET DETAILS again, or 9 to EXIT: "
+    when 9
+      break
+    else
+      print "Invalid input. Enter 1 to LIST PLANETS, 2 to GET PLANET DETAILS, or 9 to EXIT: "
     end
     user_input = gets.chomp.to_i
   end
