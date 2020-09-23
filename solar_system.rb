@@ -31,6 +31,7 @@ class SolarSystem
       return "\nSorry,this planet is in the process of being created many light years away and cannot be located just yet.".upcase.colorize(:red)
   end
 
+  #Add argument error to mass and distance input since they are not going through the initialize function
   def add_new_planet
     puts "It's a-me, Mario! Add some information about your new planet:"
     puts "name:"
@@ -39,14 +40,14 @@ class SolarSystem
     new_color = gets.chomp
     puts "mass_kg (integer only - do not spell out number):"
     new_mass = gets.chomp.to_i
-    if new_mass < 1
-      raise ArgumentError, 'Mass must be an integer and it must be greater than 0.'.colorize(:yellow)
-    end
+      if new_mass < 1
+        raise ArgumentError, 'Mass must be an integer and it must be greater than 0.'.colorize(:yellow)
+      end
     puts "distance from sun (integer only - do not spell out number):"
     new_distance = gets.chomp.to_i
-    if new_distance < 1
-      raise ArgumentError, "Distance from sun must be greater than 0.".colorize(:yellow)
-    end
+      if new_distance < 1
+        raise ArgumentError, "Distance from sun must be greater than 0.".colorize(:yellow)
+      end
     puts "What is your fun-a fact?"
     new_fun_fact = gets.chomp
 
