@@ -34,6 +34,6 @@ class SolarSystem
     unless planet1.class == Planet && planet2.class == Planet
       raise ArgumentError.new("Object not of class Planet")
     end
-    return planet1.distance_from_sun_km - planet2.distance_from_sun_km.round(2)
+    return (planet1.distance_from_sun_km - planet2.distance_from_sun_km.round(2)).abs()
   end
 end

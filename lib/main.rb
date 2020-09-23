@@ -46,10 +46,13 @@ def get_planet(solar_system)
   planet = discard_whitespace
   found_planets = solar_system.find_planet_by_name(planet)
   while found_planets.empty?
-    puts solar_system.list_planets if planet == 'l'
     return nil if planet == 'q'
-    puts "Planet not found. Please try again or enter q to quit"
-    puts "Enter l for a list of planets"
+    if planet == 'l'
+      puts solar_system.list_planets
+    else
+      puts "Planet not found. Please try again or enter q to quit"
+      puts "Enter l for a list of planets"
+    end
     planet = discard_whitespace
     found_planets = solar_system.find_planet_by_name(planet)
   end
@@ -143,7 +146,7 @@ def main
           planet2 = get_planet(solar)
         end
         puts "The distance between #{planet1.name} and #{planet2.name} is "\
-      "#{solar.distance_between(planet1, planet2)}" if planet2
+      "#{solar.distance_between(planet1, planet2)} km" if planet2
       end
     end
 
