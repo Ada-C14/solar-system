@@ -24,6 +24,8 @@ def main
   puts earth.summary
   puts moon.summary
 
+  ##############################################
+
   solar_system = SolarSystem.new('Sun')
 
   solar_system.add_planet(earth)
@@ -31,6 +33,20 @@ def main
 
   planet_list = solar_system.list_planets
   puts planet_list
+
+  ##############################################
+
+  found_planet = solar_system.find_planet_by_name('eaRth')
+  # found_planet = solar_system.find_planet_by_name('Jupiter')
+
+  # found_planet is an instance of class Planet
+  puts found_planet
+  # => #<Planet:0x00007fe7c2868ee8>
+
+  puts found_planet.summary
+  # => Earth is a blue-green planet ...
+
+  puts "The distance between these two planets is: #{solar_system.distance_between('earth', 'moon')} km."
 
 end
 
