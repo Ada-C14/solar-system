@@ -4,7 +4,8 @@
 # Solar System program: Planet class
 
 class Planet
-  attr_reader :name, :color, :mass_kg, :distance_from_sun_km, :fun_fact
+  attr_reader :name, :mass_kg, :distance_from_sun_km
+  attr_accessor :color, :fun_fact
 
   def initialize(hash)
     raise ArgumentError, "Need planet name." if (!hash[:name].to_s.strip || hash[:name].to_s.strip.empty?)
@@ -13,7 +14,7 @@ class Planet
     @color = symbol?(hash[:color])
     @mass_kg = positive_real_num?(hash[:mass_kg])
     @distance_from_sun_km = positive_real_num?(hash[:distance_from_sun_km])
-    @fun_fact = (hash[:fun_fact] && !hash[:fun_fact].empty?) ? hash[:fun_fact] : "TBD"
+    @fun_fact = (hash[:fun_fact] && !hash[:fun_fact].empty?) ? hash[:fun_fact] : "TBD."
   end
 
   def summary
