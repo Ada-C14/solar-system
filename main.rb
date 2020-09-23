@@ -18,6 +18,26 @@ def users_new_planet
   return user_planet
 end
 
+def get_planet_details
+  puts "What is the planet name that you would like details for? "
+  name = gets.chomp
+  return name
+end
+
+def verify_input(input)
+  valid_input = ["ADD", "LIST", "DETAILS", "EXIT", "OPTIONS"]
+  until valid_input.include?(input)
+    puts "Not a valid input, please try ADD, LIST, DETAILS, OPTIONS, or EXIT:"
+    input = gets.chomp.upcase
+  end
+  return input
+end
+
+def print_options
+  puts "Your options are: \n*LIST ~ this will list the planets \n*DETAILS ~ get details on a certain planet \n*ADD ~to add a planet \n*EXIT - to exit the program"
+end
+
+
 def main
   solar_system = Solar_system.new("THE SUN")
   etheria = Planet.new("Etheria", "purple", 3e24, 1.5e8, "Etheria has 12 moons which provide magical energy.")
@@ -27,16 +47,31 @@ def main
   solar_system.add_planet(eternia)
   solar_system.add_planet(earth)
 
-  puts "Welcome to the Solar System.  What do you want to do?  Please enter any of these options: \n*LIST ~ this will list the planets \n*ADD ~to add a planet \n-any other response to exit"
-  input = gets.chomp
+  puts "Welcome to the Solar System.  What do you want to do? "
+  print_options
+  input = verify_input(gets.chomp.upcase)
 
-  case input.upcase
-  when "YES"
-    puts solar_system.list_planets
-  when "ADD"
-    solar_system.add_planet(users_new_planet)
+  until input == "EXIT"
+    case input
+    when "LIST"
+      puts solar_system.list_planets
+    when "DETAILS"
+      planet = solar_system.find_planet_by_name(get_planet_details)
+      if planet
+        puts planet.summary
+      else
+        puts "Planet not found"
+      end
+    when "ADD"
+      solar_system.add_planet(users_new_planet)
+    when "OPTIONS"
+      print_options
+    end
+    puts "What's next? [LIST, ADD, DETAILS, OPTIONS, EXIT]"
+    input = verify_input(gets.chomp.upcase)
   end
 
+  puts "THANK YOU FOR PLAYING!"
 end
 
 main
