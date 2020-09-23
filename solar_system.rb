@@ -8,8 +8,8 @@ class SolarSystem
     @planets = []
   end
 
-  def add_planet(planet)
-    @planets << planet
+  def add_planet(new_planet)
+    @planets << new_planet
   end
 
   def list_planets
@@ -22,15 +22,15 @@ class SolarSystem
 
   def find_planet_by_name(planet_name)
     @planets.each do |planet|
-      if planet.name == name.capitalize
+      if planet.name == planet_name.capitalize
         return planet
       end
     end
     return raise ArgumentError, 'Planet not in star system'
   end
 
-  def distance_between(planet_1, planet_2) #OPTIONAL
-    return (planet_1.distance_from_the_sun - planet_2.distance_from_the_sun).abs
-  end
+  # def distance_between(planet_1, planet_2) #OPTIONAL
+  #   return ((planet_1.distance_from_sun) - (planet_2.distance_from_sun)).abs #still have to make method for returning distance form sun
+  # end
 
 end
