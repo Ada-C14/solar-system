@@ -4,7 +4,7 @@ require 'colorize'
 
 def get_valid_planet(message, solar_system)
   print message
-  user_input = solar_system.find_planet_by_name(gets.chomp) rescue nil    # Try to get user's input; otherwise return nil
+  user_input = solar_system.find_planet_by_name(gets.chomp) rescue nil  # Try to get user's input; otherwise return nil
 
   if !user_input.nil?
     return user_input
@@ -72,8 +72,8 @@ def main
 
     elsif user_input == "3"  # VIEW PLANET DETAILS
 
-      print "\n   Enter a planet you would like to know more about: "
-      planet = solar_system.find_planet_by_name(gets.chomp)
+      puts
+      planet = get_valid_planet("   Enter a planet you would like to know more about: ", solar_system)
 
       if planet
         puts planet.summary.colorize(:light_magenta)

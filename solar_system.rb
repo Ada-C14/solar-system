@@ -33,6 +33,8 @@ class SolarSystem
         return planet
       end
     end
+
+    return nil
   end
 
   def distance_between(planet1_name, planet2_name)
