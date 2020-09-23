@@ -13,16 +13,22 @@ class SolarSystem
   end
 
   def list_planets
-    counter = 1
-    @planets.each do |planet|
-      "Planets orbiting #{@star_name}:\n#{counter}. #{planet}\n"
-      counter += 1
+    list = "\nPlanets orbiting #{star_name}:\n"
+    @planets.each_with_index do |planet, index|
+      index += 1
+      list += "#{index}. #{planet.name}\n"
     end
+    return list
+    end
+
+  def find_planet_by_name(name)
+   planet_name = name.upcase
+   @planets.each do |planet|
+     if planet.name.upcase == planet_name
+       return planet
+      else
+      return "Sorry,this planet is in the process of being created many light years       away and cannot be located just yet."
+      end
+   end
   end
-
-
-
-
-
-
 end
