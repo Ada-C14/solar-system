@@ -20,6 +20,7 @@ class SolarSystem
 
   def planet_details_helper
     print "Which planet would you like to learn about? "
+    puts
     found_planet = gets.chomp
     planet_details = find_planet_by_name(found_planet)
     return planet_details.summary
@@ -28,11 +29,10 @@ class SolarSystem
   def find_planet_by_name(planet)
     planet_details = @planets.find { |instance| instance.name == planet.capitalize }
     return planet_details
-    # return planet.summary
   end
 
   def get_users_planet
-    print "What's it called? "
+    print "What's the planet called? "
     user_planet_name = gets.chomp.capitalize
 
     print "What color is it? "
@@ -51,16 +51,7 @@ class SolarSystem
 
     add_planet(users_planet)
     return users_planet.summary
-
-    # add_planet(user_planet)
-
-    # puts @planets
-    # planet_details = find_planet_by_name(user_planet_name)
-    # return planet_details
-
   end
-
-
 end
 
 

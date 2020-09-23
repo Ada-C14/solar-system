@@ -9,8 +9,6 @@ class Planet
     @fun_fact = fun_fact
   end
 
-
-
   def summary
     # print "Which planet would you like to learn about? "
     # planet = gets.chomp

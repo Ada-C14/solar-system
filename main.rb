@@ -13,22 +13,20 @@ def main
 
   puts "Welcome to Anya's Solar System assignment!"
   while true
+    puts "\n\n**********************************************"
     print "\nWhat would you like to do next? (list planets, planet details, add planet, or exit): "
     user_input = gets.chomp
-
-    if user_input == "list planets"
+    case user_input
+    when "list planets"
       list = solar_system.list_planets
       print list
-
-    elsif user_input == "planet details"
+    when "planet details"
       planet_details = solar_system.planet_details_helper
       print planet_details
-
-    elsif user_input == "add planet"
+    when "add planet"
       planet_details = solar_system.get_users_planet
       print planet_details
-       # print planet_details.summary
-    elsif user_input == "exit"
+    when "exit"
       return false
     end
   end
