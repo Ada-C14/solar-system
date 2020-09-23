@@ -18,11 +18,11 @@ def main
       "Earth's only natural satellite"
   )
 
-  p "Here's a fun fact about the #{earth.name}: #{earth.fun_fact}"
-  p "Here's a fun fact about the #{moon.name}: #{moon.fun_fact}"
+  # p "Here's a fun fact about the #{earth.name}: #{earth.fun_fact}"
+  # p "Here's a fun fact about the #{moon.name}: #{moon.fun_fact}"
 
-  puts earth.summary
-  puts moon.summary
+  # puts earth.summary
+  # puts moon.summary
 
   ##############################################
 
@@ -31,22 +31,36 @@ def main
   solar_system.add_planet(earth)
   solar_system.add_planet(moon)
 
-  planet_list = solar_system.list_planets
-  puts planet_list
+  # planet_list = solar_system.list_planets
+  # puts planet_list
 
   ##############################################
 
-  found_planet = solar_system.find_planet_by_name('eaRth')
-  # found_planet = solar_system.find_planet_by_name('Jupiter')
+  # found_planet = solar_system.find_planet_by_name('eaRth')
+  # # found_planet = solar_system.find_planet_by_name('Jupiter')
+  #
+  # # found_planet is an instance of class Planet
+  # puts found_planet
+  # # => #<Planet:0x00007fe7c2868ee8>
+  #
+  # puts found_planet.summary
+  # # => Earth is a blue-green planet ...
+  #
+  # puts "The distance between these two planets is: #{solar_system.distance_between('earth', 'moon')} km."
 
-  # found_planet is an instance of class Planet
-  puts found_planet
-  # => #<Planet:0x00007fe7c2868ee8>
-
-  puts found_planet.summary
-  # => Earth is a blue-green planet ...
-
-  puts "The distance between these two planets is: #{solar_system.distance_between('earth', 'moon')} km."
+  continue = true
+  while continue
+    puts "Would you like to see the planets in the solar system? [Y/N]"
+    response = gets.chomp
+    if response.upcase == 'Y'
+      puts solar_system.list_planets
+    elsif response.upcase == 'N'
+      puts "OK! Terminating program."
+      continue = false
+    else
+      puts "That was not a valid response.  Please indicate Y or N to continue."
+    end
+  end
 
 end
 
