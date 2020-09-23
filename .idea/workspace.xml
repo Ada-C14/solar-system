@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="70554e94-863c-4507-9821-b3a9c704429e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/main.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/planet.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/solar_system.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.rb" beforeDir="false" afterPath="$PROJECT_DIR$/main.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +41,7 @@
       <option name="presentableId" value="Default" />
       <updated>1600814363083</updated>
       <workItem from="1600814365078" duration="52000" />
-      <workItem from="1600814429929" duration="15157000" />
+      <workItem from="1600814429929" duration="15298000" />
     </task>
     <servers />
   </component>

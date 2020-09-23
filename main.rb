@@ -12,9 +12,6 @@ solar_system.add_planet(mars)
 
 list = solar_system.list_planets
 
-# found_planet = solar_system.find_planet_by_name('Earth')
-# puts found_planet
-# puts found_planet.summary
 
 def user_choice
   puts "What do you like to do?"
@@ -73,13 +70,11 @@ until user_input == "exit"
     solar_system.add_planet(user_planet)
     list = solar_system.list_planets
 
-
-
     line
     user_choice
     user_input = gets.chomp
     end
-end
+  end
 end
 
 main
