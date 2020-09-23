@@ -20,15 +20,25 @@ def main
     option = gets.chomp.downcase
 
     case option
-    when 'list planets'
+    when "list planets"
       puts solar_system.list_planets
-    when 'get planet details'
+    when "get planet details"
       puts "Which planet's details do you want to know? "
       get_planet = gets.chomp
       puts solar_system.find_planet_by_name(get_planet).summary
-    when 'add planet'
-      puts 'Please enter new planet details'
-      solar_system.add_planet(Planet.new(gets.chomp, gets.chomp, gets.chomp.to_f, gets.chomp.to_f, gets.chomp))
+    when "add planet"
+      puts "Please enter new planet name"
+      name = gets.chomp
+      puts "Enter planet color"
+      color = gets.chomp
+      puts "Enter planet mass"
+      mass = gets.chomp.to_f
+      puts "Enter planet distance from sun"
+      distance = gets.chomp
+      puts "Enter a fun fact about the planet"
+      fact = gets.chomp
+
+      solar_system.add_planet(Planet.new(name, color, mass, distance, fact))
     end
   end
 
