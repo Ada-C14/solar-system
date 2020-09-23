@@ -11,6 +11,6 @@ class Planet
   end
 
   def summary
-    return "#{name} is a #{color} planet. #{name} has a mass of #{mass_kg} and it #{distance_from_sun_km} km from the sun. A fun fact about #{name} is: #{fun_fact}"
+    return "#{name} is a #{color} planet. #{name} has a mass of #{mass_kg} kg and it is #{distance_from_sun_km} km from the sun. A fun fact about #{name} is: #{fun_fact}"
   end
 end
