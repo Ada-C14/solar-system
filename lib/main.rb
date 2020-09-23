@@ -3,33 +3,46 @@ require_relative 'solar_system'
 require 'awesome_print'
 require 'rainbow'
 
-puts Rainbow("hi").blue
+def menu(choices)
+  puts "What would you like to do next?"
+  choices.each_with_index { |choice, i| puts "#{i+1}. #{choice}"}
+end
+
+def get_choice(max_choice)
+  choice = gets.to_i
+  until choice > 0 && choice <= max_choice
+    puts "Incorrect choice entered"
+    menu
+    choice = gets.to_i
+  end
+  return choice
+end
 
 def main
+  solar = SolarSystem.new('Duckstar')
   jupiter = Planet.new('Jupiter', 'Brown', 999, 5, "Likes to eat black holes",
                        favorite_animal: "Meerkat", pronoun: "Her")
-
   pluto = Planet.new('Pluto', 'Red', 1, 9, "Forever angry at it's planetary exclusion")
-  puts jupiter.summary
-  puts pluto.summary
-
   meow = Planet.new('Meow', 'Yellow', 33, 39, 'Has two ears and one tail', pronoun: 'Fur')
-  puts meow.summary
 
-  solar_system = SolarSystem.new('Cutestar')
-  solar_system.add_planet(jupiter)
-  solar_system.add_planet(pluto)
-  solar_system.add_planet(meow)
-  puts solar_system.list_planets
+  puts Rainbow("Welcome to the #{solar.star_name} system").color(:yellow)
+  choices = ['List Planets', 'Exit']
+  menu(choices)
+  choice = get_choice(choices.length)
+  until choice == choices.length
+    case choice
+    when 1
+      puts solar.list_planets
+    end
 
-  found_planets = solar_system.find_planet_by_name('meOw')
-  ap found_planets
-  found_planets.each do |planet|
-    puts planet.summary
+    puts "What else?"
+    menu(choices)
+    choice = get_choice(2)
   end
 
-  print "The distance between #{jupiter.name} and #{pluto.name} is "
-  print "#{solar_system.distance_between(jupiter, pluto)}\n"
+
 end
+
+
 
 main

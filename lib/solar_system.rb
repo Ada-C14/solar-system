@@ -15,8 +15,12 @@ class SolarSystem
   end
 
   def list_planets
+    if @planets.length == 0
+      puts "There are no planets in #{@star_name}"
+      return nil
+    end
     string = "Planets orbitting #{@star_name}\n"
-    planets.each_with_index do |planet, i|
+    @planets.each_with_index do |planet, i|
       string << Rainbow("#{i+1}. #{@planets[i].name}\n").color(@colors.sample)
     end
     return string
