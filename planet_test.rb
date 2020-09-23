@@ -1,6 +1,8 @@
 require 'minitest/autorun'
 require 'minitest/reporters'
 require_relative 'planet'
+require 'colorize'
+require 'colorized_string'
 
 Minitest::Reporters.use!
 
