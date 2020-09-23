@@ -27,4 +27,9 @@ class SolarSystem
     # return "Planets orbiting the #{star_name}", @planets.each { |planet| "\n #{index += 1}. #{planet}" }
     return "Planets orbiting the #{star_name}", @planets.each_with_index { |planet, index| "\n #{index + 1}. #{planet}" }
   end
+
+  def find_planet_by_name(planet)
+    planet = planet.downcase
+    return @planets.select { |planet_name| planet_name.downcase == planet }
+  end
 end
