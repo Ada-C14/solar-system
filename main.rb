@@ -41,24 +41,9 @@ def main
         puts "Sorry, the planet is not found in our system."
       end
 
-      when 4
-      puts "**************************************"
-      info = ["name", "color", "mass in kg", "distance from sun in km", "one fun fact"]
+    when 4
 
-      info.each_with_index do |detail, index|
-        print "Please enter the #{detail} of the planet => "
-        info[index] = gets.chomp
-      end
-
-      new_planet = Planet.new(info[0], info[1], info[2].to_i, info[3].to_i, info[4])
-
-      if info[2].to_i <= 0 || info[3].to_i <= 0
-        puts "**************************************"
-        puts "Both mass_kg and distance_from_sun_km must be numbers that are greater than zero."
-        puts "Planet not added."
-      else
-        solar_system.add_planet(new_planet)
-      end
+      puts solar_system.add_planet_by_user
 
     when 5
       print"Please enter the first planet => "
@@ -67,6 +52,7 @@ def main
       b = gets.chomp
       puts "**************************************"
       puts solar_system.distance_between(a, b)
+
     else
       puts "**************************************"
       puts "Please enter 1, 2, 3, 4 or 5 to select your choice."

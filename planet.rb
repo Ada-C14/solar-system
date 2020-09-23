@@ -18,4 +18,6 @@ class Planet
 
     return "#{@name}'s color is #{@color}. It's mass is #{@mass_kg} kg and it's distance from sun is #{@distance_from_sun_km.to_i} km. One fun fact is that it #{@fun_fact}."
   end
+
+
 end
