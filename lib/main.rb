@@ -39,7 +39,7 @@ def main
   saturn = Planet.new('Saturn', 'pale yellow', 5.683e26, 92.802e8, 'The second-largest planet in the solar system')
   solar_system.add_planet(saturn)
   
-  options = ["list planets", "planet details", "add planet", "exit"]
+  options = ["list planets", "planet details", "add planet", "distance between planets", "exit"]
   stop_loop = false
   until stop_loop
     puts "\nWhat do you want to see?"
@@ -76,6 +76,23 @@ def main
       
       solar_system.add_planet(user_planet)
       puts "\nNow, want to see your new planet on the main menu? Please go check \"list planets\"" if rescue_status == false
+    elsif user_response == "distance between planets"
+      puts "\n Which two planets do you want to see their distance?"
+      puts list = solar_system.list_planets 
+      two_planet = 1
+      planets_for_distance = Array.new
+      until two_planet == 3
+        print "Planet #{two_planet}: "
+        distance_planet = gets.chomp.downcase
+        found_planet = solar_system.find_planet_by_name(distance_planet)
+        if found_planet.nil?
+          puts "Sorry, we don't have this planet: #{ distance_planet }" 
+        else
+          planets_for_distance.push(distance_planet)
+          two_planet += 1
+        end
+      end      
+      puts "The distance between #{ planets_for_distance[0] } and #{ planets_for_distance[1] } is #{solar_system.distance_between(planets_for_distance[0], planets_for_distance[1])}km." 
     elsif user_response == "exit"
       stop_loop = true 
     else
