@@ -10,8 +10,9 @@ require_relative 'solar_system'
 def check_input(input, max_selection_num)
   if (input.to_i == 0 && input != '0') || !(0..max_selection_num).include?(input.to_i)
     raise ArgumentError, "Invalid Selection."
+  else
+    return input
   end
-  return input
 end
 
 def main
@@ -83,21 +84,21 @@ def main
       print "What is a fun fact about #{name}? "
       fact = gets.chomp
       puts
-      temp_planet = Planet.new({
+      new_planet = Planet.new({
         name: name,
         color: color,
         mass_kg: mass,
         distance_from_sun_km: distance,
         fun_fact: fact
       })
-      the_solar_system.add_planet(temp_planet)
+      the_solar_system.add_planet(new_planet)
     when '4'
       puts
       print "To find the distance between two planets, please enter the name of the first planet: "
       planet1 = gets.chomp.split(' ').map(&:capitalize).join(' ')
       print "Please enter the name of the second planet: "
       planet2 = gets.chomp.split(' ').map(&:capitalize).join(' ')
-      puts "The distance between #{planet1} and #{planet2} is #{the_solar_system.distance_between(planet1, planet2)} (assuming a linear solar system)."
+      puts "The distance between #{planet1} and #{planet2} is #{the_solar_system.distance_between(planet1, planet2)} km (assuming a linear solar system)."
       puts
     end
   end
