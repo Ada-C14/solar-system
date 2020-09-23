@@ -43,19 +43,9 @@ describe 'Solar System' do
   end
 
   # Add minitest tests for SolarSystem (W2.7)
-  describe 'Solar System test' do
-    it 'returns an array of planets' do
-      planets = []
-      expect(solar_system.pla).must_equal 10
-
-      expect(drawn_letters).must_be_instance_of Array
-      drawn_letters.each do |letter|
-        expect(letter).must_be_instance_of String
-        expect(letter.length).must_equal 1
-      end
+  def
+    
   end
-
-end
 
 
 
