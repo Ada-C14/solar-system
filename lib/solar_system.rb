@@ -6,7 +6,6 @@ class SolarSystem
     raise ArgumentError.new("Planet name is empty!") if star_name.strip == ''
     @star_name = star_name
     @planets = []
-    @colors = Range.new(0,7).to_a
   end
 
   def add_planet(planet)
@@ -21,14 +20,14 @@ class SolarSystem
     end
     string = "Planets orbitting #{@star_name}\n"
     @planets.each_with_index do |planet, i|
-      string << Rainbow("#{i+1}. #{@planets[i].name}\n").color(@colors.sample)
+      string << Rainbow("#{i+1}. #{@planets[i].name}\n").color(rand(1..7))
     end
     return string
   end
 
   def find_planet_by_name(planet_name)
-    return planets.find_all { |planet| planet.name.casecmp?(planet_name)}
-    return nil
+    return nil if @planets.empty?
+    return @planets.find_all { |planet| planet.name.casecmp?(planet_name)}
   end
 
   def distance_between(planet1, planet2)
