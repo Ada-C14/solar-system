@@ -21,11 +21,10 @@ class SolarSystem
   end
 
   def find_planet_by_name(name_string)
-    match_arr = @planets.filter {|planet| planet.name.upcase == name_string.upcase}
-    return match_arr
+    match_arr = @planets.select {|planet| planet.name.upcase == name_string.upcase}
     return match_arr[0] if match_arr.length == 1
     if match_arr.length == 0
-      raise ArgumentError, "Planet not found, #{name_string}"
+      raise ArgumentError, "Planet not found: #{name_string}"
     else
       raise ArgumentError, "More than one match, try again"
     end

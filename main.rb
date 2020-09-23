@@ -17,12 +17,14 @@ def main
 
     print "\n  What would you like to do next? List planets, planet details, add planet or exit? "
     user_entry = gets.chomp
+
     if user_entry.downcase == "list planets"
       puts solar_system.list_planets
 
     elsif user_entry.downcase == "planet details"
       print "  Which planet would you like to learn about? "
       search = gets.chomp
+
       found_planet = solar_system.find_planet_by_name(search)
 
       puts found_planet
@@ -51,6 +53,5 @@ def main
       end
   end
 end
-
 
 main
