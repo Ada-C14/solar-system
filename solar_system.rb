@@ -32,9 +32,9 @@ class SolarSystem
       name = gets.chomp
       puts "What is the color of this planet?"
       color = gets.chomp
-      puts "mass?"
+      puts "Mass?"
       mass_kg = gets.chomp
-      puts "distance from the sun?"
+      puts "Distance from the sun?"
       distance_from_sun_km = gets.chomp
       puts "Fun fact?"
       fun_fact = gets.chomp
