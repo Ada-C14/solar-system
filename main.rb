@@ -6,6 +6,8 @@ def main
 
   pluto = Planet.new('Pluto', 'unknown', 5.972e24, 1.496e8, 'Unknown')
   puts pluto.name
+
+  puts earth.summary
 end
 
 main
