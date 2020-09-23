@@ -45,7 +45,6 @@ class SolarSystem
   end
 
   def add_planet_by_user
-
     info = ["name", "color", "mass in kg", "distance from sun in km", "one fun fact"]
 
     info.each_with_index do |detail, index|
@@ -54,24 +53,22 @@ class SolarSystem
     end
 
     new_planet = Planet.new(info[0], info[1], info[2].to_i, info[3].to_i, info[4])
-
     if info[2].to_i <= 0 || info[3].to_i <= 0
       return "**************************************\nBoth mass_kg and distance_from_sun_km must be numbers that are greater than zero.\nPlanet not added."
     else
       add_planet(new_planet)
       return "Planet added!"
     end
-
   end
 
   def get_details
     planet = gets.chomp.downcase
-      found_planet = find_planet_by_name(planet)
-      begin
-        return "**************************************\n#{found_planet.summary}"
-      rescue NoMethodError
-        return "Sorry, the planet is not found in our system."
-      end
+    found_planet = find_planet_by_name(planet)
+    begin
+      return "**************************************\n#{found_planet.summary}"
+    rescue NoMethodError
+      return "Sorry, the planet is not found in our system."
+    end
   end
 
 end
