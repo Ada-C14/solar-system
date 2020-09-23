@@ -7,13 +7,14 @@ def main
   puts mercury.summary
   puts saturn.summary
 
-  solar_system = SolarSystem.new('Sun')
-  solar_system.add_planet(mercury.name)
-  solar_system.add_planet(saturn.name)
+  solar_system = SolarSystem.new('Sol')
+  solar_system.add_planet(mercury)
+  solar_system.add_planet(saturn)
   puts solar_system.list_planets
   found_planet = solar_system.find_planet_by_name('mercury')
   puts found_planet
   puts found_planet.summary
+
 end
 
 
