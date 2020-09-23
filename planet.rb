@@ -7,7 +7,7 @@ class Planet
     @mass_kg = mass_kg
     @distance_from_sun_km = distance_from_sun_km
     @fun_fact = fun_fact
-
+  
     # if @mass_kg.to_i <= 0 || @distance_from_sun_km.to_i <= 0
     #   raise ArgumentError.new("#{@name}: Both mass_kg and distance_from_sun_km must be numbers that are greater than zero.")
     # end
