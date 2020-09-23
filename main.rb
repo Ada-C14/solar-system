@@ -17,14 +17,9 @@ def get_info(solar_system)
       puts planet.summary
     when 'add planet'
       add_planet(solar_system)
-      # puts "What is the planet's name, color, weight in kg, distance from the sun in km and a fun fact? "
-      # planet_to_be_add = gets.chomp.split(", ")
-      # added_planet = Planet.new(planet_to_be_add[0], planet_to_be_add[1], planet_to_be_add[2], planet_to_be_add[3], planet_to_be_add[4] )
-      # solar_system.add_planet(added_planet)
-      # list = solar_system.list_planets
-      # puts list
     else
       break if answer == 'exit'
+
       puts 'Your choice is invalid.'
     end
   end
@@ -50,8 +45,6 @@ def main
   solar_system.add_planet(earth)
   solar_system.add_planet(mars)
   solar_system.add_planet(saturn)
-  # list = solar_system.list_planets
-  # puts list
 
   get_info(solar_system)
 
