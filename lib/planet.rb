@@ -23,7 +23,7 @@ class Planet
     @fun_fact = fun_fact
   end
 
-  # addtl accessors
+  # addtl accessors/readers
   # returns formatted summary of planet info.
   def summary
     # generally, we don't want to put puts statements in class/instance methods.

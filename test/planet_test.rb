@@ -1,6 +1,6 @@
 # Pauline Chane (@PaulineChane on GitHub)
 # Ada Developers Academy Cohort 14
-# Solar System Optional Exercise - Minitests
+# Solar System Optional Exercise - Planet Class Minitests
 # 09/23/2020
 
 # Practice TDD by writing tests to validate functionality for two new classes: Planet and SolarSystem
@@ -22,7 +22,7 @@ describe 'Planet' do
     earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
 
     # Assert
-    expect(earth.instance_of?(Planet)).must_equal true
+    expect(earth).must_be_instance_of Planet
   end
 
   it 'can read all field inputs for a created Planet object' do

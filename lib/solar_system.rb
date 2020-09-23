@@ -5,7 +5,7 @@
 
 # Solar System class object
 class SolarSystem
-  # field accessors
+  # field accessors/readers
   attr_reader :star_name, :planets
   # constructor
   def initialize(star_name)
@@ -13,7 +13,7 @@ class SolarSystem
     @planets = []
   end
 
-  # other accessors
+  # other accessors/readers
   # list all planets in @planets array, return as string
   def list_planets
     planet_list = "Planets orbiting #{@star_name}"
@@ -42,8 +42,15 @@ class SolarSystem
 
   # mutators
   # add planet to @planets array
+  # returns true upon successful addition of Planet object
+  # otherwise, nothing is added and function returns false
   def add_planet(planet)
-    @planets << planet
+    if planet.is_a?(Planet)
+      @planets << planet
+    else
+      return false
+    end
+    return true
   end
 
 end
