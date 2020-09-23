@@ -43,7 +43,7 @@ The learning goal for this wave is to practice working with individual instances
 
     ```ruby
     # Load Planet into pry:
-    # $ pry -r ./planet.rb
+    # $ pry -r ./Planet.rb
     earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
 
     puts earth.name
