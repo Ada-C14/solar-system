@@ -8,6 +8,7 @@ require_relative 'planet'
 require_relative 'solar_system'
 
 def main
+  # create base solar_system with some planets
   solar_system = SolarSystem.new('Sol')
 
   earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
@@ -16,25 +17,30 @@ def main
   solar_system.add_planet(earth)
   solar_system.add_planet(mars)
 
-  list = solar_system.list_planets
-  puts list
-  # => Planets orbiting Sol
-  # => 1.  Earth
+  # intro to CLI interface
+  puts '+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+'
+  puts 'WELCOME TO CLISSIN (Command Line Interface Solar System Info Navigation)!'
+  puts '+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+'
+  puts '|                              MENU SELECT                              |'
+  puts '|_____Please enter the number corresponding to your desired action:_____|'
+  puts '|1. LIST PLANETS CURRENTLY IN SOLAR SYSTEM                              |'
+  puts '|9. EXIT                                                                |'
+  print "Enter your selection: "
+  user_input = gets.chomp.to_i
 
-  found_planet = solar_system.find_planet_by_name('EARTH')
+  while user_input != 9 do
+    if user_input == 1
+      puts "LISTING PLANETS.... "
+      puts solar_system.list_planets
+      print "Action complete. Enter 1 to LIST PLANETS again or 9 to EXIT: "
+    elsif user_input != 9
+      print "Invalid input. Enter 1 to LIST PLANETS or 9 to EXIT: "
+    end
+    user_input = gets.chomp.to_i
+  end
 
-  # found_planet is an instance of class Planet
-  puts found_planet
-  # => #<Planet:0x00007fe7c2868ee8>
+  puts "Thank you for using the CLISSIN. See you Space Cowpoke!"
 
-  puts found_planet.summary
-  # => Earth is a blue-green planet ...
-
-  puts solar_system.distance_between("Earth", "Mars")
-  # => 78300000.0
-
-  puts solar_system.distance_between("Earth", "Venus").nil?
-  # => true
 end
 
 main
