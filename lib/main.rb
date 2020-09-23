@@ -48,11 +48,13 @@ def main
   earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'It is the only planet known to support life.')
   mars = Planet.new('Mars', 'red', 6.39e23, 2.105e8, 'The planet is named after the Roman God of war.' )
   venus = Planet.new('Venus', 'bright white', 4.867e24, 1.079e8, 'A day on Venus is longer than a year.' )
+  mercury = Planet.new('Mercury', 'dark gray', 3.285e23, 6.919e7, 'It is the smallest planet, and it is also shrinking!')
 
   # add planets to solar system
   solar_system.add_planet(earth)
   solar_system.add_planet(mars)
   solar_system.add_planet(venus)
+  solar_system.add_planet(mercury)
 
   # provide user with two options, list planets or exit
   puts "*** WELCOME TO THE OUR SOLAR SYSTEM! ***".colorize(:blue)
