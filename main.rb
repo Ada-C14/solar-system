@@ -31,19 +31,18 @@ def main
 
   #Control loop that repeatedly asks user what to do next
   repeat = true
-
   until repeat == false
     puts "*" * 50
     puts "Marioooo time! What would you like to do next?\nYou can:\n"
     puts "1. See a list of planets by typing 'list'\n"
     puts "2. View planet details of your favorite planet by typing 'details'\n"
-    puts "3. Exit the program by typing 'exit'\n\n"
+    puts "3. Add a planet to the Mario Universe collection by typing 'add'\n"
+    puts "4. Exit the program by typing 'exit'\n\n"
     puts "Waiting for your input.... "
     input = gets.chomp
 
     case
     when input == "list"
-        repeat = false
         list = solar_system.list_planets
         puts list
     when input == "details"
@@ -51,7 +50,11 @@ def main
       input = gets.chomp.to_s
       summary = solar_system.find_planet_by_name(input)
       puts summary
-      repeat = false
+    when input == "add"
+      solar_system.add_new_planet
+      puts "Let's see your new planet!"
+    when input == "exit"
+      exit
     end
   end
 end
