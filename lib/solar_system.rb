@@ -16,8 +16,7 @@ class SolarSystem
 
   # Create a method to return a string with a list of planets(W2.3)
   def list_planets
-    str = ""
-    "Planets orbiting #{@star_name}"
+    str = "Planets orbiting #{@star_name}:\n"
     count = 0
     @planets.each do |planet|
       count += 1
@@ -34,13 +33,13 @@ class SolarSystem
       end
     end
     # Return false if planet not found
-    return false
+    return nil
   end
 
   # Create a method that takes two planet names as parameters and returns the distance between them
   def distance_between(planet_name_1, planet_name_2)
     planet_1 = find_planet_by_name(planet_name_1)
     planet_2 = find_planet_by_name(planet_name_2)
-    return (planet_1.distance_from_sun_km - planet_2.distance_from_sun_km).abs
+    puts (planet_1.distance_from_sun_km - planet_2.distance_from_sun_km).abs
   end
 end

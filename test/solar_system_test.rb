@@ -1,47 +1,64 @@
-# Add minitest tests for Planet (W1.6)
+
 require 'minitest/autorun'
 require 'minitest/reporters'
 require 'minitest/skip_dsl'
 
-require_relative 'lib/planet'
-require_relative 'lib/solar_system'
+require_relative '../lib/planet'
+require_relative '../lib/solar_system'
 
 
 # Get that nice colorized output
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
-
+# Create cases to test the methods created to planets.rb and solar_system.rb
 describe 'Solar System' do
 
-  describe 'Add Planet' do
-    #Arrange
+  # Add minitest tests for Planet (W1.6)
+  describe 'Planets test' do
+    it "Correctly create a planet" do
 
+      # Arrange
+      mercury = Planet.new('Mercury','dark grey',3.30e23, 57.9, 'Is hot, but not too hot for ice')
+
+      # Act
+      expect(mercury.name).must_equal 'Mercury'
+      expect(mercury.color).must_equal 'dark grey'
+      expect(mercury.mass_kg).must_equal 3.30e23
+      expect(mercury.distance_from_sun_km).must_equal 57.9
+      expect(mercury.fun_fact).must_equal 'Is hot, but not too hot for ice'
+    end
+
+    it "Correctly calculates summary" do
+
+      # Arrange
+      mercury = Planet.new('Mercury','dark grey',3.30e23, 57.9, 'Is hot, but not too hot for ice')
+      mercury_summary =
+          " - Name: Mercury\n"+
+          " - Color: dark grey\n"+
+          " - Mass (in kg): 3.3e+23kg\n"+
+          " - Distance From Sun (in km): 57.9 million km.\n"+
+          " - Fun Fact: Is hot, but not too hot for ice"
+      # Act
+      expect(mercury.summary).must_equal mercury_summary
     end
   end
 
-  describe 'Summary' do
-    #Arrange
+  # Add minitest tests for SolarSystem (W2.7)
+  describe 'Solar System test' do
+    it 'returns an array of planets' do
+      planets = []
+      expect(solar_system.pla).must_equal 10
 
-    # Act
-    it 'Print in the summary a planet name' do
-      @name = name
-      expect(@name).must_equal 'Earth'
-    end
-    it 'Print in the summary a planet color' do
-      @color = color
-      expect(@color).must_equal 'blue'
-    end
-    it 'Print in the summary a planet mass kg' do
-      @mass_kg = mass_kg
-      expect(@mass_kg).must_equal 5.972e24
-    end
-    it 'Print in the summary a planet distance from sun' do
-      @distance_from_sun_km = distance_from_sun_km
-      expect(@distance_from_sun_km).must_equal 149.6
-    end
-    it 'Print in the summary a planet fun fact' do
-      @fun_fact = fun_fact
-      expect(@fun_fact).must_equal 'Is the only planet known to support life!'
-    end
+      expect(drawn_letters).must_be_instance_of Array
+      drawn_letters.each do |letter|
+        expect(letter).must_be_instance_of String
+        expect(letter.length).must_equal 1
+      end
   end
+
+end
+
+
+
+
 
 

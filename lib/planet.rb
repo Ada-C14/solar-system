@@ -24,12 +24,12 @@ class Planet
 
   # Create a method that return a string with the summary of a given planet(W1.4)
   def summary
-    summary = "
-      - Name: #{@name}
-      - Color: #{@color}
-      - Mass (in kg): #{@mass_kg}kg
-      - Distance From Sun (in km): #{@distance_from_sun_km} million km.
-      - Fun Fact: #{@fun_fact}"
-    puts summary
+    summary =
+        " - Name: #{@name}\n"+
+        " - Color: #{@color}\n"+
+        " - Mass (in kg): #{@mass_kg}kg\n"+
+        " - Distance From Sun (in km): #{@distance_from_sun_km} million km.\n"+
+        " - Fun Fact: #{@fun_fact}"
+    return summary
   end
 end
