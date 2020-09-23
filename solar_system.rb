@@ -28,10 +28,8 @@ class SolarSystem
   end
   #wave 3
   def add_a_new_planet()
-
       puts "What is the planet's name?"
       name = gets.chomp
-
       puts "What is the color of this planet?"
       color = gets.chomp
       puts "mass?"
@@ -43,7 +41,7 @@ class SolarSystem
       new_planet_instance = Planet.new(name, color, mass_kg, distance_from_sun_km, fun_fact)
       @planets << new_planet_instance
       puts new_planet_instance.summary
-      puts @planets.inspect
+      #puts @planets.inspect
   end
 end
 
