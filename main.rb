@@ -13,6 +13,7 @@ def main
   solar_system.add_planet(venus)
   solar_system.add_planet(mars)
 
+
   choice = 0
   puts "Welcome to Solar System!"
   while choice != 2
@@ -32,17 +33,9 @@ def main
 
     when 3
       print "Please enter the name of the planet you want to learn about => "
-      planet = gets.chomp.downcase
-      found_planet = solar_system.find_planet_by_name(planet)
-      begin
-        puts "**************************************"
-        puts "#{found_planet.summary}"
-      rescue NoMethodError
-        puts "Sorry, the planet is not found in our system."
-      end
+      puts solar_system.get_details
 
     when 4
-
       puts solar_system.add_planet_by_user
 
     when 5

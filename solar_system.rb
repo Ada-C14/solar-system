@@ -63,4 +63,15 @@ class SolarSystem
     end
 
   end
+
+  def get_details
+    planet = gets.chomp.downcase
+      found_planet = find_planet_by_name(planet)
+      begin
+        return "**************************************\n#{found_planet.summary}"
+      rescue NoMethodError
+        return "Sorry, the planet is not found in our system."
+      end
+  end
+
 end
