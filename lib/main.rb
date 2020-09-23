@@ -10,23 +10,39 @@ def get_planet_details(solar_system)
   planet_object = solar_system.find_planet_by_name(planet)
   # return the summary if Planet Object otherwise return a string explaining to user.
   planet_object ? planet_object.summary : "This planet doesn't exist in the Solar System yet. You can add a new one if you'd like."
-
 end
 
 # add a user inputted planet to the solar system
 def add_planet(solar_system)
-  puts "\nPlease provide a Planet name"
-  name = gets.chomp
-  puts "What color is #{name}?"
-  color = gets.chomp
-  puts "What is the mass in kg of #{name}?"
-  mass_kg = gets.chomp.to_f
-  puts "How far is this planet from the sun in km?"
-  distance = gets.chomp.to_f
-  puts "Last step, please provide a fun fact for #{name}!"
-  fun_fact = gets.chomp
-  planet = Planet.new(name, color, mass_kg, distance, fun_fact)
-  solar_system.add_planet(planet)
+    puts "\nPlease provide a Planet name"
+    name = gets.chomp
+
+    # if there is an existing planet, return message to user
+    if solar_system.find_planet_by_name(name)
+      return "This planet already exists in the Solar System."
+    end
+
+    puts "What color is #{name}?"
+    color = gets.chomp
+
+    puts "What is the mass in kg of #{name}?"
+    mass_kg = gets.chomp.to_f
+
+    puts "How far is this planet from the sun in km?"
+    distance = gets.chomp.to_f
+
+    puts "Last step, please provide a fun fact for #{name}!"
+    fun_fact = gets.chomp
+
+    # rescue the argument error for mass and distance
+    begin
+      planet = Planet.new(name, color, mass_kg, distance, fun_fact)
+    rescue ArgumentError
+      return "mass and/or distance from the sun need to be numeric and greater than 0"
+    end
+    solar_system.add_planet(planet)
+    return solar_system.list_planets
+
 end
 
 # find the distance between two user inputted planet names
@@ -37,7 +53,11 @@ def find_distance(solar_system)
   print "planet_2 => "
   planet_2 = gets.chomp
   distance = solar_system.distance_between(planet_1, planet_2)
-  puts "The distance between #{planet_1} and #{planet_2} is #{distance} km"
+  if distance
+    puts "The distance between #{planet_1} and #{planet_2} is #{distance} km"
+  else
+    puts "One or both of the planets you've inputted are not in our solar system"
+  end
 end
 
 def list_options
@@ -79,8 +99,7 @@ def main
     when "planet details", 2, "details"
       puts get_planet_details(solar_system)
     when "add planet", 3, "add"
-      p add_planet(solar_system)
-      puts solar_system.list_planets
+      puts add_planet(solar_system)
     when "find distance", 4, "distance"
       find_distance(solar_system)
     when "exit", 5

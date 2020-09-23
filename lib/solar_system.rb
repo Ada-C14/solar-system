@@ -9,7 +9,7 @@ class SolarSystem
 
   # add planet and prevent duplicate entries.
   def add_planet(planet)
-    # if planet name already exists, return false
+    # if planet name already exists, raise an error
     if find_planet_by_name(planet.name)
       return false
     else
@@ -32,8 +32,14 @@ class SolarSystem
   end
 
   def distance_between(planet_1, planet_2)
+    # get the planet objects from find_planet_by_name method
     planet_1 = find_planet_by_name(planet_1)
     planet_2 = find_planet_by_name(planet_2)
-    return (planet_1.distance_from_sun_km - planet_2.distance_from_sun_km).abs
+    # check if planet objects are truthy
+    if planet_1 && planet_2
+      return (planet_1.distance_from_sun_km - planet_2.distance_from_sun_km).abs
+    else
+      return false
+    end
   end
 end
