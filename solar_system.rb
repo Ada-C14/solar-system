@@ -19,7 +19,8 @@ class SolarSystem
       planets << ["#{list}, #{planet.name}"]
       list += 1
     end
-    list_planets = Terminal::Table.new :heading => "Planets orbiting #{star_name}", :rows => planets
+
+    list_planets = Terminal::Table.new :title => "Planets orbiting #{star_name}", :rows => planets
 
     return list_planets
   end
