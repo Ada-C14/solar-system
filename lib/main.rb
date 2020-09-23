@@ -95,10 +95,15 @@ def main
     when '4'
       puts
       print "To find the distance between two planets, please enter the name of the first planet: "
-      planet1 = gets.chomp.split(' ').map(&:capitalize).join(' ')
+      planet1 = the_solar_system.find_planet_by_name(gets.chomp)
       print "Please enter the name of the second planet: "
-      planet2 = gets.chomp.split(' ').map(&:capitalize).join(' ')
-      puts "The distance between #{planet1} and #{planet2} is #{the_solar_system.distance_between(planet1, planet2)} km (assuming a linear solar system)."
+      planet2 = the_solar_system.find_planet_by_name(gets.chomp)
+      puts
+      if planet1 && planet2
+        puts "The distance between #{planet1.name} and #{planet2.name} is #{the_solar_system.distance_between(planet1.name, planet2.name)} km (assuming a linear solar system)."
+      else
+        puts "Both planets must be in the #{the_solar_system.star_name} solar system for a distance to calculate."
+      end
       puts
     end
   end
