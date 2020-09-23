@@ -23,7 +23,7 @@ class Solar_system
 
     found_planet = @planets.find { |planet| planet.name.upcase == planet_name.upcase }
 
-    #found_planet ? (return found_planet) : (return "Planet not found")
+    return found_planet #will return nil if there's no match
   end
 
 end

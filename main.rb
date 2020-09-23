@@ -63,7 +63,7 @@ def main
         puts "Planet not found"
       end
     when "ADD"
-      solar_system.add_planet(users_new_planet)
+      solar_system.add_planet(users_new_planet) #does not check for duplicates
     when "OPTIONS"
       print_options
     end
