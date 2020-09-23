@@ -12,7 +12,7 @@ class Planet
     @fun_fact = fun_fact
   end
 
-  def summary(name, color, mass_kg, distance_from_sun_km, fun_fact)
-    return "#{name} is a #{color} colored planet. Its mass is #{mass_kg}kg, its distance from the sun is #{distance_from_sun_km}km and its the #{fun_fact}."
+  def summary()
+    return "#{@name} is a #{@color} colored planet. Its mass is #{@mass_kg}kg, its distance from the sun is #{@distance_from_sun_km}km and its the #{@fun_fact}."
   end
   end
