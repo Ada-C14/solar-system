@@ -206,7 +206,7 @@ describe "Planets class" do
     end
 
 
-    it "check for 'TBD' if no fun fact input" do
+    it "check for 'TBD.' if no fun fact input" do
       # Arrange
       test_planet = Planet.new(
         name: "Test Planet",
@@ -216,7 +216,7 @@ describe "Planets class" do
       )
 
       # Act && Assert
-      expect(test_planet.fun_fact).must_equal "TBD"
+      expect(test_planet.fun_fact).must_equal "TBD."
     end
   end
 
