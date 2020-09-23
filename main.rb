@@ -38,6 +38,7 @@ def main
       puts new_system.list_planets
     when 2
       puts new_system.list_planets
+      next if new_system.planets.length == 0
       puts "Which planet would you like to learn more about?"
       planet_name = gets.chomp
       new_system.find_planet_by_name(planet_name)
