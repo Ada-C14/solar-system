@@ -23,7 +23,7 @@ def main
     return planet.summary
   end
 
-  puts "Please choose from the following two options:\nlist planets\nexit\nplanet details\nadd planet"
+  puts "Please choose from the following options:\nlist planets\nexit\nplanet details\nadd planet"
   choose_option = gets.chomp.downcase
 
   if choose_option == 'list planets'
