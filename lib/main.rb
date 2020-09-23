@@ -47,29 +47,3 @@ def main
 end
 
 main
-
-
-# puts begmentu.name
-# puts begmentu.fun_fact
-#
-# puts xonziri.name
-# puts xonziri.fun_fact
-#
-# puts begmentu.summary
-# puts xonziri.summary
-# puts "############"
-#
-# list = solar_system.list_planets
-# puts list
-#
-# puts '######## '
-# found_planet = solar_system.find_planet_by_name('xonziri')
-# puts found_planet
-# puts found_planet.summary
-
-#
-# puts earth.name
-# # => Earth
-# puts earth.fun_fact
-#
-# puts earth.summary
