@@ -22,7 +22,7 @@ def main
   mercury = Planet.new('Mercury', 'burnt orange', 330, 35.98, 'Aliens live here!')
   venus = Planet.new('Venus', 'pink', 48700, 67.24, 'Both a planet and a goddess!')
   earth = Planet.new('Earth', 'blue-green', 59700, 92.96, 'We have water, air and humans!')
-  mars = Planet.new('Mars', 'red', 6420, 141.6, 'Home of the Mar\'s chocolate!')
+  mars = Planet.new('Mars', 'red', 6420, 141.6, 'Home of Mar\'s chocolate!')
   jupiter = Planet.new('Jupiter', 'orange, white and brown', 1898000, 483.8, 'I have a weird birthmark.')
   saturn = Planet.new('Saturn', 'green', 56800, 890.8, 'I have more rings than Lebron himself.')
   uranus = Planet.new('Uranus', 'purple', 868000, 17640, 'I get made fun of because of my name :(')
