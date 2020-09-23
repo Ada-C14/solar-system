@@ -2,7 +2,7 @@ class Planet
   attr_reader :name, :color, :mass_kg, :distance_from_sun_km, :fun_fact, :favorite_animal, :pronoun
 
   def initialize(name, color, mass_kg, distance_from_sun_km, fun_fact,
-                 favorite_animal: "Cat", pronoun: 'Their')
+                 favorite_animal, pronoun)
     @name = name
     @color = color
     if mass_kg.to_f > 0.0
@@ -16,7 +16,9 @@ class Planet
       raise ArgumentError.new("Distance from sun must be greater than 0")
     end
     @fun_fact = fun_fact
+    favorite_animal ||= "Cat"
     @favorite_animal = favorite_animal
+    pronoun ||= "Their"
     @pronoun = pronoun
   end
 

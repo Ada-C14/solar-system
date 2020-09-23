@@ -13,8 +13,9 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 describe 'Creation and usage of Planet class' do
   before do
     @jupiter = Planet.new('Jupiter', 'Brown', 999, 5, "Likes to eat black holes",
-                         favorite_animal: "Meerkat", pronoun: "Her")
-    @pluto = Planet.new('Pluto', 'Red', 1, 9, "Forever angry at it's planetary exclusion")
+                         "Meerkat", "Her")
+    @pluto = Planet.new('Pluto', 'Red', 1, 9, "Forever angry at it's planetary exclusion",
+                        nil, nil)
   end
 
   it "Can be initialized with various argument configurations" do
@@ -27,13 +28,13 @@ describe 'Creation and usage of Planet class' do
   end
 
   it "Cannot have a mass or distance less than 0" do
-    expect { Planet.new('Pluto', 'Yellow', 0, 5, "N/A") }.must_raise ArgumentError
-    expect { Planet.new('Sun', 'Yellow', 5, -2, 'N/A') }.must_raise ArgumentError
+    expect { Planet.new('Pluto', 'Yellow', 0, 5, "N/A", nil, nil) }.must_raise ArgumentError
+    expect { Planet.new('Sun', 'Yellow', 5, -2, 'N/A', nil, nil) }.must_raise ArgumentError
   end
 
   it "Handles bad input" do
-    expect { Planet.new('Pluto', 'Yellow', 'String', 3, "N/A")}.must_raise ArgumentError
-    expect { Planet.new('Pluto', 'Yellow', 3, 'String', "N/A")}.must_raise ArgumentError
+    expect { Planet.new('Pluto', 'Yellow', 'String', 3, "N/A", nil, nil)}.must_raise ArgumentError
+    expect { Planet.new('Pluto', 'Yellow', 3, 'String', "N/A", nil, nil)}.must_raise ArgumentError
   end
 
 end
@@ -42,8 +43,9 @@ describe 'Creation and usage of SolarSystem class' do
   before do
     @solar = SolarSystem.new("Sun")
     @jupiter = Planet.new('Jupiter', 'Brown', 999, 5, "Likes to eat black holes",
-                         favorite_animal: "Meerkat", pronoun: "Her")
-    @pluto = Planet.new('Pluto', 'Red', 1, 9, "Forever angry at it's planetary exclusion")
+                         "Meerkat", "Her")
+    @pluto = Planet.new('Pluto', 'Red', 1, 9, "Forever angry at their planetary exclusion", nil,
+                        nil)
   end
 
   it 'Can be initialized and read with proper input' do
