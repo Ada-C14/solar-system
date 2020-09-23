@@ -53,16 +53,22 @@ def main
     puts "This program has created a solar system with several planets. From here, you can:\n"
     puts "1. List the planets in the solar system (enter 1)\n"
     puts "2. Display details about a single planet in the system (enter 2)\n"
-    puts "3. Exit (enter 3)\n"
+    puts "3. Add a planet to the system (enter 3)\n"
+    puts "4. Exit (enter 4)\n"
+
     response = gets.chomp.to_i
-    if response == 1
+
+    case response
+    when 1
       puts solar_system.list_planets
-    elsif response == 2
+    when 2
       puts "Please enter the name of the planet you'd like to know more about:"
       planet_inspect = gets.chomp
       planet_inspect = solar_system.find_planet_by_name(planet_inspect)
       puts planet_inspect.summary
-    elsif response == 3
+    when 3
+      solar_system.user_add_planet
+    when 4
       puts "OK! Terminating program."
       continue = false
     else

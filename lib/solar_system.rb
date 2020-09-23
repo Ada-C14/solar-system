@@ -37,4 +37,28 @@ class SolarSystem
     distance_bw_planets = (planet_1.distance_from_sun_km - planet_2.distance_from_sun_km).abs
     return distance_bw_planets
   end
+
+  def user_add_planet
+    puts "We need the following details about the planet:"
+    puts "What is the name of the planet?"
+    planet_name = gets.chomp
+    puts "What color is the planet?"
+    planet_color = gets.chomp
+    puts "What is the mass (in kg) of the planet?"
+    planet_mass_kg = gets.chomp.to_i
+    puts "What is the planet's distance from the sun (in km)?"
+    planet_dist_km = gets.chomp.to_i
+    puts "What is a fun fact about the planet?"
+    planet_fun_fact = gets.chomp
+
+    new_planet = Planet.new(
+        planet_name,
+        planet_color,
+        planet_mass_kg,
+        planet_dist_km,
+        planet_fun_fact
+    )
+
+    add_planet(new_planet)
+  end
 end
