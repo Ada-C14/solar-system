@@ -34,7 +34,7 @@ def main
       puts "Would you like to take us up on this exciting offer? \nyes \nno"
       answer4 = gets.chomp.downcase
       if answer4 == "yes"
-        puts "Please enter your planet's details"
+        puts "Please enter your stunnign new planet's details"
         puts "Enter the planet's name:"
         name = gets.chomp.capitalize
         puts "Enter the planet's color:"
@@ -49,8 +49,8 @@ def main
         added_planet = Planet.new(name, color, mass_kg, distance_km, fun_fact)
         solar_system.add_planet(added_planet)
         planet_list = solar_system.list_planets
-        puts "Including your new planet, Leonidas shines through the universe with the following planets \n#{planet_list}"
-      elsif
+        puts "Now including your new planet, Leonidas shines throughout the universe with the following planets \n#{planet_list}"
+      elsif answer4 == "no"
         puts "It's true, Leonidas has enough planets as it is. Safe journey!"
         exit
       else
