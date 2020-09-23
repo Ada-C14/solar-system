@@ -12,7 +12,7 @@ def main
   mars = Planet.new('Mars', 'red', 6.39e23, 14.16e8, 'The second-smallest planet in the solar system')  
   puts "#{ mars.name } is #{ mars.fun_fact.downcase }"
   puts mars.summary  
-  
+
   # For wave 2
   # create an instance of SolarSystem, add all your Planets to it, and then print the list
   solar_system = SolarSystem.new("Sol")
@@ -24,8 +24,10 @@ def main
 
   # Exercise SolarSystem#find_planet_by_name
   found_planet = solar_system.find_planet_by_name('saturn')
-  puts found_planet
-  puts found_planet.summary if found_planet.class == Planet
+  # puts found_planet
+  # puts found_planet.summary if found_planet.class == Planet
+  puts "We couldn't find this planet, please try agian" if found_planet.nil?
+  found_planet.each { |planet| puts "#{ planet.summary }\n"}
 =end
 
   # For wave 3
@@ -43,19 +45,29 @@ def main
   stop_loop = false
   until stop_loop
     puts "\nWhat do you want to see?"
-    options.each { |option| puts "- #{ option }" }
+    options.each_with_index { |option, index| puts "#{ index+1 }. #{ option }" }
     user_response = gets.chomp.downcase
     
-    if user_response == "list planets"
+    case user_response
+    when "list planets", "1"
       puts "\n", list = solar_system.list_planets 
-    elsif user_response == "planet details"
+    when "planet details", "2"
       puts "\nYay, let's see more details about the planets. Which planet do you want to see?"
       puts list = solar_system.list_planets 
+      print "==> "
       user_planet = gets.chomp.downcase
       found_planet = solar_system.find_planet_by_name(user_planet)
-      puts "Sorry, we don't have this planet." if found_planet.nil?
-      puts "\n", found_planet.summary if found_planet.class == Planet
-    elsif user_response == "add planet"
+      
+      while found_planet.count == 0
+        puts "\nSorry, we don't have this planet. Please try again.", list = solar_system.list_planets 
+        print "==> "
+        user_planet = gets.chomp.downcase
+        found_planet = solar_system.find_planet_by_name(user_planet)
+      end
+      
+      puts "\nWe have #{ found_planet.count } planet(s) named #{ user_planet.capitalize }"
+      found_planet.each_with_index { |planet, index| puts "#{ index+1 }. #{ planet.summary }"}
+    when "add planet", "3"
       puts "\nSo exciting, you're to add a new planet!"  
       new_planet = Hash.new
       elements_to_give = ["name", "color", "mass_kg", "distance_from_sun_km", "fun_fact"]
@@ -76,7 +88,7 @@ def main
       
       solar_system.add_planet(user_planet) if rescue_status == false
       puts "\nNow, want to see your new planet on the main menu? Please go check \"list planets\"" if rescue_status == false
-    elsif user_response == "distance between planets"
+    when "distance between planets", "4"
       puts "\n Which two planets do you want to see their distance?"
       puts list = solar_system.list_planets 
       two_planet = 1
@@ -93,7 +105,7 @@ def main
         end
       end      
       puts "The distance between #{ planets_for_distance[0] } and #{ planets_for_distance[1] } is #{solar_system.distance_between(planets_for_distance[0], planets_for_distance[1])}km." 
-    elsif user_response == "exit"
+    when "exit", "5"
       stop_loop = true 
     else
       puts "Please enter the options listed."
