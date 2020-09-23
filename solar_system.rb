@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class SolarSystem
 
   attr_reader :star_name, :planets
@@ -16,5 +17,10 @@ class SolarSystem
     @planets.each_with_index do |planet_name, index|
       planets_list += "\n#{index + 1}. #{planet_name}"
     end
+    return planets_list
+  end
+
+  def find_planet_by_name(name)
+    name = name.downcase.capitalize
   end
 end
