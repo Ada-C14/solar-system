@@ -29,5 +29,22 @@ class SolarSystem
      end
      end
       return "Sorry,this planet is in the process of being created many light years away and cannot be located just yet."
-      end
+  end
+
+  def add_new_planet
+    puts "It's a-me, Mario! Add some information about your new planet:"
+    puts "name:"
+    new_name = gets.chomp
+    puts "color:"
+    new_color = gets.chomp
+    puts "mass_kg (integer only):"
+    new_mass = gets.chomp.to_i
+    puts "distance from sun (must be integer in km):"
+    new_distance = gets.chomp.to_i
+    puts "What is your fun-a fact?"
+    new_fun_fact = gets.chomp
+
+    new_name = Planet.new(new_name,new_color,new_mass,new_distance,new_fun_fact)
+    add_planet(new_name)
+  end
 end
