@@ -32,7 +32,6 @@ def main
       exit
 
     when 3
-      print "Please enter the name of the planet you want to learn about => "
       puts solar_system.get_details
 
     when 4
