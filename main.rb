@@ -23,8 +23,13 @@ def main
       print "Which planet would you like to learn about? "
       found_planet = gets.chomp
       planet_details = solar_system.find_planet_by_name(found_planet)
+      print planet_details
       print planet_details.summary
-    elsif user_input = "add_planet"
+    elsif user_input == "add planet"
+      planet_details = solar_system.users_planet
+      print planet_details
+       # print planet_details.summary
+
 
 
     elsif user_input == "exit"
@@ -33,11 +38,11 @@ def main
   end
 
   # p earth.summary
-  list = solar_system.list_planets
-  puts list
-
-  planet_info = solar_system.find_planet_by_name('earth')
-  puts planet_info.summary
+  # list = solar_system.list_planets
+  # puts list
+  #
+  # planet_info = solar_system.find_planet_by_name('earth')
+  # puts planet_info.summary
 
 end
 
