@@ -13,7 +13,7 @@ def main
   all_planets.each do |planet|
     solar_system.add_planet(planet)
   end
- 
+
   while true
     puts "please select one: \n- list planets \n- planet details \n- add planet \n- enter exit to quit!"
     print "? "
