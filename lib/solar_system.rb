@@ -22,8 +22,19 @@ class SolarSystem
   def find_planet_by_name(planet)
     planet = planet.downcase
     planet_instance = nil
+    count = 0
     @planets.length.times do |index|
-      planet_instance = @planets[index] if @planets[index].name.downcase == planet
+      if @planets[index].name.downcase == planet
+        planet_instance = @planets[index]
+        count += 1
+      # else
+      # not sure why when the else clause is added, it defaults to this
+      # planet_instance = "No planet by that name."
+      end
+
+      if count > 1
+        planet_instance = 'More than one instance of this planet'
+      end
     end
     return planet_instance
   end
