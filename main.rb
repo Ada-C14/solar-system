@@ -3,11 +3,14 @@ require_relative 'solar_system'
 
 def main
   solar_system = SolarSystem.new('Sol')
-  earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'only planet known to support life')
-  mars = Planet.new('Mars', 'red', 5.972e24, 1.496e8, 'aliens?')
+  earth = Planet.new('Earth', 'blue-green', 5.972e24, 150.11, 'is the only planet known to support life')
+  venus = Planet.new('Venus', 'grey', 4.868e24, 107.85, 'spins in the opposite direction to most planets')
+  neptune = Planet.new('Neptune', 'blue', 1.024e26, 4476.3, 'orbits the sun every 165 years')
+
   #
   solar_system.add_planet(earth)
-  solar_system.add_planet(mars)
+  solar_system.add_planet(venus)
+  solar_system.add_planet(neptune)
 
 
 
@@ -29,21 +32,10 @@ def main
       planet_details = solar_system.users_planet
       print planet_details
        # print planet_details.summary
-
-
-
     elsif user_input == "exit"
       return false
     end
   end
-
-  # p earth.summary
-  # list = solar_system.list_planets
-  # puts list
-  #
-  # planet_info = solar_system.find_planet_by_name('earth')
-  # puts planet_info.summary
-
 end
 
 main

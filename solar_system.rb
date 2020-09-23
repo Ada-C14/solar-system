@@ -25,19 +25,19 @@ class SolarSystem
   end
 
   def users_planet
-    print "What's it called?"
+    print "What's it called? "
     user_planet_name = gets.chomp
 
-    print "What color is it?"
+    print "What color is it? "
     color = gets.chomp
 
-    print "What is it's mass in kg?"
+    print "What is it's mass in kg? "
     mass_kg = gets.chomp
 
-    print "What is it's distnace from the sun in km?"
+    print "What is it's distnace from the sun in km? "
     distance_from_sun_km = gets.chomp
 
-    print "Fun fact?"
+    print "Fun fact? "
     fun_fact = gets.chomp
 
     user_planet = Planet.new(user_planet_name, color, mass_kg, distance_from_sun_km, fun_fact)
