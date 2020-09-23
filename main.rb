@@ -19,13 +19,44 @@ def main
   solar_system.add_planet(shaila)
   solar_system.add_planet(amadi)
 
-  planet_list = solar_system.list_planets
-  puts planet_list
+  def planet_details(planet)
+    return planet.summary
+  end
 
-  found_planet = solar_system.find_planet_by_name('india')
-  puts found_planet
-  puts found_planet.summary
+  puts "Please choose from the following two options:\nlist planets\nexit\nplanet details\nadd planet"
+  choose_option = gets.chomp.downcase
 
+  if choose_option == 'list planets'
+    puts solar_system.list_planets
+  elsif choose_option == 'exit'
+    exit
+  elsif choose_option == 'planet details'
+    puts "Which planet would you like to learn about?"
+    planet = gets.chomp.downcase
+    planet_of_interest = solar_system.find_planet_by_name(planet)
+    if planet_of_interest == nil
+      puts "Please enter a valid planet name"
+      planet = gets.chomp.downcase
+    end
+    puts planet_of_interest.summary
+  elsif choose_option == 'add planet'
+    puts "Please enter the planet details"
+    puts "Enter the planet's name:"
+    name = gets.chomp.capitalize
+    puts "Enter the color of the planet:"
+    color = gets.chomp.downcase
+    puts "Enter the the mass in kilograms (please use numbers in the answer):"
+    mass = gets.chomp.to_i
+    puts "Enter the planet's distance from the sun in kilometers (please use numbers in the answer):"
+    distance = gets.chomp.to_i
+    puts "Enter a fun fact about this planet:"
+    fun_fact = gets.chomp.capitalize
+
+    new_planet = Planet.new(name, color, mass, distance, fun_fact)
+    solar_system.add_planet(new_planet)
+    planet_list = solar_system.list_planets
+    puts "Your new planet list is:\n#{planet_list}"
+  end
 end
 
 main
