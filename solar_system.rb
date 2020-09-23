@@ -7,8 +7,11 @@ class SolarSystem
     @planets = []
   end
 
-  def add_planet(planet)
-    @planets << planet
+  def add_planet(new_planet)
+    @planets.each do |planet|
+      raise ArgumentError.new("Sorry! A planet with that name already exists in this solar system") if planet.name == new_planet.name
+    end
+      @planets << new_planet
   end
 
   def list_planets
@@ -26,9 +29,9 @@ class SolarSystem
     raise ArgumentError.new('No planet by that name found!')
   end
 
-  # I don't understand how 'assume that planets are lined up in a straight line'
-  # is a simplifying assumption because two objects are always in a straight line
-  # relative to each other in a cartesian system. Maybe this is supposed to mean
+  # I don't understand how 'assume that all the planets are lined up in a straight
+  # line' is a simplifying assumption because two objects are always in a straight
+  # line relative to each other in a cartesian system. Maybe this is supposed to mean
   # they're lined up in a line relative to each other AND the star they orbit?
   # But in this case there are multiple orientations the planets could take relative
   # to the star, even without accounting for orbital eccentricity. I'm going to make

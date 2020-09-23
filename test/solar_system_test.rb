@@ -76,7 +76,15 @@ describe 'SolarSystem class' do
 
   describe 'add_planet method' do
     it 'Adds a planet to a solar system object' do
+      mu_arae_system = SolarSystem.new('Mu Arae')
+      mu_arae_system.add_planet(dulcinea)
       expect(mu_arae_system.planets).must_equal [dulcinea]
+    end
+
+    it "raises ArgumentError if planet is already in the solar system" do
+      expect{
+        mu_arae_system.add_planet(dulcinea)
+      }.must_raise ArgumentError
     end
   end
 
