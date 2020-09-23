@@ -12,7 +12,7 @@ class SolarSystem
   end
 
   def list_planets
-    str_planets = "Planets orbiting #{self.star_name}"
+    str_planets = "Planets orbiting #{self.star_name}:"
     @planets.each_with_index do |planet, i|
       str_planets += "\n#{i+1}.  #{planet.name}"
     end
@@ -20,9 +20,12 @@ class SolarSystem
   end
 
   def find_planet_by_name(planet_name)
-    planets.each do |planet|
-      return planet if planet.name.downcase == planet_name.downcase
+    @planets.each do |planet|
+      if planet_name.upcase == planet.name.upcase
+        return planet
+      end
     end
+    return nil
   end
 
   def distance_between(planet1, planet2)
