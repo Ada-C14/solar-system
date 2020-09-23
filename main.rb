@@ -72,7 +72,8 @@ def main
 
     elsif user_input == "3"  # VIEW PLANET DETAILS
 
-      planet = get_valid_planet("   Enter a planet you would like to know more about: ", solar_system)
+      print "\n   Enter a planet you would like to know more about: "
+      planet = solar_system.find_planet_by_name(gets.chomp)
 
       if planet
         puts planet.summary.colorize(:light_magenta)
@@ -82,7 +83,7 @@ def main
 
     elsif user_input == "4"  # FIND DISTANCE BETWEEN 2 PLANETS
 
-      puts "\n   Let's calculate the distance between 2 planets!\n".colorize(:light_cyan)
+      puts "\n   Let's calculate the distance between 2 planets!".colorize(:light_cyan)
       planet_1 = get_valid_planet("   Enter Planet 1: ", solar_system)
       planet_2 = get_valid_planet("   Enter Planet 2: ", solar_system)
 
