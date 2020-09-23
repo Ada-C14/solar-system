@@ -22,6 +22,10 @@ class SolarSystem
     print "Which planet would you like to learn about? "
     puts
     found_planet = gets.chomp
+    # i'd like to raise and rescue here instead
+    if !(find_planet_by_name(found_planet))
+      raise ArgumentError.new("You've entered #{found_planet} which isn't on the planets list.")
+    end
     planet_details = find_planet_by_name(found_planet)
     return planet_details.summary
   end
@@ -34,7 +38,10 @@ class SolarSystem
   def get_users_planet
     print "What's the planet called? "
     user_planet_name = gets.chomp.capitalize
-
+      if find_planet_by_name(user_planet_name)
+        raise ArgumentError.new("You've entered a duplicate! #{user_planet_name} is already included in the list.")
+      end
+    # would like to make sure at the very least user isn't entering blanks... and numbers mass and distnace. raise and rescue
     print "What color is it? "
     color = gets.chomp
 

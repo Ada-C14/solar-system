@@ -13,7 +13,7 @@ def main
 
   puts "Welcome to Anya's Solar System assignment!"
   while true
-    puts "\n\n**********************************************"
+    puts "\n**********************************************"
     print "\nWhat would you like to do next? (list planets, planet details, add planet, or exit): "
     user_input = gets.chomp
     case user_input
@@ -28,6 +28,9 @@ def main
       print planet_details
     when "exit"
       return false
+    else
+      # same as in solar_system, would like to trade this in for raise and rescue but having trouble figuring out how to make it work.
+      raise ArgumentError.new("Didn't choose valid option (entered #{user_input})")
     end
   end
 end
