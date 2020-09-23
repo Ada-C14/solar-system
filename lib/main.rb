@@ -1,7 +1,6 @@
 require_relative "planet"
 require_relative "solar_system"
 
-
 def main
   # create a solar system
   solar_system = SolarSystem.new("Sol")

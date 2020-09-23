@@ -26,8 +26,5 @@ class Planet
     valid = false if user_input.to_i < 0
     return valid
   end
-
+  
 end
-
-
-# Planet.new('Earth', 'blue-green', -3, 1.496e8, 'Only planet known to support life')

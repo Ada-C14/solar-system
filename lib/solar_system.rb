@@ -8,7 +8,12 @@ class SolarSystem
   end
 
   def find_planet_by_name(planet_name)
-    return @planets.find{|planet| planet.name == planet_name.capitalize}
+    planet_name = planet_name.capitalize
+    possible_names = @planets.map{|planet| planet.name}
+    unless possible_names.include?(planet_name)
+      raise ArgumentError.new("That is not a valid planet name")
+    end
+    return @planets.find{|planet| planet.name == planet_name}
   end
 
   def add_planet(planet)
