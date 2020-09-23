@@ -31,6 +31,6 @@ describe 'Planet' do
     fun_fact = "it is the only planet known to support life."
 
     earth = Planet.new(name, color, mass_kg, distance_from_star_km, fun_fact)
-    expect(earth.summary).must_be_instance_of String
+    expect(earth.summary).must_equal "Earth is blue-green, weighs 5.972e+24 kg, and is 149600000.0 km from the sun. A fun fact is that it is the only planet known to support life."
   end
 end
