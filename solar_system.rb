@@ -18,7 +18,10 @@ class SolarSystem
     return print_out_string
   end
 
+
   def find_planet_by_name(planet)
-    return @planets.select { |instance| instance.name == planet.capitalize }
+    planet_details = @planets.find { |instance| instance.name == planet.capitalize }
+    return planet_details
+    # return planet.summary
   end
 end

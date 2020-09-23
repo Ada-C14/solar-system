@@ -9,7 +9,11 @@ class Planet
     @fun_fact = fun_fact
   end
 
+
+
   def summary
+    # print "Which planet would you like to learn about? "
+    # planet = gets.chomp
     return "#{@name} is a #{color} planet with a mass of #{@mass_kg}. It is #{@distance_from_sun_km} km from the sun. Did you know that #{@name} is the #{@fun_fact}?"
   end
 end
