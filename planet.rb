@@ -13,7 +13,7 @@ class Planet
   end
 
   def summary
-    summary = " Name: #{@name}\n Color: #{@color}\n Mass: #{@mass_kg}\n Distance from the Sun:#{@distance_from_sun_km}\n Fun Fact: #{@fun_fact}"
+    summary = "\n Name: #{@name}\n Color: #{@color}\n Mass: #{@mass_kg}\n Distance from the Sun:#{@distance_from_sun_km}\n Fun Fact: #{@fun_fact}\n\n".colorize(:green)
     return summary
   end
 
