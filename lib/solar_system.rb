@@ -11,10 +11,14 @@ class SolarSystem
   end
 
   def list_planets
-    list = "Planets orbiting the #{star_name}"
-    @planets.length.times do |index|
-      list_item = "\n #{index + 1}. #{@planets[index].name}"
-      list += list_item
+    list = "Planets orbiting the star #{star_name}"
+    if @planets.length == 0
+      list += "\nCurrently no planets orbiting the #{star_name}"
+    else
+      @planets.length.times do |index|
+        list_item = "\n #{index + 1}. #{@planets[index].name}"
+        list += list_item
+      end
     end
     return list
   end
