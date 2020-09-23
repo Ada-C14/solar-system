@@ -14,13 +14,18 @@ class SolarSystem
 
   def list_planets
     planets_list = "Planets orbiting #{@star_name}:"
-    @planets.each_with_index do |planet_name, index|
-      planets_list += "\n#{index + 1}. #{planet_name}"
+    @planets.each_with_index do |planet, index|
+      planets_list += "\n#{index + 1}. #{planet.name}"
     end
     return planets_list
   end
 
   def find_planet_by_name(name)
-    name = name.downcase.capitalize
+    @planets.each do |planet|
+      if planet.name.downcase == name.downcase
+        return planet
+      end
+    end
+    raise ArgumentError, "#{name} is not in the list"
   end
 end
