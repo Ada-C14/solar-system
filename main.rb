@@ -14,9 +14,13 @@ def main
   solar_system.add_planet(mars)
 
   puts solar_system.list_planets
+<<<<<<< HEAD
   puts solar_system.find_planet_by_name("venus")
   found_planet = solar_system.find_planet_by_name("earth")
   puts found_planet.summary
+=======
+  puts solar_system.find_planet_by_name("eArth")
+>>>>>>> 06c57e95f56263c5f605a2234123c0ed42616114
 end
 
 main

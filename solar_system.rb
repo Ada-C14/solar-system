@@ -25,7 +25,11 @@ class Solar_system
     if index_of_desired_instance != nil
       return  @planets[index_of_desired_instance]
     else
+<<<<<<< HEAD
       return "#{name_of_planet.capitalize} is not currently an instance of the Class."
+=======
+      return nil
+>>>>>>> 06c57e95f56263c5f605a2234123c0ed42616114
     end
   end
 
