@@ -11,7 +11,7 @@ class SolarSystem
   end
 
   def list_planets
-    list = "Planets orbiting the star #{star_name}"
+    list = "Planets orbiting the star #{star_name}:"
     if @planets.length == 0
       list += "\nCurrently no planets orbiting the #{star_name}"
     else
