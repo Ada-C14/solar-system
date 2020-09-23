@@ -7,12 +7,9 @@ def main
   venus = Planet.new('Venus', 'grey', 4.868e24, 107.85, 'spins in the opposite direction to most planets')
   neptune = Planet.new('Neptune', 'blue', 1.024e26, 4476.3, 'orbits the sun every 165 years')
 
-  #
   solar_system.add_planet(earth)
   solar_system.add_planet(venus)
   solar_system.add_planet(neptune)
-
-
 
   while true
     puts "\nWhat would you like to do next? (list planets or exit): "
@@ -23,11 +20,9 @@ def main
       print list
 
     elsif user_input == "planet details"
-      print "Which planet would you like to learn about? "
-      found_planet = gets.chomp
-      planet_details = solar_system.find_planet_by_name(found_planet)
+      planet_details = solar_system.planet_details_ask
       print planet_details
-      print planet_details.summary
+
     elsif user_input == "add planet"
       planet_details = solar_system.users_planet
       print planet_details

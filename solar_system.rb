@@ -18,6 +18,13 @@ class SolarSystem
     return print_out_string
   end
 
+  def planet_details_ask
+    print "Which planet would you like to learn about? "
+    found_planet = gets.chomp
+    planet_details = find_planet_by_name(found_planet)
+    return planet_details.summary
+  end
+
   def find_planet_by_name(planet)
     planet_details = @planets.find { |instance| instance.name == planet.capitalize }
     return planet_details
