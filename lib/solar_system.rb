@@ -1,11 +1,36 @@
-require_relative 'planet'
-
 class SolarSystem
   attr_reader :star_name, :planets
-  
+
   def initialize(star_name)
-    raise ArgumentError.new("Planet name is empty!") if star_name = ''
+    raise ArgumentError.new("Planet name must be a string") if star_name.class != String
+    raise ArgumentError.new("Planet name is empty!") if star_name.strip == ''
     @star_name = star_name
     @planets = []
+    @colors = Range.new(0,7).to_a
+  end
+
+  def add_planet(planet)
+    raise ArgumentError.new("Planet is not of Planet class") if planet.class != Planet
+    @planets << planet
+  end
+
+  def list_planets
+    string = "Planets orbitting #{@star_name}\n"
+    planets.each_with_index do |planet, i|
+      string << Rainbow("#{i+1}. #{@planets[i].name}\n").color(@colors.sample)
+    end
+    return string
+  end
+
+  def find_planet_by_name(planet_name)
+    return planets.find_all { |planet| planet.name.casecmp?(planet_name)}
+    return nil
+  end
+
+  def distance_between(planet1, planet2)
+    unless planet1.class == Planet && planet2.class == Planet
+      raise ArgumentError.new("Object not of class Planet")
+    end
+    return planet1.distance_from_sun_km - planet2.distance_from_sun_km.round(2)
   end
 end
