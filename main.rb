@@ -31,7 +31,9 @@ def main
   elsif choose_option == 'exit'
     exit
   elsif choose_option == 'planet details'
-    puts "Which planet would you like to learn about?"
+    puts "Which planet would you like to learn about? Here are your planet options"
+    puts solar_system.list_planets
+    puts
     planet = gets.chomp.downcase
     planet_of_interest = solar_system.find_planet_by_name(planet)
     if planet_of_interest == nil
