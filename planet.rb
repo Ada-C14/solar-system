@@ -1,8 +1,5 @@
 class Planet
   #info about single planet
-  # readable from outside the class, but not writable.
-  attr_reader :name, :color, :mass_kg, :distance_from_sun_km, :fun_fact
-
   def initialize(name, color, mass_kg, distance_from_sun_km, fun_fact)
     @name = name
     @color = color
@@ -11,8 +8,11 @@ class Planet
     @fun_fact = fun_fact
   end
 
+  # readable from outside the class, but not writable.
+  attr_reader :name, :color, :mass_kg, :distance_from_sun_km, :fun_fact
+
   def summary
-    return "name: #{@name} - color: #{@color} - mass_kg: #{@mass_kg} - distance from sun: #{@distance_from_sun_km} - fun fact: #{@fun_fact}"
+    return "#{@name} is a #{@color}. it has a mass of #{@mass_kg} - distance from sun: #{@distance_from_sun_km} - fun fact: #{@fun_fact}"
   end
 end
 
