@@ -12,7 +12,7 @@ class Planet
   end
 
   def summary
-    return "name: #{name}, color: #{color}, mass: #{mass_kg} kg, distance from the sun: #{distance_from_sun_km} km, fun fact: #{fun_fact}"
+    return "#{name} has a #{color} color. Its mass is #{mass_kg} kg and its #{distance_from_sun_km} km away from the sun. Here's a fun fact: #{fun_fact}."
   end
 
 

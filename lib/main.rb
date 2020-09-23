@@ -6,43 +6,44 @@ require_relative 'solar_system'
 def get_planet_details(solar_system)
   puts "\nWhat planet would you like to learn more about?"
   planet = gets.chomp
-  # planet_object will either be a Planet Object or false
+  # planet_object will either be a Planet Object or a string explaining to the user that the planet does not exist.
   planet_object = solar_system.find_planet_by_name(planet)
-  # return the summary if Planet Object otherwise return a string explaining to user.
-  planet_object ? planet_object.summary : "This planet doesn't exist in the Solar System yet. You can add a new one if you'd like."
+  puts planet_object.is_a?(Planet) ? planet_object.summary : planet_object
 end
 
 # add a user inputted planet to the solar system
 def add_planet(solar_system)
-    puts "\nPlease provide a Planet name"
-    name = gets.chomp
+  puts "\nPlease provide a Planet name"
+  name = gets.chomp
 
-    # if there is an existing planet, return message to user
-    if solar_system.find_planet_by_name(name)
-      return "This planet already exists in the Solar System."
-    end
+  # if there is an existing planet, return message to user
+  if solar_system.find_planet_by_name(name).is_a?(Planet)
+    puts "This planet already exists in the Solar System."
+    return
+  end
 
-    puts "What color is #{name}?"
-    color = gets.chomp
+  puts "What color is #{name}?"
+  color = gets.chomp
 
-    puts "What is the mass in kg of #{name}?"
-    mass_kg = gets.chomp.to_f
+  puts "What is the mass of #{name} in kg?"
+  mass_kg = gets.chomp.to_f
 
-    puts "How far is this planet from the sun in km?"
-    distance = gets.chomp.to_f
+  puts "How far is this planet from the sun in km?"
+  distance = gets.chomp.to_f
 
-    puts "Last step, please provide a fun fact for #{name}!"
-    fun_fact = gets.chomp
+  puts "Last step, please provide a fun fact for #{name}!"
+  fun_fact = gets.chomp
 
-    # rescue the argument error for mass and distance
-    begin
-      planet = Planet.new(name, color, mass_kg, distance, fun_fact)
-    rescue ArgumentError
-      return "mass and/or distance from the sun need to be numeric and greater than 0"
-    end
-    solar_system.add_planet(planet)
-    return solar_system.list_planets
+  # rescue the argument error for mass and distance
+  begin
+    planet = Planet.new(name, color, mass_kg, distance, fun_fact)
+  rescue ArgumentError
+    puts "mass and distance from the sun need to be numeric and greater than 0"
+    return
+  end
 
+  solar_system.add_planet(planet)
+  puts solar_system.list_planets
 end
 
 # find the distance between two user inputted planet names
@@ -52,21 +53,17 @@ def find_distance(solar_system)
   planet_1 = gets.chomp
   print "planet_2 => "
   planet_2 = gets.chomp
-  distance = solar_system.distance_between(planet_1, planet_2)
-  if distance
-    puts "The distance between #{planet_1} and #{planet_2} is #{distance} km"
-  else
-    puts "One or both of the planets you've inputted are not in our solar system"
-  end
+  puts solar_system.distance_between(planet_1, planet_2)
+
 end
 
 def list_options
   puts "\nPlease choose from the options below:"
-  puts "\t1. list planets (list)"
-  puts "\t2. planet details (details)"
-  puts "\t3. add planet (add)"
-  puts "\t4. find distance (distance)"
-  puts "\t5. exit"
+  puts "\tlist planets (list)"
+  puts "\tplanet details (details)"
+  puts "\tadd planet (add)"
+  puts "\tfind distance (distance)"
+  puts "\texit"
 end
 
 def initialize_solar_system
@@ -89,20 +86,21 @@ def main
   puts "Hello! Welcome to the Solar System."
 
   while true
+    sleep 0.5
     list_options
     puts "what would you like to do?"
 
     input = gets.chomp.downcase
     case input
-    when "list planets", 1, "list"
+    when "list planets", "list"
       puts solar_system.list_planets
-    when "planet details", 2, "details"
-      puts get_planet_details(solar_system)
-    when "add planet", 3, "add"
-      puts add_planet(solar_system)
-    when "find distance", 4, "distance"
+    when "planet details", "details"
+      get_planet_details(solar_system)
+    when "add planet", "add"
+      add_planet(solar_system)
+    when "find distance", "distance"
       find_distance(solar_system)
-    when "exit", 5
+    when "exit"
       puts "Thanks for visiting our Solar System!"
       break
     else
