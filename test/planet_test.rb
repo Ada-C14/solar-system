@@ -156,7 +156,7 @@ describe "Planets class" do
           color: :pink,
           mass_kg: -1e10,
           distance_from_sun_km: 1e10,
-          fun_fact: "Negative mass test."
+          fun_fact: "Non-positive mass test."
       ) }.must_raise ArgumentError
     expect{
       test_planet = Planet.new(
@@ -164,7 +164,24 @@ describe "Planets class" do
           color: :pink,
           mass_kg: 1e10,
           distance_from_sun_km: -1e10,
-          fun_fact: "Negative distance test."
+          fun_fact: "Non-positive distance test."
+      ) }.must_raise ArgumentError
+    #per specification in README, mass and distance must be "numbers that are greater than zero"
+      expect{
+      test_planet = Planet.new(
+          name: "Test Planet",
+          color: :pink,
+          mass_kg: 0,
+          distance_from_sun_km: 1e10,
+          fun_fact: "Non-positive distance test."
+      ) }.must_raise ArgumentError
+      expect{
+      test_planet = Planet.new(
+          name: "Test Planet",
+          color: :pink,
+          mass_kg: 1e10,
+          distance_from_sun_km: 0,
+          fun_fact: "Non-positive distance test."
       ) }.must_raise ArgumentError
     end
 
