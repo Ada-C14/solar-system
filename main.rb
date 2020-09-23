@@ -1,5 +1,5 @@
 require_relative "Planet"
-
+require_relative "Solar_system"
 
 def main
   # ... do stuff with planets ...
@@ -9,6 +9,12 @@ def main
   puts earth.summary
   puts mars.summary
 
+  solar_system = Solar_system.new("Sun")
+  solar_system.add_planet(earth)
+  solar_system.add_planet(mars)
+
+  puts solar_system.list_planets
+  puts solar_system.find_planet_by_name("eArth")
 end
 
 main
