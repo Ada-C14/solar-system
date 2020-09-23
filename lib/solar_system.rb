@@ -7,8 +7,14 @@ class SolarSystem
     @planets = []
   end
 
+  # add planet and prevent duplicate entries.
   def add_planet(planet)
-    planets << planet
+    # if planet name already exists, return false
+    if find_planet_by_name(planet.name)
+      return false
+    else
+      planets << planet
+    end
   end
 
   def list_planets
@@ -19,9 +25,9 @@ class SolarSystem
     return planets_string
   end
 
-  # returns planet object if available in planets array
+  # takes a planet name (string) and returns planet object if available in planets array or false if not
   def find_planet_by_name(planet_name)
-    found_planet = planets.select {|planet| planet.name.downcase == planet_name.downcase}
+    found_planet = planets.select {|planet_object| planet_object.name.downcase == planet_name.downcase}
     found_planet.empty? ? false : found_planet.first
   end
 
