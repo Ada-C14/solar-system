@@ -18,7 +18,7 @@ class SolarSystem
     return print_out_string
   end
 
-  def planet_details_ask
+  def planet_details_helper
     print "Which planet would you like to learn about? "
     found_planet = gets.chomp
     planet_details = find_planet_by_name(found_planet)
@@ -31,9 +31,9 @@ class SolarSystem
     # return planet.summary
   end
 
-  def users_planet
+  def get_users_planet
     print "What's it called? "
-    user_planet_name = gets.chomp
+    user_planet_name = gets.chomp.capitalize
 
     print "What color is it? "
     color = gets.chomp
@@ -42,15 +42,15 @@ class SolarSystem
     mass_kg = gets.chomp
 
     print "What is it's distnace from the sun in km? "
-    distance_from_sun_km = gets.chomp
+    distance_from_sun_mil_km = gets.chomp
 
     print "Fun fact? "
     fun_fact = gets.chomp
 
-    user_planet = Planet.new(user_planet_name, color, mass_kg, distance_from_sun_km, fun_fact)
+    users_planet = Planet.new(user_planet_name, color, mass_kg, distance_from_sun_mil_km, fun_fact)
 
-    add_planet(user_planet)
-    return user_planet.summary
+    add_planet(users_planet)
+    return users_planet.summary
 
     # add_planet(user_planet)
 

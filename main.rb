@@ -2,7 +2,7 @@ require_relative 'planet'
 require_relative 'solar_system'
 
 def main
-  solar_system = SolarSystem.new('Sol')
+  solar_system = SolarSystem.new('Solar System')
   earth = Planet.new('Earth', 'blue-green', 5.972e24, 150.11, 'is the only planet known to support life')
   venus = Planet.new('Venus', 'grey', 4.868e24, 107.85, 'spins in the opposite direction to most planets')
   neptune = Planet.new('Neptune', 'blue', 1.024e26, 4476.3, 'orbits the sun every 165 years')
@@ -11,8 +11,9 @@ def main
   solar_system.add_planet(venus)
   solar_system.add_planet(neptune)
 
+  puts "Welcome to Anya's Solar System assignment!"
   while true
-    puts "\nWhat would you like to do next? (list planets or exit): "
+    print "\nWhat would you like to do next? (list planets, planet details, add planet, or exit): "
     user_input = gets.chomp
 
     if user_input == "list planets"
@@ -20,11 +21,11 @@ def main
       print list
 
     elsif user_input == "planet details"
-      planet_details = solar_system.planet_details_ask
+      planet_details = solar_system.planet_details_helper
       print planet_details
 
     elsif user_input == "add planet"
-      planet_details = solar_system.users_planet
+      planet_details = solar_system.get_users_planet
       print planet_details
        # print planet_details.summary
     elsif user_input == "exit"
