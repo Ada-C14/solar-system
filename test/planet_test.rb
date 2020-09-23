@@ -40,11 +40,11 @@ describe "Planets class" do
       )
 
       #Assert
-      expect(test_planet.name).must_be_kind_of String
-      expect(test_planet.color).must_be_kind_of Symbol
-      expect(test_planet.mass_kg).must_be_kind_of Float
-      expect(test_planet.distance_from_sun_km).must_be_kind_of Float
-      expect(test_planet.fun_fact).must_be_kind_of String
+      expect(test_planet.name).must_equal "Test Planet"
+      expect(test_planet.color).must_equal :pink
+      expect(test_planet.mass_kg).must_equal 1e10
+      expect(test_planet.distance_from_sun_km).must_equal 1e10
+      expect(test_planet.fun_fact).must_equal "Initialization test."
     end
 
     it "check for incorrect initialization parameters" do
