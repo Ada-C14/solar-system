@@ -1,3 +1,4 @@
+require_relative 'planet'
 
 class SolarSystem
 
@@ -21,14 +22,12 @@ class SolarSystem
     return list
     end
 
-  def find_planet_by_name(name)
-   planet_name = name.upcase
-   @planets.each do |planet|
-     if planet.name.upcase == planet_name
-       return planet
-      else
-      return "Sorry,this planet is in the process of being created many light years       away and cannot be located just yet."
+  def find_planet_by_name(input_name)
+   @planets.each do |single_planet|
+     if single_planet.name.downcase == input_name.downcase
+       return single_planet.summary
+     end
+     end
+      return "Sorry,this planet is in the process of being created many light years away and cannot be located just yet."
       end
-   end
-  end
 end
