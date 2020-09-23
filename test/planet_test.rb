@@ -32,7 +32,7 @@ describe 'Planet' do
     end
 
     it 'must raise ArgumentError if distance_from_sun_km <= 0' do
-      expect {Planet.new(name: "Iris", mass_kg: -50000, fun_fact: "Iris is made-up planet", distance_from_sun_km: -2, color: 'Red')}.must_raise ArgumentError
+      expect {Planet.new(name: "Iris", mass_kg: 50000, fun_fact: "Iris is made-up planet", distance_from_sun_km: -2, color: 'Red')}.must_raise ArgumentError
     end
 
 
@@ -45,7 +45,7 @@ describe 'Planet' do
 
       planet = Planet.new(name: planet_facts[:name], mass_kg: planet_facts[:mass_kg], fun_fact: planet_facts[:fun_fact], distance_from_sun_km: planet_facts[:distance_from_sun_km], color: planet_facts[:color])
 
-      test_summary = "#{planet_facts[:name]} is #{planet_facts[:color]}, weighs #{planet_facts[:mass_kg]} kgs, and is #{planet_facts[:distance_from_sun_km]} from the sun.\nFun fact about #{planet_facts[:name]}: #{planet_facts[:fun_fact]}"
+      test_summary = "#{planet_facts[:name]} is #{planet_facts[:color]}, weighs #{planet_facts[:mass_kg]} kg, and is #{planet_facts[:distance_from_sun_km]} km from the sun.\nFun fact about #{planet_facts[:name]}: #{planet_facts[:fun_fact]}"
 
       expect(test_summary).must_equal planet.summary
     end
