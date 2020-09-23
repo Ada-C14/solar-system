@@ -28,9 +28,9 @@ class SolarSystem
     return nil
   end
 
-  def distance_between(planet1, planet2)
-    planet_1 = find_planet_by_name(planet1)
-    planet_2 = find_planet_by_name(planet2)
+  def distance_between(planet_name1, planet_name2)
+    planet1 = find_planet_by_name(planet_name1)
+    planet2 = find_planet_by_name(planet_name2)
 
     return (planet1.distance_from_sun_km - planet2.distance_from_sun_km).abs
   end

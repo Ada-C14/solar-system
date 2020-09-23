@@ -3,9 +3,9 @@ require_relative 'solar_system'
 
 def user_choice
   puts "\nWhat would you like to do? Choose from the following options:"
-  puts "List Planets\nPlanet Details\nAdd Planet\nExit"
+  puts "List Planets\nPlanet Details\nAdd Planet\nGet Distance\nExit"
   choice = gets.chomp.downcase
-  until choice == "list planets" || choice == "exit" || choice == "planet details" || choice == "add planet"
+  until choice == "list planets" || choice == "exit" || choice == "planet details" || choice == "add planet" || choice == "get distance"
     puts "NOT A VALID OPTION\n\n"
     choice = user_choice
   end
@@ -50,6 +50,23 @@ def add_planet(solar_system)
   return brand_new
 end
 
+def get_distance(solar_system)
+  distant_planets = []
+  2.times do
+    print "Please enter one planet: "
+    plan1 = gets.chomp
+    check_plan1 = solar_system.find_planet_by_name(plan1)
+    if check_plan1.nil?
+      puts "This planet is not listed in the Solar System"
+      return
+    else
+      distant_planets << plan1
+    end
+  end
+  return solar_system.distance_between(distant_planets[0], distant_planets[1])
+
+end
+
 def main
   earth = Planet.new("Earth", "Blue", 5.972e24, 1.496e8, 'Only planet known to support life')
   mars = Planet.new("Mars", "Red", 6.41693e23, 230e8, 'Carries the name of the Roman God of War')
@@ -72,13 +89,11 @@ def main
     if choice == "exit"
       puts "Good-bye"
       return
-
     elsif choice == "list planets"
       puts pre_existing_planets(solar_system) + "\n"
-
     elsif choice == "planet details"
       puts pre_existing_planets(solar_system) + "\n"
-      print "Choose a Planet from the list and I will tell you about it: "
+      print "Choose a Planet and I will tell you about it: "
       chosen_planet = gets.chomp
       check = solar_system.find_planet_by_name(chosen_planet.downcase)
 
@@ -90,8 +105,10 @@ def main
 
     elsif choice == "add planet"
       puts add_planet(solar_system)
+
+    elsif choice == "get distance"
+      puts get_distance(solar_system)
     end
   end
 end
-
 main
