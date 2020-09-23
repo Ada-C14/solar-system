@@ -1,8 +1,7 @@
 require_relative "planet"
 require_relative "solar_system"
-require "bigdecimal/util"
 
-# Method creates two different instances of Planet and prints out some of their attributes.
+
 def validate_option(user_input)
   valid_options = %w[list details add distance exit]
   until valid_options.include?(user_input)
@@ -35,19 +34,69 @@ def validate_measurement(user_input)
     puts "Please enter a number greater than 0."
     user_input = gets.chomp
   end
-
   return user_input
 end
 
 
-def validate_planet_in_solar_system(solar_system, planet_name)
-  found_planet = solar_system.find_planet_by_name(planet_name)
-  while found_planet.nil?
-    puts "Please enter a valid planet from the following list:"
-    puts solar_system.list_planets
-    found_planet = solar_system.find_planet_by_name(gets.chomp)
+def validate_to_integer(user_input)
+  until user_input == "#{user_input.to_i}"
+    puts "Please enter an integer."
+    user_input = gets.chomp
   end
-  return found_planet
+  return user_input.to_i
+end
+
+
+def select_from_duplicate_planet_names(planet_array)
+  planet_array.each_with_index { |planet, i| puts "#{ i + 1 }. #{planet.name}\n" }
+
+  user_selection = ""
+  length = planet_array.length
+
+  until (0..length).include?(user_selection)
+    puts "To select a planet, enter the number next to the planet."
+    user_selection = validate_to_integer(gets.chomp)
+  end
+
+  index = user_selection - 1
+  selected_planet = planet_array[index]
+
+  return selected_planet
+end
+
+
+def select_planet(solar_system, planet_name)
+  found_planet = solar_system.find_planet_by_name(planet_name)
+
+  if found_planet.is_a? Array
+    return select_from_duplicate_planet_names(found_planet)
+  elsif found_planet.is_a? Planet
+    return found_planet
+  end
+  # Rescues Error if planet name does not match planets in solar_system.
+  rescue ArgumentError => exception
+    puts exception
+
+    if solar_system.planets.empty?
+      return "...No planets found orbiting #{solar_system.star_name}"
+    elsif found_planet.nil?
+      while found_planet.nil?
+        begin
+        puts "Please enter a valid planet from the following list:"
+        puts solar_system.list_planets
+        found_planet = solar_system.find_planet_by_name(gets.chomp)
+        # Rescues Error if planet name does not match planets in solar_system.
+        rescue ArgumentError => exception
+          puts exception
+        end
+      end
+
+      if found_planet.is_a? Array
+        return select_from_duplicate_planet_names(found_planet)
+      else
+        return found_planet
+      end
+    end
 end
 
 
@@ -61,7 +110,6 @@ def main
   solar_system.add_planet(venus)
 
   want_to_exit = false
-  user_input = ""
   until want_to_exit
     puts "\nWhat would you like to do?"
     puts "To list planets, enter 'list'."
@@ -77,7 +125,7 @@ def main
 
     when "details"
       puts "Please enter the name of the planet you wish you learn about."
-      planet_of_interest = validate_planet_in_solar_system(solar_system, gets.chomp)
+      planet_of_interest = select_planet(solar_system, gets.chomp)
       puts planet_of_interest.summary
 
     when "add"
@@ -100,18 +148,23 @@ def main
       puts "#{planet_name} has been added to the database!"
       puts solar_system.list_planets
 
-      puts "Here's what you added: \n#{new_planet.summary}"
+      puts "\nHere's what you added: \n#{new_planet.summary}"
 
     when "distance"
       puts "To find the distance between two planets, please enter the planet names."
       print "Planet 1: "
-      planet1 = validate_planet_in_solar_system(solar_system, gets.chomp)
+      planet1 = select_planet(solar_system, gets.chomp)
       print "Planet 2: "
-      planet2 = validate_planet_in_solar_system(solar_system, gets.chomp)
+      planet2 = select_planet(solar_system, gets.chomp)
 
+      begin
       distance = solar_system.distance_between(planet1.name, planet2.name)
-      puts "The distance between #{planet1.name} and #{planet2.name} is #{distance}km."
+      rescue ArgumentError
+        distance = (planet1.distance_from_sun_km - planet2.distance_from_sun_km)
+        distance = -distance if distance.negative?
+      end
 
+      puts "The distance between #{planet1.name} and #{planet2.name} is #{distance}km."
     else
       want_to_exit = true
       exit
