@@ -24,6 +24,14 @@ def main
   puts earth.summary
   puts moon.summary
 
+  solar_system = SolarSystem.new('Sun')
+
+  solar_system.add_planet(earth)
+  solar_system.add_planet(moon)
+
+  planet_list = solar_system.list_planets
+  puts planet_list
+
 end
 
 main
