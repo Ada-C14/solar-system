@@ -19,11 +19,28 @@ def main
   jupiter = Planet.new('Jupiter', 'white-orange-red', 1.898e27, 778.3, 'Jupiter has the shortest day of all the planets')
   solar_system.add_planet(jupiter)
 
+  run_solar_system = true
+  puts "Enter: list planets | planet details | add planet | exit"
 
-  puts solar_system.list_planets
-
-
-  found_planet = solar_system.find_planet_by_name(mercury)
-  puts found_planet
+  while run_solar_system
+    user_input = gets.chomp
+    if user_input == "exit"
+      puts "Have a great day!"
+      return run_solar_system == false
+    elsif user_input == "list planets"
+      puts solar_system.list_planets
+      puts "Enter planet details to learn more or enter exit"
+    elsif user_input == "planet details"
+      puts "You picked planet details!"
+      puts "Which planet do you want to learn about?"
+      planet_name = gets.chomp
+      puts solar_system.find_planet_by_name(planet_name) #not working
+    elsif user_input == "add planet"
+      solar_system.add_new_planet
+    else
+      puts "Invalid prompt"
+    end
+  end
 end
+
 main
