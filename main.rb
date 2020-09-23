@@ -25,12 +25,9 @@ def main
   puts found_planet
   # puts found_planet.summary
 
-
-
 end
 
 main
-
 
 # puts "Tell me a planet name"
 #
