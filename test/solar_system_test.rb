@@ -38,8 +38,9 @@ end
       # Below test didn't work - need to figure out why.
       earth = Planet.new('Earth','blue-green',5.972e24,1.496e8,"it is the only planet known to support life.")
       mars = Planet.new("Mars", "red", 6.39e23, 2.066e8, "it has the highest mountain in our solar system (24km).")
-      @planets = [earth, mars]
-      expect(solar_system.list_planets).must_equal "Planets orbiting the Sun \n 1. Earth \n 2. Mars \n"
+      solar_system.add_planet(earth)
+      solar_system.add_planet(mars)
+      expect(solar_system.list_planets).must_equal "Planets orbiting the Sun \n1. Earth \n2. Mars \n"
     end
   end
 
