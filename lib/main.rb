@@ -65,8 +65,8 @@ def main
         found_planet = solar_system.find_planet_by_name(user_planet)
       end
       
-      puts "\nWe have #{ found_planet.count } planet(s) named #{ user_planet.capitalize }"
-      found_planet.each_with_index { |planet, index| puts "#{ index+1 }. #{ planet.summary }"}
+      puts "\nThe information for planet #{ user_planet.capitalize } is as below:"
+      found_planet.each { |planet| puts "#{ planet.summary }"}
     when "add planet", "3"
       puts "\nSo exciting, you're to add a new planet!"  
       new_planet = Hash.new
@@ -74,6 +74,13 @@ def main
       elements_to_give.each do |element|
         print "What's the #{ element } of this planet: "
         user_new_planet = gets.chomp.downcase
+        if element == "name"
+          check_name = solar_system.find_planet_by_name(user_new_planet)
+          until check_name.count == 0
+            print "Sorry, this name is used, please try another name ==> "
+            user_new_planet = gets.chomp.downcase
+          end
+        end
         new_planet[element] = user_new_planet
       end
       
@@ -92,19 +99,21 @@ def main
       puts "\n Which two planets do you want to see their distance?"
       puts list = solar_system.list_planets 
       two_planet = 1
-      planets_for_distance = Array.new
+      planets_for_distance = Hash(first: "", second:"")
       until two_planet == 3
         print "Planet #{two_planet}: "
-        distance_planet = gets.chomp.downcase
-        found_planet = solar_system.find_planet_by_name(distance_planet)
-        if found_planet.nil?
-          puts "Sorry, we don't have this planet: #{ distance_planet }" 
+        user_distance_planet = gets.chomp.downcase
+        found_planet = solar_system.find_planet_by_name(user_distance_planet)
+
+        if found_planet.nil? || found_planet.count == 0
+          puts "Sorry, we don't have this planet: #{ user_distance_planet }" 
         else
-          planets_for_distance.push(distance_planet)
+          planets_for_distance[:first] = user_distance_planet if two_planet == 1
+          planets_for_distance[:second] = user_distance_planet if two_planet == 2
           two_planet += 1
         end
       end      
-      puts "The distance between #{ planets_for_distance[0] } and #{ planets_for_distance[1] } is #{solar_system.distance_between(planets_for_distance[0], planets_for_distance[1])}km." 
+      puts "\nThe distance between #{ planets_for_distance[:first] } and #{ planets_for_distance[:second] } is #{ solar_system.distance_between(planets_for_distance[:first], planets_for_distance[:second]) }km." 
     when "exit", "5"
       stop_loop = true 
     else
