@@ -26,10 +26,10 @@ class SolarSystem # has to have a star and the planets
   #the find_planet_by_name returns the correct instance of Planet
   # Note: We can use planets, @planets, or self.planets
    def find_my_planet_by_name(found)#.downcase
-   first_found_planet = planets.find do |planet|
+   found_planet = planets.find do |planet|
      planet.name.upcase == found.upcase
    end
-   return first_found_planet
+   return found_planet
 
   end
 

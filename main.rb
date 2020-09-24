@@ -68,16 +68,16 @@ def main
       puts my_solar_system.list_planets
 
     when "PLANET DETAILS"
-      planet_name = ask_user_new_planet_details
+      planet_name = ask_user_planet_choice
       found_planet = my_solar_system.find_my_planet_by_name(found)
-      if (found_planet)
+      if (found_planet) == true
         puts found_planet.summary
       else
-        puts "I couldn't find a planet by the name #{planet_name}.\n\n"
+        puts "I couldn't find a planet by the name #{planet_name}.\n"
       end
 
     when "ADD PLANET"
-      new_planet = ask_user_planet_choice
+      new_planet = ask_user_new_planet_details
       my_solar_system.add_planet(new_planet)
 
     when "EXIT"
