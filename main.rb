@@ -10,9 +10,9 @@ def create_solar_system
   mars = Planet.new('Mars', 'red', 6.39e23, 2.279e8, 'oOoO scientists discovered a lake under an ice cap here!!')
   jupiter = Planet.new('Jupiter', 'orange', 1.898e27, 7.783e8, 'The (magnetic) force is strong with this one.')
   saturn = Planet.new('Saturn', 'yellow', 5.683e26, 1.427e9, 'Mostly made up of gas tbh.')
-  uranus = Planet.new('Uranus', 'aqua', 8.681e25, 2.871e9, 'Coldest planet brrr')
+  uranus = Planet.new('Uranus', 'cyan', 8.681e25, 2.871e9, 'Coldest planet brrr')
   neptune = Planet.new('Neptune', 'blue', 1.024e26, 4.498e9, 'Winds whip clouds of frozen methane at speeds greater than 2,000 km/h in this atmosphere~')
-  pluto = Planet.new('Pluto', 'blue', 1.309e22, 5.906e9, 'A dwarf planet that IAU excluded T^T')
+  pluto = Planet.new('Pluto', 'reddish brown', 1.309e22, 5.906e9, 'A dwarf planet that IAU excluded T^T')
 
   planets = [mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, pluto]
 
