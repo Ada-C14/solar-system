@@ -1,6 +1,18 @@
 require_relative 'planet'
 require_relative 'solarsystem'
 
+def initialize_solar_system
+  solar_system = Solar_system.new("THE SUN")
+  etheria = Planet.new("Etheria", "purple", 3e24, 1.5e8, "Etheria has 12 moons which provide magical energy.")
+  eternia = Planet.new("Eternia", "pink", 5e25, 2e8, "People of Eternia colonized Etheria and turned Etheria into a weapon.  Birth place of She-Ra.")
+  earth = Planet.new("Earth", "mostly blue", 5.972e24, 1.496e8, "Earth.... oof it's complicated but there is life here.")
+  solar_system.add_planet(etheria)
+  solar_system.add_planet(eternia)
+  solar_system.add_planet(earth)
+
+  return solar_system
+end
+
 def users_new_planet
   puts "What is the planet name?"
   name = gets.chomp
@@ -39,13 +51,7 @@ end
 
 
 def main
-  solar_system = Solar_system.new("THE SUN")
-  etheria = Planet.new("Etheria", "purple", 3e24, 1.5e8, "Etheria has 12 moons which provide magical energy.")
-  eternia = Planet.new("Eternia", "pink", 5e25, 2e8, "People of Eternia colonized Etheria and turned Etheria into a weapon.  Birth place of She-Ra.")
-  earth = Planet.new("Earth", "mostly blue", 5.972e24, 1.496e8, "Earth.... oof it's complicated but there is life here.")
-  solar_system.add_planet(etheria)
-  solar_system.add_planet(eternia)
-  solar_system.add_planet(earth)
+  solar_system = initialize_solar_system
 
   puts "Welcome to the Solar System.  What do you want to do? "
   print_options
