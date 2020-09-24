@@ -1,24 +1,19 @@
-
+#Wave 1 - Create a class Planet
 class Planet
   attr_reader :name, :color, :mass_kg, :distance_from_sun_km, :fun_fact
-  #constructor
+  #Create a constructor which takes 5 parameters
   def initialize (name, color, mass_kg, distance_from_sun_km, fun_fact)
     @name = name
     @color = color
     @mass_kg = mass_kg
     @distance_from_sun_km = distance_from_sun_km
-    @fun_fact = fun_factc
+    @fun_fact = fun_fact
 
   end
 
-  attr_reader :name
-  attr_reader :color
-  attr_reader :mass_kg
-  attr_reader :distance_from_sun_km
-  attr_reader :fun_fact
-
-
+  #Create a method that returns a string with the summary of a planet Wave 4 - Part 4
   def summary
-    return "Planet #{name} is the color #{color} and it weights #{mass_kg}. and its #{distance_from_sun_km} km away from the sun. Here's a fun fact: #{fun_fact}."
+    summary = "Planet #{name} is the color #{color} and it weights #{mass_kg}. and its #{distance_from_sun_km} km away from the sun. Here's a fun fact: #{fun_fact}."
+    return summary
   end
 end

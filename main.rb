@@ -1,20 +1,39 @@
 #main.rb
+require_relative 'planet.rb'
+require_relative 'solar_system.rb'
 
-require_relative 'planet'
-require_relative 'solar_system'
-
-def welecome_menu
-  puts "Welcome to make your own planet!"
-  puts "What would you like to do next? You can choose from: \n 1. List Planets \n 2. Planet Details \n 3. Add Planet \n 4. Exit"
-  main
-  p welcome_menu
-end
-
+#Initialize Solar System
 def main
-  earth=Planet.new('Earth', 'blue-green',5.972e24, 1.496e8, 'Only planet known to support life')
-  puts earth
-end
+  #Create an instance of SolarSystem and add planet Wave 2, Part 4
 
-# def summary
-#
-# end
+  solar_system =SolarSystem.new('Sun')
+#Each planet is an instance of the Solar System
+
+  mercury =Planet.new('Mercury','gray',3.285e23, '69.306 ', 'Mercury has the most craters in the Solar System.')
+  solar_system.add_planets(mercury)
+
+  venus=Planet.new('Venus', 'white',"4.867e24","107.84 ","Venus spins clockwise on its axis")
+  solar_system.add_planets(venus)
+
+  earth=Planet.new('Earth', 'blue-green',5.972e24, 1.496e8, 'Only planet known to support life')
+  solar_system.add_planets(earth)
+
+  mars=Planet.new('Mars','red','6.39e23', '210.69', 'The NASA Curiosity Rover landed on Mars')
+  solar_system.add_planets(mars)
+
+  jupiter=Planet.new('Jupiter','orange-white','1.898e27','767.92 ','Jupiter is the largest planet in our solar system')
+  solar_system.add_planets(jupiter)
+
+  return solar_system
+end
+main
+
+
+puts "Welcome to Planets! What would you like to do next?"
+
+choices = ["list planets", "Planet details", "Add Planet", "Exit"]
+choices.each do |choice|
+    puts "#{choice}"
+  end
+  user_choice = gets.chomp
+  return user_choice
