@@ -1,27 +1,30 @@
 class SolarSystem
+  attr_reader :star_name, :alien_types
   def initialize(star_name)
     @star_name = star_name
-    @planets = []
+    @alien_types = []
   end
 
-  def star_name
-    return @star_name
+  def add_alien(alien)
+    @alien_types.push(alien)
   end
 
-  def add_planet(planet)
-    @planets.push(planet)
-  end
-
-  def find_planet_by_name(planet)
-    return planet
-  end
-
-  def list_planets
-    planet_list = "Planets orbiting #{@star_name}"
-    @planets.each_with_index do |planet, index|
-      planet_list+= "\n #{index+1}: #{planet}"
+  def find_alien_by_name(search)
+    # Note: We can use planets, @planets, or self.planets
+    found_alien = @alien_types.find do |alien|
+      alien.name.upcase == search.upcase
     end
-    return planet_list
+    return found_alien
+  end
+
+  def list_aliens
+    puts
+    alien_list = "Alien races living in the #{@star_name}"
+    # Note: We can use planets, @planets, or self.planets
+    @alien_types.each_with_index do |alien, index|
+      alien_list+= "\n #{index+1}: #{alien.name}"
+    end
+    return alien_list
   end
 end
 
