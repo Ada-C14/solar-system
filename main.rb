@@ -3,7 +3,6 @@ require_relative 'planet'
 require_relative 'solar_system'
 require 'colorize'
 
-
 def alien_picked
   puts "What alien peaked your interest?"
   alien_chosen = gets.chomp
