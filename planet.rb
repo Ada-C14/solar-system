@@ -1,3 +1,4 @@
+#wave1
 #each instance of this class will keep track of information about a single planet
 
 class Planet

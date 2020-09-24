@@ -1,4 +1,4 @@
-
+#wave2
 #SolarSystem is responsible for keeping track of a collection of instances of Planet.
 class SolarSystem # has to have a star and the planets
    attr_reader :star_name, :planet
