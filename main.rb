@@ -4,7 +4,7 @@ require_relative 'solar_system.rb'
 # create_a_solar_system
 
 def main
-
+  # The solar system
   addi = SolarSystem.new('P.O.M.')
   phoenix = Planet.new('Phoenix', 'fire red', 1,  2, '2 years old')
   justice = Planet.new('Justice', 'golden brown', 2,  3, '800 years old')
@@ -16,16 +16,10 @@ def main
 
   found_planet = addi.find_planet_by_name('Phoenix')
 
-  puts found_planet.name
-  puts found_planet.summary
+  found_planet.name
+  found_planet.summary
 
-  loop = true
-  while loop
-    puts "Would you like to build a planet? Y/N"
-    builder = gets.chomp.upcase
-    when builder = 'Y'
-  end
-
+  # Control loop w/ 2 options
   loop = true
   while loop
     puts "Would you like to see a list of planets? Y/N."
@@ -38,7 +32,7 @@ def main
       if user_input_2 == 'Y'
         loop = false
       elsif
-      puts "Let's see if we can find something else."
+      puts "Guess we'll figure something else out."
       end
     elsif user_input != 'Y' || user_input != 'N'
       raise ArgumentError, 'Only answers accepted are Y or N. Exiting.'
@@ -50,6 +44,26 @@ def main
     # create new instance of planet, add planet to solar system
   end
 end
+
+# def create_and_add_planet
+#   puts "Would you like to build a planet? Y/N"
+#   builder = gets.chomp.upcase
+#   if builder == 'Y'
+#     puts "Give me a planet name:"
+#     planet_name = gets.chomp.capitalize
+#     puts "Give me #{planet_name}'s color:"
+#     planet_color = gets.chomp.downcase
+#     puts "Now what's the weight in kg?"
+#     planet_km = gets.chomp.to_i
+#     puts "How far is the planet from the sun in km?"
+#     planet_distance = gets.chomp.to_i
+#     puts "Last thing, give it one fun fact:"
+#     fun = gets.chomp.to_s
+#
+#     new_planet = Planet.new(planet_name, planet_color, planet_km, planet_distance, fun)
+#     addi.add_planet(new_planet)
+#   end
+# end
 
 main
 
