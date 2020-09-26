@@ -2,7 +2,7 @@ require_relative 'planet.rb'
 require_relative 'solar_system.rb'
 require 'pry'
 
-def get_new_user_planet #~adapted~ from solution
+def get_new_user_planet
   puts "Let's add a new planet! Please provide the following info:"
   puts "Planet name:"
   name = gets.chomp
