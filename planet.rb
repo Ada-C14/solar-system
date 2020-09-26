@@ -1,7 +1,7 @@
 #Wave 1 - Create a class Planet
 class Planet
   attr_reader :name, :color, :mass_kg, :distance_from_sun_km, :fun_fact
-  #Create a constructor which takes 5 parameters
+  #Create a constructor which takes 5 parameters Wave 1, Part 2
   def initialize (name, color, mass_kg, distance_from_sun_km, fun_fact)
     @name = name
     @color = color

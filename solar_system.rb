@@ -16,7 +16,7 @@ class SolarSystem
 
   #Create a method to return a string with a list of planets --> Wave 2, Part 3
   def list_planets
-    list_string = "Planets orbiting #{star_name}"
+    list_string = "Planets orbiting #{star_name}\n"
     @planets.each_with_index do |planet,i|
       list_string += "\n#{i + 1}.#{planet.name}"
     end
@@ -24,10 +24,11 @@ class SolarSystem
   end
 
   #Create a method to find the planet by name Wave 2, Part 5
-  #
+
   def find_planet_by_name(planet_name)
     planet_name = planet_name.upcase
-    found_planet =planets.find {|planet|planet.name.upcase == planet_name}
+    found_planet =planets.find {|planet|planet.name.upcase == planet_name.upcase}
+    raise ArgumentError, "#{planet_name} is not in solar system"
     return found_planet
   end
   end
