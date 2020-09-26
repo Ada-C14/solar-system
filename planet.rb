@@ -13,7 +13,7 @@ class Planet
 
   #Create a method that returns a string with the summary of a planet Wave 4 - Part 4
   def summary
-    summary = "Planet #{name} is the color #{color} and it weights #{mass_kg}. and its #{distance_from_sun_km} km away from the sun. Here's a fun fact: #{fun_fact}."
+    summary ="Planet #{name} is the color #{color} and it weights #{mass_kg}. and its #{distance_from_sun_km} km away from the sun. Here's a fun fact: #{fun_fact}."
     return summary
   end
 end
